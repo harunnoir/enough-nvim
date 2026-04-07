@@ -1,0 +1,12 @@
+return {
+	{ import = 'plugins.ai' },
+	{ import = 'plugins.lsp' },
+	{ import = 'plugins.cmp' },
+	{ import = 'plugins.nav' },
+	{ import = 'plugins.git' },
+	{ import = 'plugins.edit' },
+	{ import = 'plugins.ui' },
+	{ import = 'plugins.debug' },
+	{ import = 'plugins.lint' },
+	{ import = 'plugins.misc' },
+}
