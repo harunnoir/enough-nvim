@@ -1,45 +1,100 @@
 return {
-	{
-		'f-person/git-blame.nvim',
-		-- load the plugin at startup
-		event = 'VeryLazy',
-		-- Because of the keys part, you will be lazy loading this plugin.
-		-- The plugin will only load once one of the keys is used.
-		-- If you want to load the plugin at startup, add something like event = "VeryLazy",
-		-- or lazy = false. One of both options will work.
-		opts = {
-			-- your configuration comes here
-			-- for example
-			enabled = true, -- if you want to enable the plugin
-			message_template = ' <summary> • <date> • <author> • <<sha>>', -- template for the blame message, check the Message template section for more options
-			date_format = '%m-%d-%Y %H:%M:%S', -- template for the date, check Date format section for more options
-			virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
-		},
-	},
-	{
-		'lewis6991/gitsigns.nvim',
-		lazy = true,
-		event = 'VeryLazy',
-		opts = { signs = { add = '▎', change = '▎', delete = '▎' } },
-	},
-	{
-		'SuperBo/fugit2.nvim',
-		build = false,
-		opts = {
-			width = 100,
-		},
-		dependencies = {
-			'MunifTanjim/nui.nvim',
-			'nvim-tree/nvim-web-devicons',
-			'nvim-lua/plenary.nvim',
-			{
-				'chrisgrieser/nvim-tinygit', -- optional: for Github PR view
-				dependencies = { 'stevearc/dressing.nvim' },
-			},
-		},
-		cmd = { 'Fugit2', 'Fugit2Diff', 'Fugit2Graph', 'Fugit2Rebase' },
-		keys = {
-			{ '<leader>F', mode = 'n', '<cmd>Fugit2<cr>' },
-		},
-	},
+    {
+        'isakbm/gitgraph.nvim',
+        opts = {
+            git_cmd = 'git',
+            symbols = {
+                merge_commit = '',
+                commit = '',
+                merge_commit_end = '',
+                commit_end = '',
+
+                -- Advanced symbols
+                GVER = '',
+                GHOR = '',
+                GCLD = '',
+                GCRD = '╭',
+                GCLU = '',
+                GCRU = '',
+                GLRU = '',
+                GLRD = '',
+                GLUD = '',
+                GRUD = '',
+                GFORKU = '',
+                GFORKD = '',
+                GRUDCD = '',
+                GRUDCU = '',
+                GLUDCD = '',
+                GLUDCU = '',
+                GLRDCL = '',
+                GLRDCR = '',
+                GLRUCL = '',
+                GLRUCR = '',
+            },
+            format = {
+                timestamp = '%H:%M:%S %d-%m-%Y',
+                fields = { 'hash', 'timestamp', 'author', 'branch_name', 'tag' },
+            },
+            hooks = {
+                on_select_commit = function(commit)
+                    print('selected commit:', commit.hash)
+                end,
+                on_select_range_commit = function(from, to)
+                    print('selected range:', from.hash, to.hash)
+                end,
+            },
+        },
+        keys = {
+            {
+                '<leader>gl',
+                function()
+                    require('gitgraph').draw({}, { all = true, max_count = 5000 })
+                end,
+                desc = 'GitGraph - Draw',
+            },
+        },
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        lazy = false,
+        event = 'VeryLazy',
+        opts = {
+            signs = {
+                add = { text = '┃' },
+                change = { text = '┃' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+                untracked = { text = '┆' },
+            },
+            signs_staged = {
+                add = { text = '┃' },
+                change = { text = '┃' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+                untracked = { text = '┆' },
+            },
+        },
+    },
+    {
+        'SuperBo/fugit2.nvim',
+        build = false,
+        opts = {
+            width = 100,
+        },
+        dependencies = {
+            'MunifTanjim/nui.nvim',
+            'nvim-tree/nvim-web-devicons',
+            'nvim-lua/plenary.nvim',
+            {
+                'chrisgrieser/nvim-tinygit', -- optional: for Github PR view
+                dependencies = { 'stevearc/dressing.nvim' },
+            },
+        },
+        cmd = { 'Fugit2', 'Fugit2Diff', 'Fugit2Graph', 'Fugit2Rebase' },
+        keys = {
+            { '<leader>F', mode = 'n', '<cmd>Fugit2<cr>' },
+        },
+    },
 }

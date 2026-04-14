@@ -1,3 +1,54 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(88,5),point(128,7))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+{
+        'nvim-lualine/lualine.nvim',
+        lazy = true,
+        event = 'VeryLazy',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = function()
+            return {
+                options = {
+                    theme = get_theme,
+                    globalstatus = true,
+                    component_separators = '',
+                    section_separators = '',
+                    disabled_filetypes = {
+                        statusline = { 'oil', '' },
+                    },
+                },
+                sections = {
+                    lualine_a = {
+                        {
+                            'mode',
+                            icon = ' 󰘍',
+                            fmt = function(s)
+                                return s:sub(1, 3)
+                            end,
+                        },
+                    },
+                    lualine_b = { { 'branch', icon = ' ' } },
+                    lualine_c = { { filename, icon = ' 󰈔', color = filename_color } },
+                    lualine_x = {
+                        {
+                            'diagnostics',
+                            icon = ' ',
+                            symbols = { error = '󰅙 ', warn = '󰀪 ', info = '󰋽 ', hint = '󰌶 ' },
+                        },
+                    },
+                    lualine_y = { { 'filetype', icon = '  ' } },
+                    lualine_z = { { 'location', icon = ' 󰓆' } },
+                },
+            }
+        end,
+    },
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
 local function get_hl(group, attr)
     local ok, val = pcall(vim.api.nvim_get_hl, 0, { name = group })
     return ok and val and string.format('#%06x', val[attr])
@@ -47,7 +98,7 @@ return {
             scroll = { enabled = true },
             statuscolumn = {
                 enabled = true,
-                left = { 'mark', 'sign', 'git'  }, -- priority of signs on the left (high to low)
+                left = { 'mark', 'sign', 'git' }, -- priority of signs on the left (high to low)
                 right = { 'fold' }, -- priority of signs on the right (high to low)
                 folds = {
                     open = true, -- show open fold icons
@@ -69,7 +120,7 @@ return {
         priority = 1000,
         config = function()
             vim.o.background = 'dark'
-            vim.g.gruvbox_material_background = 'soft'  
+            vim.g.gruvbox_material_background = 'soft'
             vim.cmd.colorscheme('gruvbox-material')
         end,
     },
@@ -171,3 +222,64 @@ return {
         },
     },
 }
+</FILE_CONTAINING_SELECTION>
+
+</Context>
+<Prompt>
+add showing the current enabled lsp.
+</Prompt>
+
+<Location><File>/home/aksel/.config/nvim/lua/plugins/ui.lua</File><Function>range(point(88,5),point(128,7))</Function></Location>
+<FunctionText>{
+        'nvim-lualine/lualine.nvim',
+        lazy = true,
+        event = 'VeryLazy',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = function()
+            return {
+                options = {
+                    theme = get_theme,
+                    globalstatus = true,
+                    component_separators = '',
+                    section_separators = '',
+                    disabled_filetypes = {
+                        statusline = { 'oil', '' },
+                    },
+                },
+                sections = {
+                    lualine_a = {
+                        {
+                            'mode',
+                            icon = ' 󰘍',
+                            fmt = function(s)
+                                return s:sub(1, 3)
+                            end,
+                        },
+                    },
+                    lualine_b = { { 'branch', icon = ' ' } },
+                    lualine_c = { { filename, icon = ' 󰈔', color = filename_color } },
+                    lualine_x = {
+                        {
+                            'diagnostics',
+                            icon = ' ',
+                            symbols = { error = '󰅙 ', warn = '󰀪 ', info = '󰋽 ', hint = '󰌶 ' },
+                        },
+                    },
+                    lualine_y = { { 'filetype', icon = '  ' } },
+                    lualine_z = { { 'location', icon = ' 󰓆' } },
+                },
+            }
+        end,
+    },</FunctionText>
+<TEMP_FILE>./tmp/99-6093</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>

@@ -1,44 +1,67 @@
+-- Neovim Options
+
 -- General
 vim.o.encoding = 'utf-8'
-vim.o.laststatus = 3
 vim.o.termguicolors = true
 vim.o.mouse = 'a'
+vim.o.laststatus = 3
+
+-- UI
+vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 8
+vim.opt.shortmess:append('c')
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = '│ ',
+    extends = '»',
+    precedes = '«',
+    trail = '·',
+}
+vim.opt.fillchars = {
+    eob = ' ',
+}
+vim.opt.cursorline = true
+
+-- Editor Behavior
+vim.o.wrap = false
+vim.o.incsearch = true
+vim.o.hlsearch = false
+
+-- Line Numbers
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.nrformats = 'unsigned'
+
+-- Search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Indent
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
 
 -- Splits
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Numbers
-vim.o.number = true
-vim.o.relativenumber = true
-
--- Search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.hlsearch = false
-vim.o.incsearch = true
-
--- Indent
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
-
--- Misc
-vim.o.clipboard = 'unnamedplus'
-vim.o.spell = false
-vim.o.wrap = false
+-- Files & Buffers
 vim.o.hidden = true
 vim.o.undofile = true
 vim.o.swapfile = false
 vim.o.backup = false
 
--- UI
-vim.opt.scrolloff = 5
-vim.opt.sidescrolloff = 8
-vim.opt.shortmess:append 'c'
-vim.opt.list = true
-vim.opt.listchars = { tab = '│ ', extends = '»', precedes = '«', trail = '·' }
+-- Clipboard & Spell
+vim.o.clipboard = 'unnamedplus'
+vim.o.spell = false
 
--- Leader
+-- Autocomplete
+vim.opt.completeopt = 'menuone,noselect'
+
+-- Keybindings
 vim.g.mapleader = ' '
+
+-- Font
+vim.o.guifont = 'VictorMono Nerd Font:h10'
+

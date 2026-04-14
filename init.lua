@@ -2,3 +2,7 @@ require 'config.opts'
 require 'config.lazy'
 require 'config.maps'
 require 'config.lsp'
+require 'config.hl'
+require 'config.cmd'
+
+-- require("scripts.diagnostics").setup()
