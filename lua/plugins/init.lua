@@ -5,10 +5,12 @@ return {
     { import = 'plugins.nav' },
     { import = 'plugins.git' },
     { import = 'plugins.edit' },
-    { import = 'plugins.ui' },
     { import = 'plugins.debug' },
     { import = 'plugins.lint' },
     { import = 'plugins.misc' },
     { import = 'plugins.more' },
     { import = 'plugins.ts' },
+    { import = 'plugins.org' },
+    { import = 'plugins.lualine' },
+    { import = 'plugins.ui' },
 }

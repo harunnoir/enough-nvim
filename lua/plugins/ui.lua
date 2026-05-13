@@ -1,36 +1,3 @@
-local function get_hl(group, attr)
-    local ok, val = pcall(vim.api.nvim_get_hl, 0, { name = group })
-    return ok and val and string.format('#%06x', val[attr])
-end
-
-local function get_colors()
-    return {
-        fg = get_hl('Normal', 'fg') or '#657b83',
-        bg = get_hl('Normal', 'bg') or '#002b36',
-        comment = get_hl('Comment', 'fg') or '#93a1a1',
-        warning = get_hl('DiagnosticWarn', 'fg') or '#b58900',
-    }
-end
-
-local function filename()
-    local name = vim.fn.expand('%:t')
-    return name == '' and '[No Name]' or name
-end
-
-local function filename_color()
-    local c = get_colors()
-    local name = vim.fn.expand('%:t')
-    return name == '' and { fg = c.warning, bg = c.bg } or { fg = c.fg, bg = c.bg }
-end
-
-local function get_theme()
-    local c = get_colors()
-    return {
-        normal = { c = { fg = c.fg, bg = c.bg } },
-        inactive = { c = { fg = c.comment, bg = c.bg } },
-    }
-end
-
 return {
     {
         'folke/snacks.nvim',
@@ -47,7 +14,7 @@ return {
             scroll = { enabled = true },
             statuscolumn = {
                 enabled = true,
-                left = { 'mark', 'sign', 'git'  }, -- priority of signs on the left (high to low)
+                left = { 'mark', 'sign', 'git' }, -- priority of signs on the left (high to low)
                 right = { 'fold' }, -- priority of signs on the right (high to low)
                 folds = {
                     open = true, -- show open fold icons
@@ -69,7 +36,7 @@ return {
         priority = 1000,
         config = function()
             vim.o.background = 'dark'
-            vim.g.gruvbox_material_background = 'soft'  
+            vim.g.gruvbox_material_background = 'soft'
             vim.cmd.colorscheme('gruvbox-material')
         end,
     },
@@ -78,53 +45,15 @@ return {
         name = 'ember',
     },
     {
+        'kungfusheep/mfd.nvim',
+    },
+    {
         'gbprod/yanky.nvim',
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-    },
-    {
-        'nvim-lualine/lualine.nvim',
-        lazy = true,
-        event = 'VeryLazy',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        opts = function()
-            return {
-                options = {
-                    theme = get_theme,
-                    globalstatus = true,
-                    component_separators = '',
-                    section_separators = '',
-                    disabled_filetypes = {
-                        statusline = { 'oil', '' },
-                    },
-                },
-                sections = {
-                    lualine_a = {
-                        {
-                            'mode',
-                            icon = ' 󰘍',
-                            fmt = function(s)
-                                return s:sub(1, 3)
-                            end,
-                        },
-                    },
-                    lualine_b = { { 'branch', icon = ' ' } },
-                    lualine_c = { { filename, icon = ' 󰈔', color = filename_color } },
-                    lualine_x = {
-                        {
-                            'diagnostics',
-                            icon = ' ',
-                            symbols = { error = '󰅙 ', warn = '󰀪 ', info = '󰋽 ', hint = '󰌶 ' },
-                        },
-                    },
-                    lualine_y = { { 'filetype', icon = '  ' } },
-                    lualine_z = { { 'location', icon = ' 󰓆' } },
-                },
-            }
-        end,
     },
     {
         'folke/noice.nvim',
@@ -170,4 +99,61 @@ return {
             'rcarriga/nvim-notify',
         },
     },
+    {
+        'stevearc/quicker.nvim',
+        ft = 'qf',
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {},
+    },
+    {
+        'lukas-reineke/virt-column.nvim',
+        opts = {
+            char = '│', -- or "▕"  "┊"  "╎"
+            highlight = 'VirtColumn',
+        },
+    },
+    {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        dependencies = { 'amansingh-afk/milli.nvim' },
+        opts = function()
+            local splash = require('milli').load({ splash = 'finger' })
+            return {
+                theme = 'doom',
+                config = {
+                    header = splash.frames[1], -- seed header with frame 0
+                    center = {
+                        { icon = '  ', desc = 'Find File', key = 'f', action = 'Telescope find_files' },
+                        { icon = '  ', desc = 'Quit', key = 'q', action = 'qa' },
+                    },
+                },
+            }
+        end,
+        config = function(_, opts)
+            require('dashboard').setup(opts)
+            require('milli').dashboard({ splash = 'finger', loop = true })
+        end,
+    },
+    --[[ {
+        'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
+        opts = function(_, opts)
+            return require('indent-rainbowline').make_opts(opts, {
+                color_transparency = 0.10, -- subtle, not distracting
+                colors = {
+                    0xea6962, -- red
+                    0xe78a4e, -- orange
+                    0xd8a657, -- yellow
+                    0xa9b665, -- green
+                    0x89b482, -- aqua
+                    0x7daea3, -- blue
+                    0xd3869b, -- purple
+                },
+            })
+        end,
+        dependencies = {
+            'TheGLander/indent-rainbowline.nvim',
+        },
+    }, ]]
 }

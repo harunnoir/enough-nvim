@@ -54,3 +54,16 @@ map('n', '<M-,>', '<C-w>3<', { desc = 'Shrink width' })
 map('n', '<M-.>', '<C-w>3>', { desc = 'Expand width' })
 map('n', '<M-->', '<C-w>3-', { desc = 'Shrink height' })
 map('n', '<M-=>', '<C-w>3+', { desc = 'Expand height' })
+
+-- Lspsaga
+map('n', 'K', '<CMD>Lspsaga hover_doc<CR>')
+
+-- Glance
+map('n', 'gD', '<CMD>Glance definitions<CR>')
+map('n', 'gR', '<CMD>Glance references<CR>')
+map('n', 'gY', '<CMD>Glance type_definitions<CR>')
+map('n', 'gM', '<CMD>Glance implementations<CR>')
+
+-- Go to preview
+map("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
+

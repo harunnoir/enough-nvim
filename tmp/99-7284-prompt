@@ -1,0 +1,75 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(7,1),point(9,2))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+vim.lsp.config.clangd = {
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+}
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
+-- Enable Language Server Protocol servers
+vim.lsp.enable('basedpyright')
+vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config.clangd = {
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+}
+
+-- Configure lua_ls (Lua language server)
+vim.lsp.config.lua_ls = {
+    filetypes = { 'lua' },
+    settings = {
+        Lua = {
+            diagnostics = { globals = { 'vim' } },
+            runtime = { version = 'LuaJIT' },
+        },
+    },
+}
+
+-- Configure diagnostic signs
+vim.diagnostic.config({
+    signs = {
+        text = {
+            ERROR = '',
+            WARN = '',
+            HINT = '',
+            INFO = '',
+        },
+    },
+})
+
+-- Enable inlay hints for all LSP clients on attach
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function()
+        vim.lsp.inlay_hint.enable(true)
+    end,
+})
+</FILE_CONTAINING_SELECTION>
+
+</Context>
+<Prompt>
+add comment here.
+</Prompt>
+
+<Location><File>/home/aksel/.config/nvim/lua/config/lsp.lua</File><Function>range(point(7,1),point(9,2))</Function></Location>
+<FunctionText>vim.lsp.config.clangd = {
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+}</FunctionText>
+<TEMP_FILE>./tmp/99-7284</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>

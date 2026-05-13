@@ -1,0 +1,11 @@
+-- Configure clangd (C/C++ language server)
+vim.lsp.config('clangd', {
+    cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy',
+        '--all-scopes-completion',
+        '--completion-style=detailed',
+    },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+})

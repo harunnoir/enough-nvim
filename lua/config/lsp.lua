@@ -4,6 +4,21 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 
+-- Configure clangd (C/C++ language server)
+vim.lsp.config('clangd', {
+    cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy',
+        '--all-scopes-completion',
+        '--completion-style=detailed',
+        '--header-insertion=iwyu',
+        '--function-arg-placeholders',
+        '--pch-storage=memory',
+    },
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+})
+
 -- Configure lua_ls (Lua language server)
 vim.lsp.config.lua_ls = {
     filetypes = { 'lua' },

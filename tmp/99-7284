@@ -1,0 +1,4 @@
+-- Configure clangd (C/C++ language server)
+vim.lsp.config.clangd = {
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+}
