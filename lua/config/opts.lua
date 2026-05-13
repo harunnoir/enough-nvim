@@ -64,6 +64,20 @@ vim.o.swapfile = false
 vim.o.backup = false
 
 -- Clipboard & Spell
+-- FIXME: Something is wrong about clipboard, maby because of not defining $WAYLAND_DISPLAY
+vim.g.clipboard = {
+    name = 'wl-clipboard',
+    copy = {
+        ['+'] = 'wl-copy',
+        ['*'] = 'wl-copy',
+    },
+    paste = {
+        ['+'] = 'wl-paste --no-newline',
+        ['*'] = 'wl-paste --no-newline',
+    },
+    cache_enabled = 1,
+}
+
 vim.o.clipboard = 'unnamedplus'
 vim.o.spell = false
 

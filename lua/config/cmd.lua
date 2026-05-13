@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'markdown', 'text', 'rst' },
+    pattern = { 'text', 'rst' },
     callback = function()
         vim.opt_local.colorcolumn = '80'
         vim.opt_local.textwidth = 80
