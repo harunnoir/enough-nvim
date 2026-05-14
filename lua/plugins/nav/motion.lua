@@ -66,6 +66,7 @@ return {
     },
     {
         'amwadud/quicksearch.nvim',
+        event = 'VeryLazy',
         config = function()
             require('quicksearch').setup()
         end,

@@ -3,8 +3,7 @@ return {
     { import = 'plugins.ui.lualine' },
     {
         'folke/snacks.nvim',
-        priority = 1000,
-        lazy = false,
+        event = 'VeryLazy',
         opts = {
             notifier = { enabled = true },
             picker = { expand = true },
@@ -123,7 +122,7 @@ return {
         opts = {},
     },
     { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
-    { 'kungfusheep/mfd.nvim' },
+    { 'kungfusheep/mfd.nvim', event = 'VeryLazy' },
     {
         'nvim-tree/nvim-web-devicons',
         lazy = true,

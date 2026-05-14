@@ -1,11 +1,10 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        lazy = false,
+        event = 'VeryLazy',
         build = ':TSUpdate',
         config = function()
-            local ts = require('nvim-treesitter')
-            local parsers = {
+            local patterns = {
                 'bash', 'comment', 'css', 'diff', 'dockerfile',
                 'elixir', 'git_config', 'gitcommit', 'gitignore',
                 'groovy', 'go', 'heex', 'hcl', 'html', 'http',
@@ -15,18 +14,6 @@ return {
                 'ssh_config', 'sql', 'terraform', 'typst',
                 'toml', 'tsx', 'typescript', 'vim', 'vimdoc', 'yaml',
             }
-
-            for _, parser in ipairs(parsers) do
-                ts.install(parser)
-            end
-
-            local patterns = {}
-            for _, parser in ipairs(parsers) do
-                local parser_patterns = vim.treesitter.language.get_filetypes(parser)
-                for _, pp in pairs(parser_patterns) do
-                    table.insert(patterns, pp)
-                end
-            end
 
             vim.treesitter.language.register('groovy', 'Jenkinsfile')
             vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'

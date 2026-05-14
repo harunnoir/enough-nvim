@@ -89,6 +89,7 @@ return {
     },
     {
         'MagicDuck/grug-far.nvim',
+        cmd = 'GrugFar',
         config = function()
             require('grug-far').setup({})
         end,
@@ -103,7 +104,7 @@ return {
         event = 'BufEnter',
         config = true,
     },
-    { 'tpope/vim-repeat' },
+    { 'tpope/vim-repeat', event = 'VeryLazy' },
     {
         'monaqa/dial.nvim',
         keys = {

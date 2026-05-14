@@ -1,5 +1,4 @@
 return {
-    { 'nvim-lua/plenary.nvim' },
     { 'neovim/nvim-lspconfig', event = 'VeryLazy' },
     { 'williamboman/mason.nvim', cmd = 'Mason' },
     { 'williamboman/mason-lspconfig.nvim', event = 'VeryLazy' },
