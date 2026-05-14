@@ -16,6 +16,7 @@ return {
     },
     {
         'nvimdev/lspsaga.nvim',
+        event = 'VeryLazy',
         config = function()
             require('lspsaga').setup({
                 symbol_in_winbar = { enable = false },
@@ -38,7 +39,7 @@ return {
                 sh = { 'shellcheck' },
                 lua = { 'selene' },
             }
-            vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+            vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
                 group = vim.api.nvim_create_augroup('lint', { clear = true }),
                 callback = function()
                     if vim.bo.modifiable then

@@ -50,6 +50,7 @@ return {
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
+        event = 'VeryLazy',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
         opts = {},
     },
@@ -82,7 +83,6 @@ return {
         opts = {},
         cmd = { 'Typr', 'TyprStats' },
     },
-    { 'nvim-mini/mini.nvim', version = '*' },
     {
         'jiaoshijie/undotree',
         opts = {},

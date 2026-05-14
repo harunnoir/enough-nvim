@@ -1,6 +1,46 @@
 return {
     {
         'ThePrimeagen/99',
+        keys = {
+            {
+                '<leader>9v',
+                function()
+                    require('99').visual()
+                    vim.cmd('startinsert')
+                end,
+                mode = 'v',
+                desc = '99 visual prompt',
+            },
+            {
+                '<leader>9s',
+                function()
+                    require('99').search()
+                    vim.cmd('startinsert')
+                end,
+                desc = '99 search prompt',
+            },
+            {
+                '<leader>9x',
+                function()
+                    require('99').stop_all_requests()
+                end,
+                desc = '99 cancel',
+            },
+            {
+                '<leader>9m',
+                function()
+                    require('99.extensions.telescope').select_model()
+                end,
+                desc = '99 select model',
+            },
+            {
+                '<leader>9l',
+                function()
+                    require('99').view_logs()
+                end,
+                desc = '99 view logs',
+            },
+        },
         config = function()
             local _99 = require('99')
             local cwd = vim.uv.cwd()
@@ -20,28 +60,6 @@ return {
                 },
                 md_files = { 'AGENT.md' },
             })
-
-            vim.keymap.set('v', '<leader>9v', function()
-                _99.visual()
-                vim.cmd('startinsert')
-            end, { desc = '99 visual prompt' })
-
-            vim.keymap.set('n', '<leader>9s', function()
-                _99.search()
-                vim.cmd('startinsert')
-            end, { desc = '99 search prompt' })
-
-            vim.keymap.set('n', '<leader>9x', function()
-                _99.stop_all_requests()
-            end, { desc = '99 cancel' })
-
-            vim.keymap.set('n', '<leader>9m', function()
-                require('99.extensions.telescope').select_model()
-            end, { desc = '99 select model' })
-
-            vim.keymap.set('n', '<leader>9l', function()
-                require('99').view_logs()
-            end, { desc = '99 view logs' })
         end,
     },
 }

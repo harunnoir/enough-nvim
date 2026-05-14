@@ -5,6 +5,7 @@ vim.o.encoding = 'utf-8'
 vim.o.termguicolors = true
 vim.o.mouse = 'a'
 vim.o.laststatus = 3
+vim.o.ttimeoutlen = 0
 
 -- UI
 vim.opt.scrolloff = 5
