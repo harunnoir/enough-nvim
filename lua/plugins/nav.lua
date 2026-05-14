@@ -146,7 +146,7 @@ return {
         end,
     },
     {
-        'yourname/quicksearch.nvim',
+        'amwadud/quicksearch.nvim',
         config = function()
             require('quicksearch').setup()
         end,

@@ -93,6 +93,9 @@ local function fix_gruvbox_functions()
     hl('RenderMarkdownUnchecked',       { fg = c.gray   })
     hl('RenderMarkdownTodo',            { fg = c.yellow })
     hl('RenderMarkdownInlineHighlight', { fg = c.yellow, bg = c.bg2 })
+
+    -- Oil
+    hl("OilDir", { fg = c.fg, bold = true})
 end
 
 vim.api.nvim_create_autocmd('ColorScheme', {

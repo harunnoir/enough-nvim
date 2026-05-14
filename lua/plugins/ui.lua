@@ -135,55 +135,12 @@ return {
             require('milli').dashboard({ splash = 'finger', loop = true })
         end,
     },
-    -- FIXME: fix this.
-    --[[ {
-        'shellRaining/hlchunk.nvim',
-        event = { 'BufReadPre', 'BufNewFile' },
-
-        config = function()
-            require('hlchunk').setup({
-                chunk = {
-                    enable = true,
-
-                    style = {
-                        '#7daea3', -- blue
-                    },
-
-                    chars = {
-                        horizontal_line = '─',
-                        vertical_line = '│',
-                        left_top = '╭',
-                        left_bottom = '╰',
-                        right_arrow = '─',
-                    },
-                },
-
-                indent = {
-                    enable = true,
-
-                    chars = {
-                        '│',
-                    },
-
-                    style = {
-                        '#ea6962', -- red
-                        '#e78a4e', -- orange
-                        '#d8a657', -- yellow
-                        '#a9b665', -- green
-                        '#89b482', -- aqua
-                        '#7daea3', -- blue
-                        '#d3869b', -- purple
-                    },
-                },
-
-                line_num = {
-                    enable = false,
-                },
-
-                blank = {
-                    enable = false,
-                },
-            })
-        end,
-    }, ]]
+    {
+        'nvim-tree/nvim-web-devicons',
+        lazy = true,
+        opts = {
+            default = true,
+            color_icons = false,
+        },
+    },
 }
