@@ -96,6 +96,17 @@ local function fix_gruvbox_functions()
 
     -- Oil
     hl("OilDir", { fg = c.fg, bold = true})
+
+    -- Flash
+    hl('FlashMatch',          { fg = c.fg,     bg = c.bg3 })
+    hl('FlashCurrent',        { fg = c.yellow, bg = c.bg2, bold = true })
+    hl('FlashLabel',          { fg = c.bg1,    bg = c.red, bold = true })
+    hl('FlashBackdrop',       { fg = c.gray })
+    hl('FlashPrompt',         { fg = c.yellow, bg = c.bg1 })
+    hl('FlashPromptIcon',     { fg = c.orange, bg = c.bg1 })
+    hl('FlashCursor',         { fg = c.bg1,    bg = c.aqua })
+    hl('FlashTreesitter',     { fg = c.bg1,    bg = c.green, bold = true })
+    hl('FlashRemote',         { fg = c.bg1,    bg = c.blue })
 end
 
 vim.api.nvim_create_autocmd('ColorScheme', {

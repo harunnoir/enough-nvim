@@ -12,8 +12,8 @@ return {
         'amwadud/nvim-maximizer',
         keys = { { '<C-m>', '<cmd>MaximizerToggle<CR>' } },
     },
-    {
-        'ggandor/leap.nvim',
+    --[[ {
+        'https://codeberg.org/andyg/leap.nvim',
         lazy = true,
         keys = {
             {
@@ -38,7 +38,7 @@ return {
                 end,
             },
         },
-    },
+    }, ]]
     {
         'folke/flash.nvim',
         lazy = true,
@@ -74,8 +74,12 @@ return {
     {
         'christoomey/vim-tmux-navigator',
         cmd = {
-            'TmuxNavigateLeft', 'TmuxNavigateDown', 'TmuxNavigateUp',
-            'TmuxNavigateRight', 'TmuxNavigatePrevious', 'TmuxNavigatorProcessList',
+            'TmuxNavigateLeft',
+            'TmuxNavigateDown',
+            'TmuxNavigateUp',
+            'TmuxNavigateRight',
+            'TmuxNavigatePrevious',
+            'TmuxNavigatorProcessList',
         },
         keys = {
             { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },

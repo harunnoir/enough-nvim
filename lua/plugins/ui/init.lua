@@ -5,6 +5,10 @@ return {
         'folke/snacks.nvim',
         event = 'VeryLazy',
         opts = {
+            image = {
+                enabled = true,
+                backend = "kitty",
+            },
             notifier = { enabled = true },
             picker = { expand = true },
             animate = { enabled = true },
@@ -74,7 +78,7 @@ return {
         event = 'VimEnter',
         dependencies = { 'amansingh-afk/milli.nvim' },
         opts = function()
-            local splash = require('milli').load({ splash = 'finger' })
+            local splash = require('milli').load({ splash = 'batmancatman' })
             return {
                 theme = 'doom',
                 config = {
@@ -88,7 +92,7 @@ return {
         end,
         config = function(_, opts)
             require('dashboard').setup(opts)
-            require('milli').dashboard({ splash = 'finger', loop = true })
+            require('milli').dashboard({ splash = 'batmancatman', loop = true })
         end,
     },
     {
@@ -128,7 +132,7 @@ return {
         lazy = true,
         opts = {
             default = true,
-            color_icons = false,
+            -- color_icons = false,
         },
     },
 }

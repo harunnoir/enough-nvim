@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'text', 'rst' },
+    pattern = { 'markdown', 'text', 'rst' },
     callback = function()
         vim.opt_local.colorcolumn = '80'
         vim.opt_local.textwidth = 80
@@ -76,3 +76,17 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.opt_local.expandtab = true
     end,
 })
+
+vim.keymap.set('n', '<leader>st', function()
+    vim.ui.input({ prompt = 'scratch ext: .' }, function(ext)
+        if not ext or ext == '' then
+            return
+        end
+        local tmpfile = vim.fn.system('mktemp /tmp/scratch_XXXXXX.' .. ext):gsub('\n', '')
+        if vim.v.shell_error ~= 0 then
+            vim.notify('failed to create scratch file', vim.log.levels.ERROR)
+            return
+        end
+        vim.cmd('edit ' .. vim.fn.fnameescape(tmpfile))
+    end)
+end, { desc = 'Scratch file' })

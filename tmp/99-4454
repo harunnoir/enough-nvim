@@ -1,0 +1,5 @@
+--[[vim.lsp.config('beancount', {
+    cmd = { 'beancount-language-server' },
+    filetypes = { 'beancount' },
+    root_markers = { '.git', '.beancount', 'main.bean', 'ledger.bean' },
+})]]

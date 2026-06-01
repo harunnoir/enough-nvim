@@ -3,6 +3,7 @@ vim.lsp.enable('basedpyright')
 vim.lsp.enable('clangd')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
+vim.lsp.enable('beancount')
 
 -- Configure clangd (C/C++ language server)
 vim.lsp.config('clangd', {
@@ -17,6 +18,13 @@ vim.lsp.config('clangd', {
         '--pch-storage=memory',
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+})
+
+-- Configure beancount (Beancount language server for plain text accounting)
+vim.lsp.config('beancount', {
+    cmd = { 'beancount-language-server' },
+    filetypes = { 'beancount' },
+    root_markers = { '.git', '.beancount', 'main.bean', 'ledger.bean' },
 })
 
 -- Configure lua_ls (Lua language server)

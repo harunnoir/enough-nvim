@@ -54,7 +54,7 @@ return {
                     },
                 },
                 per_filetype = {
-                    text     = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary' },
+                    text = { 'lsp', 'path', 'snippets', 'buffer', 'dictionary' },
                     markdown = { 'lsp', 'path', 'snippets', 'buffer', 'thesaurus' },
                 },
             },
@@ -66,11 +66,27 @@ return {
         event = 'VeryLazy',
         config = function()
             require('conform').setup({
+
+                formatters = {
+                    c_formatter_42 = {
+                        command = 'c_formatter_42',
+                        args = { '$FILENAME' },
+                        stdin = false,
+                    },
+
+                    bean_format = {
+                        command = 'bean-format',
+                        stdin = true,
+                    },
+                },
+
                 formatters_by_ft = {
                     lua = { 'stylua' },
                     python = { 'ruff_format' },
                     sh = { 'shfmt' },
                     c = { 'c_formatter_42' },
+                    beancount = { 'bean-format' },
+                    markdown = { 'prettier' },
                 },
             })
         end,
@@ -81,12 +97,18 @@ return {
         config = true,
     },
     {
-        'nvim-mini/mini.surround',
-        version = '*',
-        event = 'VeryLazy',
-        config = function()
-            require('mini.surround').setup()
-        end,
+        'echasnovski/mini.surround',
+        opts = {
+            mappings = {
+                add = 'gsa',
+                delete = 'gsd',
+                find = 'gsf',
+                find_left = 'gsF',
+                highlight = 'gsh',
+                replace = 'gsr',
+                update_n_lines = 'gsn',
+            },
+        },
     },
     {
         'MagicDuck/grug-far.nvim',
@@ -109,8 +131,22 @@ return {
     {
         'monaqa/dial.nvim',
         keys = {
-            { '<C-a>', function() return require('dial.map').inc_normal() end, expr = true, desc = 'Increment' },
-            { '<C-x>', function() return require('dial.map').dec_normal() end, expr = true, desc = 'Decrement' },
+            {
+                '<C-a>',
+                function()
+                    return require('dial.map').inc_normal()
+                end,
+                expr = true,
+                desc = 'Increment',
+            },
+            {
+                '<C-x>',
+                function()
+                    return require('dial.map').dec_normal()
+                end,
+                expr = true,
+                desc = 'Decrement',
+            },
         },
         config = function()
             local augend = require('dial.augend')
@@ -127,4 +163,21 @@ return {
             })
         end,
     },
+    --[[ {
+        dir = '~/dev/nvim-plugins/scratchpad.nvim', -- local plugin
+        -- or
+        -- "yourusername/scratchpad.nvim",  -- if published
+        config = function()
+            require('scratchpad').setup()
+        end,
+        keys = {
+            {
+                '<leader>st',
+                function()
+                    require('scratchpad').open()
+                end,
+                desc = 'Scratch file',
+            },
+        },
+    }, ]]
 }

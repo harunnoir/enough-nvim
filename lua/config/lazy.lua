@@ -18,7 +18,7 @@ require('lazy').setup({
         { import = 'plugins' },
     },
     install = {
-        colorscheme = { 'gruvbox-material' },
+        colorscheme = { 'grv' },
     },
     performance = {
         rtp = {
