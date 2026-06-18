@@ -44,18 +44,20 @@ return {
         lazy = true,
         keys = {
             {
-                's',
+                '<leader>s',
                 mode = { 'n', 'x', 'o' },
                 function()
                     require('flash').jump()
                 end,
+                desc = 'Flash jump',
             },
             {
-                'S',
+                '<leader>S',
                 mode = { 'n', 'x', 'o' },
                 function()
                     require('flash').treesitter()
                 end,
+                desc = 'Flash treesitter',
             },
         },
     },

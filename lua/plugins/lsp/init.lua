@@ -1,7 +1,5 @@
 return {
-    { 'neovim/nvim-lspconfig', event = 'VeryLazy' },
     { 'williamboman/mason.nvim', cmd = 'Mason' },
-    { 'williamboman/mason-lspconfig.nvim', event = 'VeryLazy' },
     {
         'rachartier/tiny-inline-diagnostic.nvim',
         event = 'VeryLazy',
@@ -10,6 +8,16 @@ return {
             require('tiny-inline-diagnostic').setup({
                 preset = 'classic',
                 transparent_bg = true,
+                options = {  
+                    multilines = {
+                        enabled = true,
+                        always_show = true,
+                    },
+                    overflow = {  
+                        mode = "wrap",  -- Split long messages into multiple lines  
+                        padding = 0,    -- Extra padding before wrapping  
+                    },
+                },
             })
             vim.diagnostic.config({ virtual_text = false })
         end,
@@ -59,21 +67,51 @@ return {
             'leoluz/nvim-dap-go',
         },
         keys = {
-            { '<F5>', function() require('dap').continue() end },
-            { '<F1>', function() require('dap').step_into() end },
-            { '<F2>', function() require('dap').step_over() end },
-            { '<F3>', function() require('dap').step_out() end },
-            { '<F6>', function() require('dapui').toggle() end },
-            { '<leader>db', function() require('dap').toggle_breakpoint() end },
+            {
+                '<F5>',
+                function()
+                    require('dap').continue()
+                end,
+            },
+            {
+                '<F1>',
+                function()
+                    require('dap').step_into()
+                end,
+            },
+            {
+                '<F2>',
+                function()
+                    require('dap').step_over()
+                end,
+            },
+            {
+                '<F3>',
+                function()
+                    require('dap').step_out()
+                end,
+            },
+            {
+                '<F6>',
+                function()
+                    require('dapui').toggle()
+                end,
+            },
+            {
+                '<leader>db',
+                function()
+                    require('dap').toggle_breakpoint()
+                end,
+            },
         },
         config = function()
-            local dap = require 'dap'
-            local dapui = require 'dapui'
-            require('mason-nvim-dap').setup { automatic_installation = true, ensure_installed = { 'delve' } }
+            local dap = require('dap')
+            local dapui = require('dapui')
+            require('mason-nvim-dap').setup({ automatic_installation = true, ensure_installed = { 'delve' } })
             dapui.setup()
             dap.listeners.after.event_initialized['dapui_config'] = dapui.open
             dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-            require('dap-go').setup { delve = { detached = vim.fn.has 'win32' == 0 } }
+            require('dap-go').setup({ delve = { detached = vim.fn.has('win32') == 0 } })
         end,
     },
     {
@@ -81,7 +119,7 @@ return {
         dependencies = { 'mfussenegger/nvim-dap' },
         ft = 'python',
         config = function()
-            require('dap-python').setup 'python3'
+            require('dap-python').setup('python3')
         end,
     },
 }

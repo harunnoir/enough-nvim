@@ -52,9 +52,9 @@ return {
                     path = '/tmp/' .. basename .. '.99.debug',
                     print_on_error = true,
                 },
-                tmp_dir = './tmp',
+                tmp_dir = vim.fn.stdpath('data') .. '/99/tmp',
                 completion = {
-                    custom_rules = { 'scratch/custom_rules/' },
+                    custom_rules = { vim.fn.stdpath('data') .. '/99/custom_rules/' },
                     files = {},
                     source = 'native',
                 },

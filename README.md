@@ -24,7 +24,7 @@
 </p>
 
 # What?
-Neovim for being kinda Good Enough! (maby)
+Neovim for being kinda Good Enough! (maybe)
 
 # SEE!
 <img width="883" height="496" alt="image" src="https://github.com/user-attachments/assets/850fced3-7841-482b-8381-ca9097781b60" />

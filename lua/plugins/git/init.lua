@@ -26,24 +26,64 @@ return {
         opts = {
             git_cmd = 'git',
             symbols = {
-                merge_commit = '', commit = '',
-                merge_commit_end = '', commit_end = '',
-                GVER = '', GHOR = '', GCLD = '', GCRD = '╭',
-                GCLU = '', GCRU = '', GLRU = '', GLRD = '',
-                GLUD = '', GRUD = '', GFORKU = '', GFORKD = '',
-                GRUDCD = '', GRUDCU = '', GLUDCD = '', GLUDCU = '',
-                GLRDCL = '', GLRDCR = '', GLRUCL = '', GLRUCR = '',
+                merge_commit = "●",
+                commit = "●",
+
+                merge_commit_end = "●",
+                commit_end = "●",
+
+                GVER = "│",
+                GHOR = "─",
+
+                GCLD = "│",
+                GCRD = "│",
+                GCLU = "│",
+                GCRU = "│",
+
+                GLRU = "├",
+                GLRD = "├",
+                GLUD = "│",
+                GRUD = "│",
+
+                GFORKU = "●",
+                GFORKD = "●",
             },
+            --[[ symbols = {
+                merge_commit = '',
+                commit = '',
+                merge_commit_end = '',
+                commit_end = '',
+                GVER = '',
+                GHOR = '',
+                GCLD = '',
+                GCRD = '╭',
+                GCLU = '',
+                GCRU = '',
+                GLRU = '',
+                GLRD = '',
+                GLUD = '',
+                GRUD = '',
+                GFORKU = '',
+                GFORKD = '',
+                GRUDCD = '',
+                GRUDCU = '',
+                GLUDCD = '',
+                GLUDCU = '',
+                GLRDCL = '',
+                GLRDCR = '',
+                GLRUCL = '',
+                GLRUCR = '',
+            }, ]]
             format = {
                 timestamp = '%H:%M:%S %d-%m-%Y',
                 fields = { 'hash', 'timestamp', 'author', 'branch_name', 'tag' },
             },
             hooks = {
                 on_select_commit = function(commit)
-                    print('selected commit:', commit.hash)
+                    vim.notify('selected commit: ' .. commit.hash, vim.log.levels.INFO)
                 end,
                 on_select_range_commit = function(from, to)
-                    print('selected range:', from.hash, to.hash)
+                    vim.notify('selected range: ' .. from.hash .. ' - ' .. to.hash, vim.log.levels.INFO)
                 end,
             },
         },

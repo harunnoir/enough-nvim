@@ -3,11 +3,14 @@ return {
     { import = 'plugins.ui.lualine' },
     {
         'folke/snacks.nvim',
-        event = 'VeryLazy',
+        lazy = false,
+        -- event = 'VeryLazy',
         opts = {
             image = {
                 enabled = true,
-                backend = "kitty",
+                math = {
+                    enabled = false,
+                }
             },
             notifier = { enabled = true },
             picker = { expand = true },
@@ -29,6 +32,17 @@ return {
                 git = { patterns = { 'GitSign', 'MiniDiffSign' } },
                 refresh = 50,
             },
+        },
+    },
+    {
+        'akinsho/toggleterm.nvim',
+        version = '*',
+        keys = {
+            { '<C-\\>', '<CMD>ToggleTerm<CR>', desc = 'Toggle terminal' },
+        },
+        opts = {
+            direction = 'horizontal',
+            open_mapping = '<C-\\>',
         },
     },
     {
@@ -78,11 +92,12 @@ return {
         event = 'VimEnter',
         dependencies = { 'amansingh-afk/milli.nvim' },
         opts = function()
-            local splash = require('milli').load({ splash = 'batmancatman' })
+            local ok, splash = pcall(require('milli').load, { splash = 'batmancatman' })
+            local header = ok and splash.frames[1] or {}
             return {
                 theme = 'doom',
                 config = {
-                    header = splash.frames[1],
+                    header = header,
                     center = {
                         { icon = '  ', desc = 'Find File', key = 'f', action = 'Telescope find_files' },
                         { icon = '  ', desc = 'Quit', key = 'q', action = 'qa' },
@@ -92,7 +107,7 @@ return {
         end,
         config = function(_, opts)
             require('dashboard').setup(opts)
-            require('milli').dashboard({ splash = 'batmancatman', loop = true })
+            pcall(require('milli').dashboard, { splash = 'batmancatman', loop = true })
         end,
     },
     {
@@ -103,7 +118,7 @@ return {
             {
                 '<leader>?',
                 function()
-                    require('which-key').show { global = false }
+                    require('which-key').show({ global = false })
                 end,
                 desc = 'Buffer Local Keymaps (which-key)',
             },
@@ -117,7 +132,7 @@ return {
         'lukas-reineke/virt-column.nvim',
         opts = {
             char = '│',
-            highlight = 'VirtColumn',
+            highlight = 'NonText',
         },
     },
     {

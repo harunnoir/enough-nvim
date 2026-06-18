@@ -27,10 +27,19 @@ return {
         config = true,
     },
     {
+        'dnlhc/glance.nvim',
+        cmd = 'Glance',
+    },
+    {
         'stevearc/oil.nvim',
-        config = function()
-            require('oil').setup()
-        end,
+        opts = {
+            columns = {
+                'icon',
+                'permissions',
+                'size',
+                'mtime',
+            },
+        },
         keys = { { '-', '<CMD>Oil<CR>' } },
     },
     {
@@ -43,10 +52,6 @@ return {
         'benomahony/oil-git.nvim',
         event = 'VeryLazy',
         dependencies = { 'stevearc/oil.nvim' },
-    },
-    {
-        'dnlhc/glance.nvim',
-        cmd = 'Glance',
     },
     {
         'ThePrimeagen/harpoon',

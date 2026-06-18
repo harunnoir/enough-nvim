@@ -5,6 +5,28 @@ vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('beancount')
 
+-- Configure basedpyright (Python language server)
+vim.lsp.config('basedpyright', {
+    cmd = { 'basedpyright-langserver', '--stdio' },
+    filetypes = { 'python' },
+    root_markers = {
+        'pyproject.toml',
+        'setup.py',
+        'setup.cfg',
+        'requirements.txt',
+        '.git',
+    },
+    settings = {
+        basedpyright = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = 'openFilesOnly',
+            },
+        },
+    },
+})
+
 -- Configure clangd (C/C++ language server)
 vim.lsp.config('clangd', {
     cmd = {
@@ -28,7 +50,7 @@ vim.lsp.config('beancount', {
 })
 
 -- Configure lua_ls (Lua language server)
-vim.lsp.config.lua_ls = {
+vim.lsp.config('lua_ls', {
     filetypes = { 'lua' },
     settings = {
         Lua = {
@@ -36,7 +58,7 @@ vim.lsp.config.lua_ls = {
             runtime = { version = 'LuaJIT' },
         },
     },
-}
+})
 
 -- Configure diagnostic signs
 vim.diagnostic.config({
@@ -50,9 +72,5 @@ vim.diagnostic.config({
     },
 })
 
--- Enable inlay hints for all LSP clients on attach
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function()
-        vim.lsp.inlay_hint.enable(true)
-    end,
-})
+-- Enable inlay hints globally
+vim.lsp.inlay_hint.enable(true)

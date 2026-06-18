@@ -1,11 +1,10 @@
 -- Neovim Options
 
 -- General
-vim.o.encoding = 'utf-8'
 vim.o.termguicolors = true
 vim.o.mouse = 'a'
 vim.o.laststatus = 3
-vim.o.ttimeoutlen = 0
+vim.o.ttimeoutlen = 50
 
 -- UI
 vim.opt.scrolloff = 5
@@ -13,9 +12,9 @@ vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append('c')
 vim.opt.list = true
 vim.opt.listchars = {
-    space = '·',
+    space = ' ', -- ·
     tab = '↦ ',
-    eol = '↲',
+    eol = ' ', -- ↲
     extends = '»',
     precedes = '«',
     nbsp = '␣',
@@ -69,10 +68,10 @@ vim.g.clipboard = {
         ['+'] = 'wl-paste --no-newline',
         ['*'] = 'wl-paste --no-newline',
     },
-    cache_enabled = 1,
+    cache_enabled = true,
 }
 
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'
 vim.o.spell = false
 
 -- Autocomplete
