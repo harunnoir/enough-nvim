@@ -1,4 +1,22 @@
 return {
+    --[[ {
+        { "catppuccin/nvim", name = "catppuccin" },
+        "folke/tokyonight.nvim",
+        'thallada/farout.nvim',
+        {
+            'ember-theme/nvim',
+            name = 'ember',
+        },
+		"xero/miasma.nvim",
+		"akinsho/horizon.nvim",
+		"ellisonleao/gruvbox.nvim",
+		"nyoom-engineering/oxocarbon.nvim",
+		"kdheepak/monochrome.nvim",
+        "rebelot/kanagawa.nvim",
+        'maxmx03/solarized.nvim',
+		{ "mcchrish/zenbones.nvim", dependencies = { "rktjmp/lush.nvim" } },
+	}, ]]
+    'kungfusheep/mfd.nvim',
     {
         'sainnhe/gruvbox-material',
         lazy = false,
@@ -9,31 +27,4 @@ return {
             vim.cmd.colorscheme('gruvbox-material')
         end,
     },
-    --[[ {
-        'harunnoir/grv.nvim',
-        lazy = false,
-        priority = 2000,
-        config = function()
-            vim.o.background = 'dark'
-            vim.cmd.colorscheme('grv')
-        end,
-    }, ]]
-    { 'maxmx03/solarized.nvim' },
-    { 'thallada/farout.nvim' },
-    {
-        'ember-theme/nvim',
-        name = 'ember',
-    },
-    { "catppuccin/nvim", name = "catppuccin" },
-    { "folke/tokyonight.nvim" },
-    --[[ {
-        dir = '~/gruvbox-material',
-        -- or your github repo once pushed
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require('catppuccin').setup({ flavour = 'soft' }) -- or mini/origin
-            vim.cmd.colorscheme('gruvbox-material-soft')
-        end,
-    } ]]
 }
