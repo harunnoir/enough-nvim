@@ -1,4 +1,5 @@
 return {
+    -- 99: AI chat in Neovim
     {
         'ThePrimeagen/99',
         keys = {
@@ -62,6 +63,7 @@ return {
             })
         end,
     },
+    -- Haunt: bookmark / annotate lines
     {
         'TheNoeTrevino/haunt.nvim',
         opts = {
@@ -170,12 +172,14 @@ return {
             require('haunt').setup(opts)
         end,
     },
+    -- Hardtime: discourage bad movement habits
     {
         'm4xshen/hardtime.nvim',
         event = 'VeryLazy',
         dependencies = { 'MunifTanjim/nui.nvim' },
         opts = {},
     },
+    -- Mini.hipatterns: highlight hex colors
     {
         'nvim-mini/mini.hipatterns',
         version = '*',
@@ -188,6 +192,7 @@ return {
             })
         end,
     },
+    -- Render-markdown: WYSIWYG markdown preview
     {
         'MeanderingProgrammer/render-markdown.nvim',
         event = 'VeryLazy',
@@ -196,11 +201,13 @@ return {
             require('render-markdown').setup({})
         end,
     },
+    -- Calcium: in-buffer calculator
     {
         'necrom4/calcium.nvim',
         cmd = { 'Calcium' },
         opts = {},
     },
+    -- Nerdy: Nerd Font icon browser
     {
         '2kabhishek/nerdy.nvim',
         dependencies = { 'folke/snacks.nvim' },
@@ -215,16 +222,19 @@ return {
             { '<leader>iN', ':Nerdy recents<CR>', desc = 'Browse recent nerd icons' },
         },
     },
+    -- StartupTime: debug startup performance
     {
         'dstein64/vim-startuptime',
         cmd = 'StartupTime',
     },
+    -- Typr: typing tutor
     {
         'nvzone/typr',
         dependencies = 'nvzone/volt',
         opts = {},
         cmd = { 'Typr', 'TyprStats' },
     },
+    -- Undotree: visual undo tree
     {
         'jiaoshijie/undotree',
         opts = {},
@@ -232,12 +242,14 @@ return {
             { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
         },
     },
+    -- Dictionary: thesaurus / dictionary lookup
     {
         'chrscchrn/dictionary.nvim',
         config = function()
             require('dictionary').setup()
         end,
     },
+    -- Leetcode: practice in Neovim
     {
         'kawre/leetcode.nvim',
         build = ':TSUpdate html',
@@ -247,12 +259,15 @@ return {
         },
         opts = {},
     },
+    -- Persistence: auto-save / restore sessions
     {
         'folke/persistence.nvim',
         event = 'BufReadPre',
         opts = {},
     },
+    -- Atone: scratch buffer manager
     'XXiaoA/atone.nvim',
+    -- Presenting: presentation mode
     {
         'harunnoir/presenting.nvim',
         opts = {},

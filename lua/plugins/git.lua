@@ -1,4 +1,5 @@
 return {
+    -- Gitsigns: git signs in signcolumn, hunk staging, blame
     {
         'lewis6991/gitsigns.nvim',
         event = 'VeryLazy',
@@ -21,6 +22,7 @@ return {
             },
         },
     },
+    -- Gitgraph: interactive git log
     {
         'isakbm/gitgraph.nvim',
         opts = {
@@ -66,6 +68,7 @@ return {
             },
         },
     },
+    -- Fugit2: lazygit-like git TUI
     {
         'SuperBo/fugit2.nvim',
         build = false,

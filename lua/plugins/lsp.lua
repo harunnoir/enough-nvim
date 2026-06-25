@@ -1,5 +1,7 @@
 return {
+    -- Mason: LSP / linter / formatter installer UI
     { 'williamboman/mason.nvim', cmd = 'Mason' },
+    -- Tiny inline diagnostic: show diagnostics at end of line
     {
         'rachartier/tiny-inline-diagnostic.nvim',
         event = 'VeryLazy',
@@ -22,6 +24,7 @@ return {
             vim.diagnostic.config({ virtual_text = false })
         end,
     },
+    -- Lspsaga: hover doc, code action UI
     {
         'nvimdev/lspsaga.nvim',
         event = 'VeryLazy',
@@ -36,6 +39,7 @@ return {
             'nvim-tree/nvim-web-devicons',
         },
     },
+    -- Nvim-lint: async linting on save
     {
         'mfussenegger/nvim-lint',
         event = { 'BufReadPre', 'BufNewFile' },
@@ -57,10 +61,12 @@ return {
             })
         end,
     },
+    -- Fidget: LSP progress spinner
     {
         'j-hui/fidget.nvim',
         opts = {},
     },
+    -- Symbol-usage: inline reference / definition counts
     {
         'Wansmer/symbol-usage.nvim',
         event = 'BufReadPre',
@@ -157,6 +163,7 @@ return {
             })
         end,
     },
+    -- DAP: debug adapter protocol (Go, Python, etc.)
     {
         'mfussenegger/nvim-dap',
         dependencies = {
@@ -214,6 +221,7 @@ return {
             require('dap-go').setup({ delve = { detached = vim.fn.has('win32') == 0 } })
         end,
     },
+    -- DAP Python: Python debugger
     {
         'mfussenegger/nvim-dap-python',
         dependencies = { 'mfussenegger/nvim-dap' },

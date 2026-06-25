@@ -1,4 +1,5 @@
 return {
+    -- Treesitter: syntax highlighting, folds, text objects
     {
         'nvim-treesitter/nvim-treesitter',
         event = 'VeryLazy',
@@ -58,6 +59,7 @@ return {
             })
         end,
     },
+    -- Ufo: better folds (treesitter + indent)
     {
         'kevinhwang91/nvim-ufo',
         event = 'VeryLazy',

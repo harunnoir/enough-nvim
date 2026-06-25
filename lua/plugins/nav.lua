@@ -1,4 +1,5 @@
 return {
+    -- Spider: smarter w/e/b motions (camelCase, snake_case aware)
     {
         'chrisgrieser/nvim-spider',
         keys = {
@@ -8,10 +9,12 @@ return {
             { 'ge', "<cmd>lua require('spider').motion('ge')<CR>", mode = { 'n', 'o', 'x' } },
         },
     },
+    -- Maximizer: toggle current window fullscreen
     {
         'amwadud/nvim-maximizer',
         keys = { { '<C-m>', '<cmd>MaximizerToggle<CR>' } },
     },
+    -- Flash: jump anywhere visible
     {
         'folke/flash.nvim',
         event = 'VeryLazy',
@@ -59,6 +62,7 @@ return {
             },
         },
     },
+    -- Telescope: fuzzy finder (5 core bindings)
     {
         'nvim-telescope/telescope.nvim',
         cmd = 'Telescope',
@@ -79,10 +83,12 @@ return {
             },
         },
     },
+    -- Glance: peek LSP definitions / references
     {
         'dnlhc/glance.nvim',
         cmd = 'Glance',
     },
+    -- Oil: file explorer as a buffer
     {
         'stevearc/oil.nvim',
         opts = {
@@ -95,6 +101,7 @@ return {
         },
         keys = { { '-', '<CMD>Oil<CR>' } },
     },
+    -- Oil plugins: diagnostics and git status in Oil
     {
         'JezerM/oil-lsp-diagnostics.nvim',
         event = 'VeryLazy',
@@ -107,6 +114,7 @@ return {
         dependencies = { 'stevearc/oil.nvim' },
         opts = {},
     },
+    -- Harpoon: quick file marks
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
@@ -159,11 +167,13 @@ return {
             require('harpoon').setup()
         end,
     },
+    -- Marks: visual indicators for marks a-z
     {
         'chentoast/marks.nvim',
         event = 'VeryLazy',
         opts = {},
     },
+    -- Satellite: scrollbar with diagnostics, marks, search
     {
         'lewis6991/satellite.nvim',
         config = true,

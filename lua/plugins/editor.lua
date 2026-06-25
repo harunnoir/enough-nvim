@@ -1,4 +1,5 @@
 return {
+    -- Mini.align: align text (tables, assignments)
     {
         'echasnovski/mini.align',
         version = false,
@@ -10,6 +11,7 @@ return {
             require('mini.align').setup()
         end,
     },
+    -- Blink.cmp: completion engine (LSP, snippets, buffer, dictionary)
     {
         'saghen/blink.cmp',
         version = '1.*',
@@ -71,6 +73,7 @@ return {
             },
         },
     },
+    -- Conform: format on demand
     {
         'stevearc/conform.nvim',
         lazy = true,
@@ -99,17 +102,21 @@ return {
             })
         end,
     },
+    -- Autopairs: auto-close brackets, quotes
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
         config = true,
     },
+    -- Mini.ai: better text objects (ia, aa, il, al, ...)
     { 'nvim-mini/mini.ai', version = '*' },
+    -- Mini.surround: add / delete / replace surrounds
     {
         'echasnovski/mini.surround',
         version = '*',
         opts = {},
     },
+    -- Grug-far: project-wide search & replace
     {
         'MagicDuck/grug-far.nvim',
         cmd = 'GrugFar',
@@ -117,17 +124,21 @@ return {
             require('grug-far').setup({})
         end,
     },
+    -- Trouble: diagnostic / symbol / reference list
     {
         'folke/trouble.nvim',
         cmd = 'Trouble',
         opts = {},
     },
+    -- Comment: toggle comments with gc
     {
         'numToStr/Comment.nvim',
         event = 'BufEnter',
         config = true,
     },
+    -- Vim-repeat: make . repeat plugin actions
     { 'tpope/vim-repeat', event = 'VeryLazy' },
+    -- Dial: increment / decrement numbers, dates, hex colors
     {
         'monaqa/dial.nvim',
         keys = {
