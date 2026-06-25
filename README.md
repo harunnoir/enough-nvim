@@ -159,12 +159,15 @@ Or run the bootstrap script for a full system setup (Neovim + LSPs + formatters 
 
 Grouped into flat files under `lua/plugins/` — no nested subdirectories. Each file covers one concern: editor, navigation, LSP, git, UI, misc, and language-specific extras. See `lua/plugins/init.lua` for the import order.
 
-## TODO
+## Docs
 
-- [x] Organize modules
-- [x] Bootstrap installer
-- [x] Keybinding reference
+See [docs/](docs/README.md) for in-depth documentation:
+
+- [Plugin rationale](docs/plugins.md) — why each plugin is here
+- [LSP setup](docs/lsp.md) — native `vim.lsp.enable()` approach
+- [Workflows](docs/workflows.md) — day-to-day editing loops
+- [Adding a language](docs/languages.md) — step-by-step guide
 
 ## Credits
 
-Heavily inspired by the Unix philosophy: do one thing well. Built with [lazy.nvim](https://github.com/folke/lazy.nvim).
+Built with [lazy.nvim](https://github.com/folke/lazy.nvim). Unix philosophy-inspired.

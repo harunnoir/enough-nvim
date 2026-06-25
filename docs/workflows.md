@@ -1,0 +1,75 @@
+# Workflows
+
+## Edit Loop
+
+1. `<leader>ff` — find file
+2. Edit
+3. `<leader>f` — format
+4. `[d` / `]d` — jump between diagnostics
+5. `<leader>xx` — view all diagnostics in Trouble
+6. `<C-s>` — save
+
+## Search & Replace
+
+1. `<leader>fg` — grep across project
+2. `<CR>` on a result to open
+3. `:GrugFar` — project-wide search & replace
+   - Enter pattern, replacement, file filter
+   - Review changes, then apply
+
+## Navigation
+
+### Within a file
+- `gs` — flash jump to any visible position
+- `gS` — flash treesitter (jump to function, class, etc.)
+- `w`/`e`/`b` — spider motions (respect camelCase, snake_case)
+- `gd` — go to definition
+- `gD` — glance at definitions in a peek window
+
+### Between files
+- `<leader>ff` — find files by name
+- `<leader>fb` — switch buffers
+- `<leader>1-4` — harpoon quick jumps
+- `-` — Oil file explorer
+
+### Between windows
+- `<C-h/j/k/l>` — move cursor between splits
+- `<C-m>` — maximize current window
+- `<M-,>` / `<M-.>` — resize width
+
+## Git Workflow
+
+1. `<leader>F` — fugit2 (lazygit-like interface)
+   - Stage/unstage files
+   - Commit with message
+   - Push/pull
+2. `<leader>gl` — git graph (visual log)
+3. Gitsigns gutter shows changed lines at a glance
+
+## Debugging
+
+1. Set breakpoint: `<leader>db`
+2. Start debugger: `<F5>`
+3. Step through: `<F1>` (into), `<F2>` (over), `<F3>` (out)
+4. Inspect state: `<F6>` toggles DAP UI
+
+## LSP & Code Intelligence
+
+- `K` — hover documentation
+- `<leader>ca` — code actions
+- `gR` — glance references
+- `gY` — glance type definitions
+- `gM` — glance implementations
+- `<leader>xl` — trouble LSP references list
+
+## Terminal
+
+- `<C-\>` — toggle horizontal terminal
+- Runs in the same cwd as Neovim
+
+## AI Assistant
+
+- `<leader>9v` — select code visually, then prompt (visual mode)
+- `<leader>9s` — search prompt
+- `<leader>9x` — cancel current request
+- Uses the `99` plugin with opencode model
