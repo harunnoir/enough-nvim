@@ -1,5 +1,16 @@
 return {
     {
+        'echasnovski/mini.align',
+        version = false,
+        keys = {
+            { 'ga', mode = { 'n', 'x' } },
+            { 'gA', mode = { 'n', 'x' } },
+        },
+        config = function()
+            require('mini.align').setup()
+        end,
+    },
+    {
         'saghen/blink.cmp',
         version = '1.*',
         lazy = true,
@@ -66,20 +77,17 @@ return {
         event = 'VeryLazy',
         config = function()
             require('conform').setup({
-
                 formatters = {
                     c_formatter_42 = {
                         command = 'c_formatter_42',
                         args = { '$FILENAME' },
                         stdin = false,
                     },
-
                     bean_format = {
                         command = 'bean-format',
                         stdin = true,
                     },
                 },
-
                 formatters_by_ft = {
                     lua = { 'stylua' },
                     python = { 'ruff_format' },
@@ -96,19 +104,11 @@ return {
         event = 'InsertEnter',
         config = true,
     },
+    { 'nvim-mini/mini.ai', version = '*' },
     {
         'echasnovski/mini.surround',
-        opts = {
-            mappings = {
-                add = 'gsa',
-                delete = 'gsd',
-                find = 'gsf',
-                find_left = 'gsF',
-                highlight = 'gsh',
-                replace = 'gsr',
-                update_n_lines = 'gsn',
-            },
-        },
+        version = '*',
+        opts = {},
     },
     {
         'MagicDuck/grug-far.nvim',
@@ -163,21 +163,4 @@ return {
             })
         end,
     },
-    --[[ {
-        dir = '~/dev/nvim-plugins/scratchpad.nvim', -- local plugin
-        -- or
-        -- "yourusername/scratchpad.nvim",  -- if published
-        config = function()
-            require('scratchpad').setup()
-        end,
-        keys = {
-            {
-                '<leader>st',
-                function()
-                    require('scratchpad').open()
-                end,
-                desc = 'Scratch file',
-            },
-        },
-    }, ]]
 }

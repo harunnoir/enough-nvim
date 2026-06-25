@@ -4,6 +4,7 @@ return {
     { import = 'plugins.editor' },
     { import = 'plugins.nav' },
     { import = 'plugins.git' },
-    { import = 'plugins.misc' },
     { import = 'plugins.ui' },
+    { import = 'plugins.misc' },
+    { import = 'plugins.lang' },
 }

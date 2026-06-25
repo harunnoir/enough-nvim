@@ -1,5 +1,64 @@
 return {
-    { import = 'plugins.nav.motion' },
+    {
+        'chrisgrieser/nvim-spider',
+        keys = {
+            { 'w', "<cmd>lua require('spider').motion('w')<CR>", mode = { 'n', 'o', 'x' } },
+            { 'e', "<cmd>lua require('spider').motion('e')<CR>", mode = { 'n', 'o', 'x' } },
+            { 'b', "<cmd>lua require('spider').motion('b')<CR>", mode = { 'n', 'o', 'x' } },
+            { 'ge', "<cmd>lua require('spider').motion('ge')<CR>", mode = { 'n', 'o', 'x' } },
+        },
+    },
+    {
+        'amwadud/nvim-maximizer',
+        keys = { { '<C-m>', '<cmd>MaximizerToggle<CR>' } },
+    },
+    {
+        'folke/flash.nvim',
+        event = 'VeryLazy',
+        opts = {},
+        keys = {
+            {
+                'gs',
+                mode = { 'n', 'x', 'o' },
+                function()
+                    require('flash').jump()
+                end,
+                desc = 'Flash',
+            },
+            {
+                'gS',
+                mode = { 'n', 'x', 'o' },
+                function()
+                    require('flash').treesitter()
+                end,
+                desc = 'Flash Treesitter',
+            },
+            {
+                'r',
+                mode = 'o',
+                function()
+                    require('flash').remote()
+                end,
+                desc = 'Remote Flash',
+            },
+            {
+                'R',
+                mode = { 'o', 'x' },
+                function()
+                    require('flash').treesitter_search()
+                end,
+                desc = 'Treesitter Search',
+            },
+            {
+                '<c-s>',
+                mode = { 'c' },
+                function()
+                    require('flash').toggle()
+                end,
+                desc = 'Toggle Flash Search',
+            },
+        },
+    },
     {
         'nvim-telescope/telescope.nvim',
         cmd = 'Telescope',
@@ -19,12 +78,6 @@ return {
                 mappings = { i = { ['<C-j>'] = 'move_selection_next', ['<C-k>'] = 'move_selection_previous' } },
             },
         },
-    },
-    {
-        'rmagatti/goto-preview',
-        dependencies = { 'rmagatti/logger.nvim' },
-        event = 'BufEnter',
-        config = true,
     },
     {
         'dnlhc/glance.nvim',
@@ -52,6 +105,7 @@ return {
         'benomahony/oil-git.nvim',
         event = 'VeryLazy',
         dependencies = { 'stevearc/oil.nvim' },
+        opts = {},
     },
     {
         'ThePrimeagen/harpoon',
@@ -104,5 +158,14 @@ return {
         config = function()
             require('harpoon').setup()
         end,
+    },
+    {
+        'chentoast/marks.nvim',
+        event = 'VeryLazy',
+        opts = {},
+    },
+    {
+        'lewis6991/satellite.nvim',
+        config = true,
     },
 }
