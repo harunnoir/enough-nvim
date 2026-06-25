@@ -1,6 +1,0 @@
--- Configure beancount (Beancount language server for plain text accounting)
-vim.lsp.config('beancount', {
-    cmd = { 'beancount-language-server' },
-    filetypes = { 'beancount' },
-    root_markers = { '.git', '.beancount', 'main.bean', 'ledger.bean' },
-})
