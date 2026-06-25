@@ -20,17 +20,17 @@ if vim.g.neovide then
     -- Running in Neovide → disable snacks scroll
     vim.g.snacks_scroll = false
 
-    vim.keymap.set("n", "<C-=>", function()
+    vim.keymap.set('n', '<C-=>', function()
         vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1
-    end, { desc = "Neovide zoom in" })
+    end, { desc = 'Neovide zoom in' })
 
-    vim.keymap.set("n", "<C-->", function()
+    vim.keymap.set('n', '<C-->', function()
         vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1
-    end, { desc = "Neovide zoom out" })
+    end, { desc = 'Neovide zoom out' })
 
-    vim.keymap.set("n", "<C-0>", function()
+    vim.keymap.set('n', '<C-0>', function()
         vim.g.neovide_scale_factor = 1.0
-    end, { desc = "Neovide reset zoom" })
+    end, { desc = 'Neovide reset zoom' })
 else
     -- Running in terminal → enable snacks scroll & ui2
     vim.g.snacks_scroll = true

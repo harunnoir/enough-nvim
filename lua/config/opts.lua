@@ -12,9 +12,9 @@ vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append('c')
 vim.opt.list = true
 vim.opt.listchars = {
-    space = ' ', -- ·
+    space = '·', -- ·
     tab = '↦ ',
-    eol = ' ', -- ↲
+    eol = '↲', -- ↲
     extends = '»',
     precedes = '«',
     nbsp = '␣',

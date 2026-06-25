@@ -27,8 +27,7 @@ api.nvim_create_autocmd({ 'BufWinEnter' }, {
 -------------------------------------------------------
 local filetype_settings = {
     python = function()
-        vim.opt_local.colorcolumn = '79,99'
-        vim.opt_local.textwidth = 79
+        vim.opt_local.colorcolumn = '88'
         vim.opt_local.shiftwidth = 4
         vim.opt_local.tabstop = 4
         vim.opt_local.expandtab = true
@@ -121,7 +120,9 @@ api.nvim_create_autocmd('FileType', {
     pattern = vim.tbl_keys(filetype_settings),
     callback = function(args)
         local fn = filetype_settings[args.match]
-        if fn then fn() end
+        if fn then
+            fn()
+        end
     end,
 })
 

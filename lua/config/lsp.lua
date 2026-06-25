@@ -1,12 +1,17 @@
 -- Enable Language Server Protocol servers
-vim.lsp.enable('basedpyright')
+vim.lsp.enable('pyright')
 vim.lsp.enable('clangd')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('beancount')
 
 -- Configure basedpyright (Python language server)
-vim.lsp.config('basedpyright', {
+vim.lsp.config('pyright', {
+    cmd = { 'pyright-langserver', '--stdio' },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'setup.py', '.git' },
+})
+--[[ vim.lsp.config('basedpyright', {
     cmd = { 'basedpyright-langserver', '--stdio' },
     filetypes = { 'python' },
     root_markers = {
@@ -25,7 +30,7 @@ vim.lsp.config('basedpyright', {
             },
         },
     },
-})
+}) ]]
 
 -- Configure clangd (C/C++ language server)
 vim.lsp.config('clangd', {
