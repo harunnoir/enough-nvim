@@ -65,6 +65,7 @@ return {
     -- Telescope: fuzzy finder (5 core bindings)
     {
         'nvim-telescope/telescope.nvim',
+        event = 'VeryLazy',
         cmd = 'Telescope',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -176,6 +177,7 @@ return {
     -- Satellite: scrollbar with diagnostics, marks, search
     {
         'lewis6991/satellite.nvim',
+        event = 'VeryLazy',
         config = true,
     },
 }

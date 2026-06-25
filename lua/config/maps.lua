@@ -66,14 +66,14 @@ map('v', '<Tab>', '>gv', { desc = 'Indent' })
 map('v', '<S-Tab>', '<gv', { desc = 'Outdent' })
 
 -- Smart splits: moving between splits
-map('n', '<C-h>', require('smart-splits').move_cursor_left)
-map('n', '<C-j>', require('smart-splits').move_cursor_down)
-map('n', '<C-k>', require('smart-splits').move_cursor_up)
-map('n', '<C-l>', require('smart-splits').move_cursor_right)
-map('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+map('n', '<C-h>', function() require('smart-splits').move_cursor_left() end)
+map('n', '<C-j>', function() require('smart-splits').move_cursor_down() end)
+map('n', '<C-k>', function() require('smart-splits').move_cursor_up() end)
+map('n', '<C-l>', function() require('smart-splits').move_cursor_right() end)
+map('n', '<C-\\>', function() require('smart-splits').move_cursor_previous() end)
 
 -- Smart splits: swapping buffers between windows
-map('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-map('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-map('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-map('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
+map('n', '<leader><leader>h', function() require('smart-splits').swap_buf_left() end)
+map('n', '<leader><leader>j', function() require('smart-splits').swap_buf_down() end)
+map('n', '<leader><leader>k', function() require('smart-splits').swap_buf_up() end)
+map('n', '<leader><leader>l', function() require('smart-splits').swap_buf_right() end)

@@ -114,6 +114,7 @@ return {
     {
         'echasnovski/mini.surround',
         version = '*',
+        keys = { 'sa', 'sd', 'sr' },
         opts = {},
     },
     -- Grug-far: project-wide search & replace

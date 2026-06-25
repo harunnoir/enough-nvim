@@ -64,6 +64,7 @@ return {
     -- Fidget: LSP progress spinner
     {
         'j-hui/fidget.nvim',
+        event = 'VeryLazy',
         opts = {},
     },
     -- Symbol-usage: inline reference / definition counts

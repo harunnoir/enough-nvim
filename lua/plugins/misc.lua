@@ -183,6 +183,7 @@ return {
     {
         'nvim-mini/mini.hipatterns',
         version = '*',
+        event = 'VeryLazy',
         config = function()
             local hipatterns = require('mini.hipatterns')
             hipatterns.setup({
@@ -245,6 +246,7 @@ return {
     -- Dictionary: thesaurus / dictionary lookup
     {
         'chrscchrn/dictionary.nvim',
+        cmd = 'Dictionary',
         config = function()
             require('dictionary').setup()
         end,
@@ -252,6 +254,7 @@ return {
     -- Leetcode: practice in Neovim
     {
         'kawre/leetcode.nvim',
+        cmd = 'Leet',
         build = ':TSUpdate html',
         dependencies = {
             'nvim-lua/plenary.nvim',

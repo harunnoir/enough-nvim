@@ -108,7 +108,20 @@ local function setup_lualine()
 end
 
 return {
-    { 'mrjones2014/smart-splits.nvim' },
+    {
+        'mrjones2014/smart-splits.nvim',
+        keys = {
+            { '<C-h>', mode = 'n' },
+            { '<C-j>', mode = 'n' },
+            { '<C-k>', mode = 'n' },
+            { '<C-l>', mode = 'n' },
+            { '<C-\\>', mode = 'n' },
+            { '<leader><leader>h', mode = 'n' },
+            { '<leader><leader>j', mode = 'n' },
+            { '<leader><leader>k', mode = 'n' },
+            { '<leader><leader>l', mode = 'n' },
+        },
+    },
     {
         'akinsho/toggleterm.nvim',
         version = '*',
@@ -274,10 +287,12 @@ return {
     },
     {
         'gbprod/yanky.nvim',
+        event = 'VeryLazy',
         opts = {},
     },
     {
         'lukas-reineke/virt-column.nvim',
+        event = 'VeryLazy',
         opts = {
             char = '│',
             highlight = 'NonText',
@@ -288,7 +303,7 @@ return {
         ft = 'qf',
         opts = {},
     },
-    { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
+    { 'folke/todo-comments.nvim', event = 'VeryLazy', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
     { 'kungfusheep/mfd.nvim', event = 'VeryLazy' },
     {
         'nvim-tree/nvim-web-devicons',
