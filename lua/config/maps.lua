@@ -87,7 +87,8 @@ map('n', '<Tab>', 'za', { desc = 'Toggle fold' })
 map('n', '<BS>', '<C-^>', { desc = 'Alternate buffer' })
 
 -- ── Terminal ──────────────────────────────────────────────────────────
-map({ 'n', 't' }, '<C-\\>', function() require('snacks').terminal.toggle() end, { desc = 'Toggle terminal' })
+-- map({ 'n', 't' }, '<C-\\>', function() require('snacks').terminal.toggle(nil, { win = { style = 'float' } }) end, { desc = 'Toggle terminal' })
+map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- ── Git ──────────────────────────────────────────────────────────
 -- map(']h', function() require('gitsigns').next_hunk() end, desc = 'Next hunk')
