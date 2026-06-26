@@ -26,10 +26,6 @@ Every plugin answers "yes" to at least two of:
 | `nvim-lint` | Async linter via `:lua require('lint').try_lint()` |
 | `fidget.nvim` | LSP progress spinner in statusline |
 | `symbol-usage.nvim` | Shows reference/definition counts inline |
-| `nvim-dap` + `dap-ui` | Debug adapter protocol — Go, Python, etc. |
-| `nvim-dap-python` | Python debugger setup |
-| `nvim-dap-go` | Go debugger (delve) via mason |
-
 ### editor.lua
 
 | Plugin | Why |
@@ -53,7 +49,7 @@ Every plugin answers "yes" to at least two of:
 | `nvim-spider` | Smarter `w`/`e`/`b` — respects camelCase and snake_case |
 | `nvim-maximizer` | Toggle current window to full screen (`<C-m>`) |
 | `flash.nvim` | Jump anywhere visible (`gs`/`gS`) — replaces leap |
-| `telescope.nvim` | Fuzzy finder — 5 bindings only (`ff`, `fg`, `fb`, `fh`, `fr`) |
+| `snacks.picker` | Fuzzy finder (`ff`, `fg`, `fb`, `fh`, `fr`) — replaces Telescope |
 | `glance.nvim` | LSP references/definitions in a peek window (`gD`, `gR`, etc.) |
 | `oil.nvim` | File explorer as a buffer (`-`) — edit paths directly |
 | `oil-lsp-diagnostics` | Show diags in Oil |
@@ -69,6 +65,15 @@ Every plugin answers "yes" to at least two of:
 | `gitsigns.nvim` | Git signs in signcolumn, hunk staging, blame |
 | `gitgraph.nvim` | Git log as an interactive graph (`<leader>gl`) |
 | `fugit2.nvim` | Lazygit-like TUI inside Neovim (`<leader>F`) |
+
+### dap.lua
+
+| Plugin | Why |
+|--------|-----|
+| `nvim-dap` | Debug adapter protocol — Python, Go, etc. |
+| `nvim-dap-ui` | UI for DAP (scopes, watches, stack, breakpoints, REPL) |
+| `nvim-dap-python` | Python debugger (debugpy) — pytest integration |
+| `nvim-dap-go` | Go debugger (delve) via mason |
 
 ### ui.lua
 
@@ -101,9 +106,7 @@ Every plugin answers "yes" to at least two of:
 | `undotree.nvim` | Visual undo tree (`<leader>u`) |
 | `persistence.nvim` | Auto-save/restore sessions |
 | `calcium.nvim` | In-buffer calculator |
-| `dictionary.nvim` | Dictionary/thesaurus lookup |
 | `leetcode.nvim` | LeetCode in Neovim |
-| `atone.nvim` | Scratch buffer manager |
 | `presenting.nvim` | Presentation mode |
 
 ## What Was Removed / Rejected
@@ -119,3 +122,6 @@ Every plugin answers "yes" to at least two of:
 | `obsidian.nvim`, `neorg` | Not in active use — removed |
 | `tabby.nvim` | Not needed — statusline is enough |
 | `vim-startuptime` | Debug-only, removed from active config |
+| `dictionary.nvim` | Redundant — `blink-cmp-words` handles thesaurus/dictionary |
+| `atone.nvim` | Redundant — `<leader>st` scratch helper covers the use case |
+| `telescope.nvim` | Replaced by snacks.picker (built-in, one less plugin) |

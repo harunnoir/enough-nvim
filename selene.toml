@@ -1,5 +1,0 @@
-# selene.toml
-std = "lua54+vim"
-
-[config]
-allow_unused_variables = false

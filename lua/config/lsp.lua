@@ -1,18 +1,36 @@
--- Enable Language Server Protocol servers
-vim.lsp.enable('pyright')
-vim.lsp.enable('clangd')
-vim.lsp.enable('lua_ls')
-vim.lsp.enable('ts_ls')
-vim.lsp.enable('beancount')
+-- Allow vim.lsp.enable() to find Mason-installed servers
+vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
 
--- Configure basedpyright (Python language server)
+-- LSP servers to enable (configs defined below via vim.lsp.config)
+local servers = {
+  'pyright', -- Python
+  'clangd', -- C/C++
+  'lua_ls', -- Lua
+  'ts_ls', -- TypeScript/JavaScript
+  'beancount', -- Plain text accounting
+}
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server)
+end
+
+-- Python
+-- vim.lsp.config('basedpyright', {
+--     cmd = { 'basedpyright-langserver', '--stdio' },
+--     filetypes = { 'python' },
+--     root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+--     settings = {
+--         basedpyright = {
+--             analysis = {
+--                 autoSearchPaths = true,
+--                 useLibraryCodeForTypes = true,
+--                 typeCheckingMode = 'basic',
+--                 diagnosticMode = 'openFilesOnly',
+--             },
+--         },
+--     },
+-- })
 vim.lsp.config('pyright', {
     cmd = { 'pyright-langserver', '--stdio' },
-    filetypes = { 'python' },
-    root_markers = { 'pyproject.toml', 'setup.py', '.git' },
-})
---[[ vim.lsp.config('basedpyright', {
-    cmd = { 'basedpyright-langserver', '--stdio' },
     filetypes = { 'python' },
     root_markers = {
         'pyproject.toml',
@@ -21,41 +39,26 @@ vim.lsp.config('pyright', {
         'requirements.txt',
         '.git',
     },
-    settings = {
-        basedpyright = {
-            analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = 'openFilesOnly',
-            },
-        },
-    },
-}) ]]
+})
 
--- Configure clangd (C/C++ language server)
+-- C/C++
 vim.lsp.config('clangd', {
-    cmd = {
-        'clangd',
-        '--background-index',
-        '--clang-tidy',
-        '--all-scopes-completion',
-        '--completion-style=detailed',
-        '--header-insertion=iwyu',
-        '--function-arg-placeholders',
-        '--pch-storage=memory',
-    },
-    filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+  cmd = {
+    'clangd',
+    '--background-index',
+    '--clang-tidy',
+    '--all-scopes-completion',
+    '--completion-style=detailed',
+    '--header-insertion=iwyu',
+    '--function-arg-placeholders',
+    '--pch-storage=memory',
+  },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
 })
 
--- Configure beancount (Beancount language server for plain text accounting)
-vim.lsp.config('beancount', {
-    cmd = { 'beancount-language-server' },
-    filetypes = { 'beancount' },
-    root_markers = { '.git', '.beancount', 'main.bean', 'ledger.bean' },
-})
-
--- Configure lua_ls (Lua language server)
+-- Lua
 vim.lsp.config('lua_ls', {
+    cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
     settings = {
         Lua = {
@@ -65,17 +68,24 @@ vim.lsp.config('lua_ls', {
     },
 })
 
--- Configure diagnostic signs
-vim.diagnostic.config({
-    signs = {
-        text = {
-            ERROR = '',
-            WARN = '',
-            HINT = '',
-            INFO = '',
-        },
-    },
+-- Beancount
+vim.lsp.config('beancount', {
+  cmd = { 'beancount-language-server' },
+  filetypes = { 'beancount' },
+  root_markers = { '.git', '.beancount', 'main.bean', 'ledger.bean' },
 })
 
--- Enable inlay hints globally
+-- Diagnostics
+vim.diagnostic.config({
+  signs = {
+    text = {
+      ERROR = '',
+      WARN = '',
+      HINT = '',
+      INFO = '',
+    },
+  },
+})
+
+-- Inlay hints
 vim.lsp.inlay_hint.enable(true)

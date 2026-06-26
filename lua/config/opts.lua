@@ -12,17 +12,17 @@ vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append('c')
 vim.opt.list = true
 vim.opt.listchars = {
-    space = '·', -- ·
-    tab = '↦ ',
-    eol = '↲', -- ↲
-    extends = '»',
-    precedes = '«',
-    nbsp = '␣',
-    trail = '›',
+  space = '·', -- ·
+  tab = '↦ ',
+  eol = '↲', -- ↲
+  extends = '»',
+  precedes = '«',
+  nbsp = '␣',
+  trail = '›',
 }
 
 vim.opt.fillchars = {
-    eob = ' ',
+  eob = ' ',
 }
 vim.opt.cursorline = true
 
@@ -58,20 +58,21 @@ vim.o.backup = false
 
 -- Clipboard & Spell
 -- FIXME: Clipboard may not work if $WAYLAND_DISPLAY is undefined
-vim.g.clipboard = {
-    name = 'wl-clipboard',
-    copy = {
-        ['+'] = 'wl-copy',
-        ['*'] = 'wl-copy',
-    },
-    paste = {
-        ['+'] = 'wl-paste --no-newline',
-        ['*'] = 'wl-paste --no-newline',
-    },
-    cache_enabled = true,
-}
+--
+-- vim.g.clipboard = {
+--   name = 'wl-clipboard',
+--   copy = {
+--     ['+'] = 'wl-copy',
+--     ['*'] = 'wl-copy',
+--   },
+--   paste = {
+--     ['+'] = 'wl-paste --no-newline',
+--     ['*'] = 'wl-paste --no-newline',
+--   },
+--   cache_enabled = true,
+-- }
 
--- vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 vim.o.spell = false
 
 -- Autocomplete

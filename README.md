@@ -12,13 +12,15 @@ Neovim config that's just enough. No bloat, no framework — flat plugin files, 
 
 ```bash
 git clone git@github.com:harunnoir/enough-nvim.git ~/.config/nvim
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! sync" +qa     # Install plugins + Mason packages
 ```
 
-Or run the bootstrap script for a full system setup (Neovim + LSPs + formatters + deps):
+For a full automated setup (prereqs + plugins + Mason + optional extras):
 
 ```bash
-./bin/install.sh          # Arch / Debian / Fedora / Void
+./bin/install.sh                       # Full install
+./bin/install.sh --minimal             # Plugins only, skip Mason
+./bin/lang/python.sh                   # Python extras (pynvim, pytest)
 ```
 
 ## Structure
@@ -39,10 +41,11 @@ Or run the bootstrap script for a full system setup (Neovim + LSPs + formatters 
 │   └── plugins/
 │       ├── init.lua          # Plugin import list
 │       ├── core.lua          # lazy.nvim, ufo
-│       ├── lsp.lua           # mason, lspsaga, nvim-lint, dap
+│       ├── lsp.lua           # mason, lspsaga, nvim-lint, fidget
 │       ├── editor.lua        # blink.cmp, conform, mini.*, dial, trouble
-│       ├── nav.lua           # flash, telescope, harpoon, oil, glance
+│       ├── nav.lua           # flash, harpoon, oil, glance
 │       ├── git.lua           # gitsigns, gitgraph, fugit2
+│       ├── dap.lua           # nvim-dap, dap-ui, python/go debugger
 │       ├── ui.lua            # gruvbox-material, lualine, noice, which-key
 │       ├── misc.lua          # 99, haunt, undotree, nerdy, render-markdown
 │       └── lang.lua          # Language-specific plugins

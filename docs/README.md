@@ -14,4 +14,4 @@
 - **Flat is better than nested** — every plugin file lives directly in `lua/plugins/`
 - **No frameworks** — no `nvim-lspconfig`, no `alpha-nvim`, no `telescope-ui-select`
 - **Minimal keybindings** — every binding earns its place; no redundancy
-- **Composability** — prefer actions that chain (e.g. Trouble from a Telescope picker)
+- **Composability** — prefer actions that chain (e.g. Trouble from a snacks picker)
