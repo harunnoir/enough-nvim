@@ -1,7 +1,7 @@
 -- neovide will have fonts issues with nvim 0.12,
 -- please use neovide-git instead if you want to use neovide
 if vim.g.neovide then
-  vim.opt.guifont = 'JetBrainsMono Nerd Font:h14'
+  vim.opt.guifont = 'IosevkaTerm Nerd Font:h14'
   -- vim.g.neovide_opacity = 0.93
   vim.g.neovide_floating_blur_amount_x = 3.0
   vim.g.neovide_floating_blur_amount_y = 3.0
