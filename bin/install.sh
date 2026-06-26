@@ -84,8 +84,7 @@ setup_path() {
     if has_cmd npm && [ "$(npm config get prefix)" != "$HOME/.npm-global" ]; then
         npm config set prefix "$HOME/.npm-global"
     fi
-    MASON_BIN="$HOME/.local/share/nvim/mason/bin"
-    export PATH="$MASON_BIN:$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
+    export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
 }
 
 # ── Mason: install LSPs, formatters, linters ──────
@@ -119,23 +118,30 @@ install_mason_packages() {
 }
 
 verify_core() {
-    local cmds=(
-        nvim git gcc unzip rg fd
-        clangd lua-language-server pyright
-        typescript-language-server
-        stylua shfmt prettier
-        ruff flake8 markdownlint shellcheck debugpy
-    )
     log 'verifying core installations…'
     local missing=()
-    for cmd in "${cmds[@]}"; do
+
+    # System-level tools
+    for cmd in nvim git gcc unzip rg fd; do
         if has_cmd "$cmd"; then
             printf "  ${GREEN}✓${NC} %s\n" "$cmd"
         else
             printf "  ${RED}✗${NC} %s\n" "$cmd"
-            missing+=("$cmd")
+            missing+=("system:${cmd}")
         fi
     done
+
+    # Mason-installed tools
+    local mason_bin="$HOME/.local/share/nvim/mason/bin"
+    for cmd in clangd lua-language-server pyright typescript-language-server stylua shfmt ruff flake8 markdownlint shellcheck debugpy prettier; do
+        if [ -x "$mason_bin/$cmd" ]; then
+            printf "  ${GREEN}✓${NC} %s\n" "$cmd"
+        else
+            printf "  ${RED}✗${NC} %s\n" "$cmd"
+            missing+=("${cmd}")
+        fi
+    done
+
     if ((${#missing[@]} > 0)); then
         warn "some tools missing: ${missing[*]}"
     else
