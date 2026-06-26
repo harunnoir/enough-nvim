@@ -175,7 +175,7 @@ local function diagnostics(c)
   return {
     'diagnostics',
     color = { bg = c.bg },
-    symbols = { error = 'E ', warn = 'W ', info = 'I ', hint = 'H ' },
+    symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
     diagnostics_color = {
       error = { fg = c.error },
       warn = { fg = c.warning },
