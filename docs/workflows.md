@@ -4,10 +4,10 @@
 
 1. `<leader>ff` — find file
 2. Edit
-3. `<leader>f` — format
+3. `<leader>cf` — format
 4. `[d` / `]d` — jump between diagnostics
 5. `<leader>xx` — view all diagnostics in Trouble
-6. `<C-s>` — save
+6. `<leader>w` — save
 
 ## Search & Replace
 
@@ -35,7 +35,7 @@
 ### Between windows
 - `<C-h/j/k/l>` — move cursor between splits
 - `<C-m>` — maximize current window
-- `<M-,>` / `<M-.>` — resize width
+- `<A-h/j/k/l>` — resize splits
 
 ## Git Workflow
 
@@ -52,6 +52,12 @@
 2. Start debugger: `<F5>`
 3. Step through: `<F1>` (into), `<F2>` (over), `<F3>` (out)
 4. Inspect state: `<F6>` toggles DAP UI
+
+## Adding Tools (Mason)
+
+- `:Mason` — browse and install LSPs, formatters, linters
+- Tools are automatically available to `vim.lsp.enable()`, conform, and nvim-lint
+- No need to add Mason's bin dir to your shell PATH — Neovim handles it
 
 ## LSP & Code Intelligence
 

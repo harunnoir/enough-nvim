@@ -73,19 +73,17 @@ Every plugin answers "yes" to at least two of:
 | `nvim-dap` | Debug adapter protocol — Python, Go, etc. |
 | `nvim-dap-ui` | UI for DAP (scopes, watches, stack, breakpoints, REPL) |
 | `nvim-dap-python` | Python debugger (debugpy) — pytest integration |
-| `nvim-dap-go` | Go debugger (delve) via mason |
+| `nvim-dap-go` | Go debugger (delve) |
 
 ### ui.lua
 
 | Plugin | Why |
 |--------|-----|
 | `smart-splits.nvim` | `C-h/j/k/l` window navigation — works across tmux+Neovim |
-| `toggleterm.nvim` | Floating/horizontal terminal (`<C-\>`) |
 | `gruvbox-material` | Colorscheme — soft dark, easy on the eyes |
 | `lualine.nvim` | Statusline — adaptive colors, LSP/formatter/linter info |
-| `snacks.nvim` | Statuscolumn, indent guides, animations — modular |
+| `snacks.nvim` | Statuscolumn, picker, dashboard, terminal, indent guides, animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
-| `dashboard-nvim` | Startup screen with ASCII art and recent files |
 | `which-key.nvim` | Shows available keybindings (`<leader>?`) |
 | `yanky.nvim` | Yank history ring |
 | `virt-column.nvim` | Soft colorcolumn at `NonText` highlight |

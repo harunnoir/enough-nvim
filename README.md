@@ -46,8 +46,9 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 │       ├── nav.lua           # flash, harpoon, oil, glance
 │       ├── git.lua           # gitsigns, gitgraph, fugit2
 │       ├── dap.lua           # nvim-dap, dap-ui, python/go debugger
-│       ├── ui.lua            # gruvbox-material, lualine, noice, which-key
-│       ├── misc.lua          # 99, haunt, undotree, nerdy, render-markdown
+│       ├── ai.lua            # 99 AI chat prompts
+│       ├── ui.lua            # gruvbox-material, lualine, noice, snacks, which-key
+│       ├── misc.lua          # haunt, undotree, nerdy, render-markdown
 │       └── lang.lua          # Language-specific plugins
 ```
 
@@ -57,17 +58,17 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `<C-s>` | n | Save |
+| `<leader>w` | n | Save |
 | `<leader>q` | n | Quit |
-| `<leader>f` | n,v | Format buffer |
+| `<leader>Q` | n | Quit all |
+| `<leader>cf` | n,v | Format buffer |
 | `<leader>sv` | n | Vertical split |
 | `<leader>sh` | n | Horizontal split |
 | `<leader>sx` | n | Close split |
 | `<leader>se` | n | Equalize splits |
 | `<C-h/j/k/l>` | n | Move to split |
+| `<A-h/j/k/l>` | n | Resize split |
 | `<leader><leader>h/j/k/l>` | n | Swap buffer with split |
-| `<M-,/.>` | n | Shrink/expand width |
-| `<M,-/=>` | n | Shrink/expand height |
 | `<C-m>` | n | Toggle maximize |
 
 ### Search / Navigation
@@ -79,8 +80,14 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 | `w`/`e`/`b`/`ge` | n,o,x | Spider word motions |
 | `<leader>ff` | n | Find files |
 | `<leader>fg` | n | Live grep |
+| `<leader>fw` | n | Grep word |
 | `<leader>fb` | n | Buffers |
+| `<leader>f.` | n | Recent files |
 | `<leader>fh` | n | Help tags |
+| `<leader>fk` | n | Keymaps |
+| `<leader>fl` | n | Buffer lines |
+| `<leader>fs` | n | LSP symbols |
+| `<leader>fS` | n | Workspace symbols |
 | `<leader>fr` | n | Resume picker |
 | `<leader>a` | n | Harpoon add file |
 | `<leader>e` | n | Harpoon menu |
@@ -92,11 +99,12 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 | Key | Mode | Action |
 |-----|------|--------|
 | `K` | n | Hover documentation |
-| `gd` | n | Go to definition |
 | `gD`/`gR`/`gY`/`gM` | n | Glance defs/refs/type/impl |
 | `<leader>ca` | n,v | Code actions |
+| `<leader>cr` | n | Rename symbol |
 | `[d` / `]d` | n | Prev/next diagnostic |
-| `<leader>xx` | n | Trouble diagnostics |
+| `<leader>xx` | n | Trouble diagnostics (all) |
+| `<leader>xX` | n | Trouble diagnostics (buffer) |
 | `<leader>xs` | n | Trouble symbols |
 | `<leader>xl` | n | Trouble LSP refs |
 
@@ -110,6 +118,10 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 | `<F3>` | Step out |
 | `<F6>` | Toggle DAP UI |
 | `<leader>db` | Toggle breakpoint |
+| `<leader>dB` | Conditional breakpoint |
+| `<leader>dpr` | Run to cursor |
+| `<leader>dti` | DAP test method (Python) |
+| `<leader>dtc` | DAP test class (Python) |
 
 ### Git
 
@@ -131,22 +143,13 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 | `<A-j/k>` | n,v | Move line down/up |
 | `<Tab>` / `<S-Tab>` | v | Indent / outdent |
 
-### Clipboard
-
-| Key | Mode | Action |
-|-----|------|--------|
-| `<leader>y` | n,v | Yank to system clipboard |
-| `<leader>Y` | n | Yank line to system |
-| `<leader>p` | n,v | Paste from system |
-| `<leader>P` | n,v | Paste before from system |
-
 ### Misc
 
 | Key | Action |
 |-----|--------|
 | `<C-\>` | Toggle terminal |
+| `<leader>p` | Yank history |
 | `<leader>u` | Toggle undo tree |
-| `<leader>?` | Buffer local keymaps |
 | `<leader>in` | Browse nerd icons |
 | `<leader>ha` | Annotate (haunt) |
 | `<leader>9v/s` | AI visual/search prompt |
