@@ -22,7 +22,7 @@
 - `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, satellite
 - `git.lua`: gitsigns, gitgraph, fugit2
 - `dap.lua`: nvim-dap, dap-ui, dap-python, dap-go
-- `ui.lua`: gruvbox-material, lualine, snacks, noice, dashboard, toggleterm, which-key, yanky
+- `ui.lua`: gruvbox-material, slimline.nvim, snacks, noice, dashboard, toggleterm, yanky
 - `misc.lua`: 99, haunt, hardtime, mini.hipatterns, render-markdown, undotree, persistence, nerdy
 - `lang.lua`: language-specific plugins
 

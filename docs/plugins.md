@@ -26,6 +26,7 @@ Every plugin answers "yes" to at least two of:
 | `nvim-lint` | Async linter via `:lua require('lint').try_lint()` |
 | `fidget.nvim` | LSP progress spinner in statusline |
 | `symbol-usage.nvim` | Shows reference/definition counts inline |
+
 ### editor.lua
 
 | Plugin | Why |
@@ -81,11 +82,11 @@ Every plugin answers "yes" to at least two of:
 |--------|-----|
 | `smart-splits.nvim` | `C-h/j/k/l` window navigation — works across tmux+Neovim |
 | `gruvbox-material` | Colorscheme — soft dark, easy on the eyes |
-| `lualine.nvim` | Statusline — adaptive colors, LSP/formatter/linter info |
+| `slimline.nvim` | Statusline — minimal, theme-aware, no dependencies |
 | `snacks.nvim` | Statuscolumn, picker, dashboard, terminal, indent guides, animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
-| `which-key.nvim` | Shows available keybindings (`<leader>?`) |
 | `yanky.nvim` | Yank history ring |
+| `toggleterm.nvim` | Terminal — vertical/horizontal/float, persistent |
 | `virt-column.nvim` | Soft colorcolumn at `NonText` highlight |
 | `quicker.nvim` | Better quickfix window UX |
 | `todo-comments.nvim` | Highlight `TODO`, `FIXME`, etc. |

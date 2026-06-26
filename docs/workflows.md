@@ -70,7 +70,8 @@
 
 ## Terminal
 
-- `<C-\>` — toggle horizontal terminal
+- `<C-\>` — toggle vertical terminal (toggleterm)
+- `<Esc><Esc>` — exit terminal mode to normal
 - Runs in the same cwd as Neovim
 
 ## AI Assistant

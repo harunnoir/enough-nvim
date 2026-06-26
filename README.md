@@ -11,124 +11,103 @@ Neovim config that's just enough. No bloat, no framework — flat plugin files, 
 ## Install
 
 ```bash
-git clone git@github.com:harunnoir/enough-nvim.git ~/.config/nvim
-nvim --headless "+Lazy! sync" +qa     # Install plugins + Mason packages
+git clone https://github.com/harunnoir/enough-nvim.git ~/.config/nvim
+nvim --headless "+Lazy! sync" +qa     # plugins + Mason
 ```
 
-For a full automated setup (prereqs + plugins + Mason + optional extras):
+For a full automated setup:
 
 ```bash
-./bin/install.sh                       # Full install
-./bin/install.sh --minimal             # Plugins only, skip Mason
-./bin/lang/python.sh                   # Python extras (pynvim, pytest)
+./bin/install.sh                       # prereqs, plugins, Mason
+./bin/install.sh --minimal             # plugins only
+./bin/lang/python.sh                   # pynvim, pytest, uv
 ```
 
 ## Structure
 
 ```
 ~/.config/nvim/
-├── init.lua                  # Entry point
-├── lazy-lock.json            # Locked plugin versions
-├── bin/install.sh            # Bootstrap installer
+├── init.lua                  entry point
+├── lazy-lock.json            locked plugin versions
+├── bin/install.sh            bootstrap installer
 ├── lua/
 │   ├── config/
-│   │   ├── opts.lua          # Editor options
-│   │   ├── maps.lua          # Core keymaps
-│   │   ├── lsp.lua           # LSP server config
-│   │   ├── hl.lua            # Highlight overrides
-│   │   ├── cmd.lua           # Autocommands / filetype settings
-│   │   └── neovide.lua       # Neovide-specific config
-│   └── plugins/
-│       ├── init.lua          # Plugin import list
-│       ├── core.lua          # lazy.nvim, ufo
-│       ├── lsp.lua           # mason, lspsaga, nvim-lint, fidget
-│       ├── editor.lua        # blink.cmp, conform, mini.*, dial, trouble
-│       ├── nav.lua           # flash, harpoon, oil, glance
-│       ├── git.lua           # gitsigns, gitgraph, fugit2
-│       ├── dap.lua           # nvim-dap, dap-ui, python/go debugger
-│       ├── ai.lua            # 99 AI chat prompts
-│       ├── ui.lua            # gruvbox-material, lualine, noice, snacks, which-key
-│       ├── misc.lua          # haunt, undotree, nerdy, render-markdown
-│       └── lang.lua          # Language-specific plugins
+│   │   ├── opts.lua          editor options
+│   │   ├── maps.lua          core keymaps
+│   │   ├── lsp.lua           LSP server config (vim.lsp.enable)
+│   │   ├── hl.lua            highlight overrides
+│   │   ├── cmd.lua           autocommands / filetype settings
+│   │   └── neovide.lua       Neovide GUI config
+│   └── plugins/              one file per concern
+│       ├── core.lua          lazy.nvim, treesitter, ufo
+│       ├── lsp.lua           mason, lspsaga, nvim-lint, fidget
+│       ├── editor.lua        blink.cmp, conform, mini.*, trouble
+│       ├── nav.lua           flash, harpoon, oil, glance
+│       ├── git.lua           gitsigns, gitgraph, fugit2
+│       ├── dap.lua           nvim-dap, dap-ui, python/go debugger
+│       ├── ai.lua            99 AI chat
+│       ├── ui.lua            slimline, gruvbox-material, snacks, toggleterm, noice
+│       ├── misc.lua          haunt, undotree, nerdy, render-markdown
+│       └── lang.lua          language-specific extras
 ```
 
 ## Keybindings
 
-### Core / Window Management
+### Window & File
 
 | Key | Mode | Action |
 |-----|------|--------|
 | `<leader>w` | n | Save |
-| `<leader>q` | n | Quit |
-| `<leader>Q` | n | Quit all |
+| `<leader>q` / `<leader>Q` | n | Quit / Quit all |
 | `<leader>cf` | n,v | Format buffer |
-| `<leader>sv` | n | Vertical split |
-| `<leader>sh` | n | Horizontal split |
-| `<leader>sx` | n | Close split |
-| `<leader>se` | n | Equalize splits |
 | `<C-h/j/k/l>` | n | Move to split |
 | `<A-h/j/k/l>` | n | Resize split |
 | `<leader><leader>h/j/k/l>` | n | Swap buffer with split |
+| `<leader>sv/sh/sx/se` | n | Split vertical/horizontal/close/equalize |
 | `<C-m>` | n | Toggle maximize |
+| `<BS>` | n | Alternate buffer |
 
-### Search / Navigation
+### Search & Navigate
 
 | Key | Mode | Action |
 |-----|------|--------|
-| `gs` | n,x,o | Flash jump |
-| `gS` | n,x,o | Flash treesitter |
+| `gs` / `gS` | n,x,o | Flash jump / Flash treesitter |
 | `w`/`e`/`b`/`ge` | n,o,x | Spider word motions |
-| `<leader>ff` | n | Find files |
-| `<leader>fg` | n | Live grep |
-| `<leader>fw` | n | Grep word |
-| `<leader>fb` | n | Buffers |
-| `<leader>f.` | n | Recent files |
-| `<leader>fh` | n | Help tags |
-| `<leader>fk` | n | Keymaps |
-| `<leader>fl` | n | Buffer lines |
-| `<leader>fs` | n | LSP symbols |
-| `<leader>fS` | n | Workspace symbols |
-| `<leader>fr` | n | Resume picker |
-| `<leader>a` | n | Harpoon add file |
-| `<leader>e` | n | Harpoon menu |
-| `<leader>1-4` | n | Harpoon jump 1-4 |
+| `<leader>ff` / `fg` / `fw` | n | Files / Grep / Grep word |
+| `<leader>fb` / `f.` / `fh` | n | Buffers / Recent / Help |
+| `<leader>fk` / `fl` | n | Keymaps / Buffer lines |
+| `<leader>fs` / `fS` / `fr` | n | Symbols / Workspace symbols / Resume |
+| `<leader>a` / `<leader>e` | n | Harpoon add / menu |
+| `<leader>1-4` | n | Harpoon jump 1–4 |
 | `-` | n | Oil file explorer |
 
-### LSP / Code
+### LSP & Code
 
 | Key | Mode | Action |
 |-----|------|--------|
 | `K` | n | Hover documentation |
 | `gD`/`gR`/`gY`/`gM` | n | Glance defs/refs/type/impl |
-| `<leader>ca` | n,v | Code actions |
-| `<leader>cr` | n | Rename symbol |
-| `[d` / `]d` | n | Prev/next diagnostic |
-| `<leader>xx` | n | Trouble diagnostics (all) |
-| `<leader>xX` | n | Trouble diagnostics (buffer) |
-| `<leader>xs` | n | Trouble symbols |
-| `<leader>xl` | n | Trouble LSP refs |
+| `<leader>ca` / `<leader>cr` | n,v | Code actions / Rename |
+| `[d` / `]d` | n | Prev / next diagnostic |
+| `<leader>xx` / `<leader>xX` | n | Trouble diagnostics (all / buffer) |
+| `<leader>xs` / `<leader>xl` | n | Trouble symbols / LSP refs |
 
 ### Debug (DAP)
 
 | Key | Action |
 |-----|--------|
-| `<F5>` | Continue |
-| `<F1>` | Step into |
-| `<F2>` | Step over |
-| `<F3>` | Step out |
+| `<F5>` / `<F1>` / `<F2>` / `<F3>` | Continue / Into / Over / Out |
 | `<F6>` | Toggle DAP UI |
-| `<leader>db` | Toggle breakpoint |
-| `<leader>dB` | Conditional breakpoint |
+| `<leader>db` / `<leader>dB` | Toggle / conditional breakpoint |
 | `<leader>dpr` | Run to cursor |
-| `<leader>dti` | DAP test method (Python) |
-| `<leader>dtc` | DAP test class (Python) |
+| `<leader>dti` / `<leader>dtc` | DAP test method / class (Python) |
 
 ### Git
 
 | Key | Action |
 |-----|--------|
 | `<leader>gl` | Git graph |
-| `<leader>F` | Fugit2 |
+| `<leader>F` | Fugit2 (lazygit-like) |
 
 ### Editing
 
@@ -139,7 +118,7 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 | `sr` + t + c | n | Replace surround |
 | `ga` / `gA` | n,x | Align / align preview |
 | `<C-a>` / `<C-x>` | n | Increment / decrement |
-| `gc` / `gcis` | n,v | Comment / uncomment |
+| `gc` | n,v | Toggle comment |
 | `<A-j/k>` | n,v | Move line down/up |
 | `<Tab>` / `<S-Tab>` | v | Indent / outdent |
 
@@ -147,32 +126,26 @@ For a full automated setup (prereqs + plugins + Mason + optional extras):
 
 | Key | Action |
 |-----|--------|
-| `<C-\>` | Toggle terminal |
+| `<C-\>` | Toggle terminal (vertical) |
+| `<Esc><Esc>` | Exit terminal mode |
 | `<leader>p` | Yank history |
 | `<leader>u` | Toggle undo tree |
 | `<leader>in` | Browse nerd icons |
 | `<leader>ha` | Annotate (haunt) |
-| `<leader>9v/s` | AI visual/search prompt |
-| `<leader>st` | Create scratch file |
+| `<leader>9v` / `<leader>9s` | AI visual / search prompt |
+| `<leader>st` | Scratch file |
 | `zR` / `zM` | Open / close all folds |
-| `<BS>` | Alternate buffer |
 
 ## Colorscheme
 
 [gruvbox-material](https://github.com/sainnhe/gruvbox-material) — soft background, dark mode.
 
-## Plugins
-
-Grouped into flat files under `lua/plugins/` — no nested subdirectories. Each file covers one concern: editor, navigation, LSP, git, UI, misc, and language-specific extras. See `lua/plugins/init.lua` for the import order.
-
 ## Docs
 
-See [docs/](docs/README.md) for in-depth documentation:
-
-- [Plugin rationale](docs/plugins.md) — why each plugin is here
-- [LSP setup](docs/lsp.md) — native `vim.lsp.enable()` approach
-- [Workflows](docs/workflows.md) — day-to-day editing loops
-- [Adding a language](docs/languages.md) — step-by-step guide
+- [Plugin rationale](docs/plugins.md) — why each plugin is here and what was removed
+- [LSP setup](docs/lsp.md) — native `vim.lsp.enable()` without lspconfig
+- [Workflows](docs/workflows.md) — day-to-day editing, search, git, debug loops
+- [Adding a language](docs/languages.md) — step-by-step for LSP, formatter, linter, treesitter
 
 ## Credits
 

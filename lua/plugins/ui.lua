@@ -194,7 +194,6 @@ return {
     opts = {},
   },
   { 'folke/todo-comments.nvim', event = 'VeryLazy', dependencies = { 'nvim-lua/plenary.nvim' }, config = true },
-  { 'kungfusheep/mfd.nvim', event = 'VeryLazy' },
   {
     'nvim-tree/nvim-web-devicons',
     lazy = true,
