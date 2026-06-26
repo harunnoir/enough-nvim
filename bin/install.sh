@@ -84,7 +84,8 @@ setup_path() {
     if has_cmd npm && [ "$(npm config get prefix)" != "$HOME/.npm-global" ]; then
         npm config set prefix "$HOME/.npm-global"
     fi
-    export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
+    MASON_BIN="$HOME/.local/share/nvim/mason/bin"
+    export PATH="$MASON_BIN:$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
 }
 
 # ── Mason: install LSPs, formatters, linters ──────
@@ -114,11 +115,7 @@ install_mason_packages() {
     nvim --headless '+Lazy! sync' +qa 2>/dev/null || true
 
     log 'installing Mason packages…'
-    local packages=()
-    for pkg in "${MASON_PACKAGES[@]}"; do
-        packages+=("${pkg}")
-    done
-    nvim --headless "+MasonInstall ${packages[*]}" +qa 2>/dev/null || true
+    nvim --headless "+MasonInstall ${MASON_PACKAGES[*]}" +qa 2>/dev/null || true
 }
 
 verify_core() {
