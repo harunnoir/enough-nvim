@@ -29,13 +29,15 @@ local mode_map = {
   n = 'N',
   i = 'I',
   v = 'V',
-  V = 'VL',
-  c = 'C',
-  R = 'R',
-  t = 'T',
+  V = 'V',
+  ['\22'] = 'V',
   s = 'S',
-  [''] = 'VB',
-  [''] = 'SB',
+  S = 'S',
+  ['\19'] = 'S',
+  c = 'C',
+  t = 'T',
+  R = 'R',
+  r = 'R',
 }
 
 local function mode_color(c)
@@ -44,9 +46,13 @@ local function mode_color(c)
     i = c.green,
     v = c.cyan,
     V = c.cyan,
-    [''] = c.cyan,
+    ['\22'] = c.cyan,
+    s = c.purple,
+    S = c.purple,
+    ['\19'] = c.purple,
     c = c.yellow,
     R = c.error,
+    r = c.error,
     t = c.purple,
   }
   return colors[vim.fn.mode()] or c.fg
@@ -66,9 +72,9 @@ end
 
 local function mode_indicator(c)
   return {
-    function() return ' ' .. (mode_map[vim.fn.mode()] or '?') end,
-    color = function() return { fg = mode_color(palette()), bg = c.bg, gui = 'bold' } end,
-    padding = { left = 1, right = 2 },
+    function() return mode_map[vim.fn.mode()] or '?' end,
+    color = function() return { fg = c.bg, bg = mode_color(palette()), gui = 'bold' } end,
+    padding = { left = 1, right = 1 },
   }
 end
 
@@ -84,8 +90,7 @@ end
 local function branch(c)
   return {
     'branch',
-    icon = '',
-    color = { fg = c.comment, bg = c.bg },
+    icon = ' ',
     fmt = function(name)
       if name == '' then
         return ''
@@ -109,50 +114,29 @@ end
 local function search(c)
   return {
     'searchcount',
-    color = { fg = c.yellow, bg = c.bg },
   }
 end
 
-local function lsp_name(c)
+local function tooling(c)
   return {
     function()
+      local parts = {}
       local clients = vim.lsp.get_clients({ bufnr = 0 })
-      if #clients == 0 then
-        return ''
+      if #clients > 0 then
+        table.insert(parts, ' ' .. table.concat(vim.tbl_map(function(cl) return cl.name end, clients), ','))
       end
-      return '󰒋 ' .. table.concat(vim.tbl_map(function(cl) return cl.name end, clients), ',')
-    end,
-    color = { fg = c.cyan, bg = c.bg },
-    cond = function() return vim.fn.winwidth(0) > 80 end,
-  }
-end
-
-local function formatter_name(c)
-  return {
-    function()
-      local ok, conform = pcall(require, 'conform')
-      local f = ok and conform.list_formatters(0) or {}
-      if #f == 0 then
-        return ''
+      local ok_fmt, conform = pcall(require, 'conform')
+      local formatters = ok_fmt and conform.list_formatters(0) or {}
+      if #formatters > 0 then
+        table.insert(parts, '󰉿 ' .. table.concat(vim.tbl_map(function(x) return x.name end, formatters), ','))
       end
-      return '󰉿 ' .. table.concat(vim.tbl_map(function(x) return x.name end, f), ',')
-    end,
-    color = { fg = c.comment, bg = c.bg },
-    cond = function() return vim.fn.winwidth(0) > 80 end,
-  }
-end
-
-local function linter_name(c)
-  return {
-    function()
-      local ok, lint = pcall(require, 'lint')
-      local l = ok and (lint.linters_by_ft[vim.bo.filetype] or {}) or {}
-      if #l == 0 then
-        return ''
+      local ok_lint, lint = pcall(require, 'lint')
+      local linters = ok_lint and (lint.linters_by_ft[vim.bo.filetype] or {}) or {}
+      if #linters > 0 then
+        table.insert(parts, '󱉶 ' .. table.concat(linters, ','))
       end
-      return '󱉶 ' .. table.concat(l, ',')
+      return table.concat(parts, ' ')
     end,
-    color = { fg = c.warning, bg = c.bg },
     cond = function() return vim.fn.winwidth(0) > 80 end,
   }
 end
@@ -164,7 +148,7 @@ local function venv(c)
       if not env then
         return ''
       end
-      return '󰆧 ' .. vim.fn.fnamemodify(env, ':t')
+      return ' ' .. vim.fn.fnamemodify(env, ':t')
     end,
     color = { fg = c.green, bg = c.bg },
     cond = function() return vim.bo.filetype == 'python' and vim.fn.winwidth(0) > 80 end,
@@ -182,6 +166,15 @@ local function diagnostics(c)
       info = { fg = c.info },
       hint = { fg = c.comment },
     },
+  }
+end
+
+local function diff(c)
+  return {
+    'diff',
+    colored = true,
+    color = { added = { fg = c.green }, modified = { fg = c.cyan }, removed = { fg = c.error } },
+    symbols = { added = '+', modified = '~', removed = '-' },
   }
 end
 
@@ -206,21 +199,21 @@ local function setup()
       disabled_filetypes = { statusline = { 'snacks_dashboard', 'oil' } },
     },
     sections = {
-      lualine_a = { macro_recording(c), mode_indicator(c) },
-      lualine_b = { branch(c) },
-      lualine_c = { filename(c) },
+      lualine_a = { branch(c) },
+      lualine_b = { filename(c), diff(c) },
+      lualine_c = {},
       lualine_x = {
-        search(c),
-        venv(c),
-        lsp_name(c),
-        formatter_name(c),
-        linter_name(c),
+        macro_recording(c),
         diagnostics(c),
+        search(c),
+        tooling(c),
+        venv(c),
       },
       lualine_y = {},
-      lualine_z = {},
+      lualine_z = { mode_indicator(c) },
     },
   })
+  vim.o.laststatus = 3
 end
 
 return {
