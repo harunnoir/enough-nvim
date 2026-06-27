@@ -1,4 +1,5 @@
 return {
+  -- Mini.clue: which-key replacement (shows leader tree)
   {
     'nvim-mini/mini.nvim',
     version = false,
@@ -15,95 +16,33 @@ return {
           require('mini.clue').gen_clues.windows(),
           require('mini.clue').gen_clues.z(),
         },
-        window = {
-          delay = 300,
-        },
+        window = { delay = 300 },
       })
     end,
   },
-  -- Haunt: bookmark / annotate lines
+
+  -- Haunt: bookmark / annotate lines (keys in maps.lua)
   {
     'TheNoeTrevino/haunt.nvim',
     opts = {
-      sign = '󱙝',
-      sign_hl = 'HauntAnnotation',
-      virt_text_hl = 'HauntAnnotation',
-      annotation_prefix = ' 󰆉 ',
-      annotation_suffix = '',
-      line_hl = nil,
-      virt_text_pos = 'eol',
-      data_dir = nil,
+      sign                = '󱙝',
+      sign_hl             = 'HauntAnnotation',
+      virt_text_hl        = 'HauntAnnotation',
+      annotation_prefix   = ' 󰆉 ',
+      annotation_suffix   = '',
+      line_hl             = nil,
+      virt_text_pos       = 'eol',
+      data_dir            = nil,
       per_branch_bookmarks = true,
-      picker = 'auto',
+      picker              = 'auto',
       picker_keys = {
-        delete = { key = 'd', mode = { 'n' } },
+        delete          = { key = 'd', mode = { 'n' } },
         edit_annotation = { key = 'a', mode = { 'n' } },
-      },
-    },
-    keys = {
-      {
-        '<leader>ha',
-        function() require('haunt.api').annotate() end,
-        desc = 'Annotate',
-      },
-      {
-        '<leader>ht',
-        function() require('haunt.api').toggle_annotation() end,
-        desc = 'Toggle annotation',
-      },
-      {
-        '<leader>hT',
-        function() require('haunt.api').toggle_all_lines() end,
-        desc = 'Toggle all annotations',
-      },
-      {
-        '<leader>hd',
-        function() require('haunt.api').delete() end,
-        desc = 'Delete bookmark',
-      },
-      {
-        '<leader>hC',
-        function() require('haunt.api').clear_all() end,
-        desc = 'Delete all bookmarks',
-      },
-      {
-        '<leader>hp',
-        function() require('haunt.api').prev() end,
-        desc = 'Previous bookmark',
-      },
-      {
-        '<leader>hn',
-        function() require('haunt.api').next() end,
-        desc = 'Next bookmark',
-      },
-      {
-        '<leader>hl',
-        function() require('haunt.picker').show() end,
-        desc = 'Show Picker',
-      },
-      {
-        '<leader>hq',
-        function() require('haunt.api').to_quickfix() end,
-        desc = 'Send to QF (buffer)',
-      },
-      {
-        '<leader>hQ',
-        function() require('haunt.api').to_quickfix({ current_buffer = true }) end,
-        desc = 'Send to QF (all)',
-      },
-      {
-        '<leader>hy',
-        function() require('haunt.api').yank_locations({ current_buffer = true }) end,
-        desc = 'Yank locations (buffer)',
-      },
-      {
-        '<leader>hY',
-        function() require('haunt.api').yank_locations() end,
-        desc = 'Yank locations (all)',
       },
     },
     config = function(_, opts) require('haunt').setup(opts) end,
   },
+
   -- Hardtime: discourage bad movement habits
   {
     'm4xshen/hardtime.nvim',
@@ -111,7 +50,8 @@ return {
     dependencies = { 'MunifTanjim/nui.nvim' },
     opts = {},
   },
-  -- Mini.hipatterns: highlight hex colors
+
+  -- Mini.hipatterns: highlight hex colors inline
   {
     'nvim-mini/mini.hipatterns',
     version = '*',
@@ -119,57 +59,54 @@ return {
     config = function()
       local hipatterns = require('mini.hipatterns')
       hipatterns.setup({
-        highlighters = {
-          hex_color = hipatterns.gen_highlighter.hex_color(),
-        },
+        highlighters = { hex_color = hipatterns.gen_highlighter.hex_color() },
       })
     end,
   },
+
   -- Calcium: in-buffer calculator
   {
     'necrom4/calcium.nvim',
-    cmd = { 'Calcium' },
+    cmd  = { 'Calcium' },
     opts = {},
   },
-  -- Nerdy: Nerd Font icon browser
+
+  -- Nerdy: Nerd Font icon browser (keys in maps.lua)
   {
     '2kabhishek/nerdy.nvim',
     dependencies = { 'folke/snacks.nvim' },
-    cmd = 'Nerdy',
+    cmd  = 'Nerdy',
     opts = {
-      max_recents = 30,
+      max_recents      = 30,
       copy_to_clipboard = false,
-      copy_register = '+',
-    },
-    keys = {
-      { '<leader>in', ':Nerdy list<CR>', desc = 'Browse nerd icons' },
-      { '<leader>iN', ':Nerdy recents<CR>', desc = 'Browse recent nerd icons' },
+      copy_register    = '+',
     },
   },
+
   -- StartupTime: debug startup performance
   {
     'dstein64/vim-startuptime',
     cmd = 'StartupTime',
   },
+
   -- Typr: typing tutor
   {
     'nvzone/typr',
     dependencies = 'nvzone/volt',
     opts = {},
-    cmd = { 'Typr', 'TyprStats' },
+    cmd  = { 'Typr', 'TyprStats' },
   },
-  -- Undotree: visual undo tree
+
+  -- Undotree: visual undo tree (key in maps.lua)
   {
     'jiaoshijie/undotree',
     opts = {},
-    keys = {
-      { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>" },
-    },
   },
+
   -- Leetcode: practice in Neovim
   {
     'kawre/leetcode.nvim',
-    cmd = 'Leet',
+    cmd   = 'Leet',
     build = ':TSUpdate html',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -177,16 +114,18 @@ return {
     },
     opts = {},
   },
+
   -- Persistence: auto-save / restore sessions
   {
     'folke/persistence.nvim',
     event = 'VeryLazy',
-    opts = {},
+    opts  = {},
   },
+
   -- Presenting: presentation mode
   {
     'harunnoir/presenting.nvim',
     opts = {},
-    cmd = { 'Presenting' },
+    cmd  = { 'Presenting' },
   },
 }
