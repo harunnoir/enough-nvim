@@ -83,7 +83,7 @@ map('n', '<C-h>', function() require('smart-splits').move_cursor_left() end,  { 
 map('n', '<C-j>', function() require('smart-splits').move_cursor_down() end,  { desc = 'Move to lower split' })
 map('n', '<C-k>', function() require('smart-splits').move_cursor_up() end,    { desc = 'Move to upper split' })
 map('n', '<C-l>', function() require('smart-splits').move_cursor_right() end, { desc = 'Move to right split' })
-map('n', '<C-m>', '<cmd>MaximizerToggle<CR>',                                 { desc = 'Maximize window' })
+map('n', '<leader>m', '<cmd>MaximizerToggle<CR>',                             { desc = 'Maximize window' })
 
 -- ── <A-*> = Resize + yank cycle ──────────────────────────────────────
 map('n', '<A-h>', function() require('smart-splits').resize_left() end,  { desc = 'Resize left' })
@@ -111,11 +111,14 @@ map('n', '<leader>bb', function() require('snacks').picker.buffers() end, { desc
 map('n', '<leader>bd', function() require('snacks').bufdelete() end,      { desc = 'Delete buffer' })
 
 -- ── c = Code / LSP ───────────────────────────────────────────────────
-map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action,                                              { desc = 'Code actions' })
-map('n',          '<leader>cr', '<CMD>Lspsaga rename<CR>',                                             { desc = 'Rename symbol' })
-map({ 'n', 'v' }, '<leader>cf', function() require('conform').format({ async = true }) end,           { desc = 'Format' })
-map('n',          '<leader>cs', function() require('snacks').picker.lsp_symbols() end,                { desc = 'Symbols' })
-map('n',          '<leader>cS', function() require('snacks').picker.lsp_workspace_symbols() end,      { desc = 'Workspace symbols' })
+map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action,                                         { desc = 'Code actions' })
+map('n',          '<leader>cr', '<CMD>Lspsaga rename<CR>',                                        { desc = 'Rename symbol' })
+map({ 'n', 'v' }, '<leader>cf', function() require('conform').format({ async = true }) end,      { desc = 'Format' })
+map('n',          '<leader>cs', function() require('snacks').picker.lsp_symbols() end,           { desc = 'Symbols' })
+map('n',          '<leader>cS', function() require('snacks').picker.lsp_workspace_symbols() end, { desc = 'Workspace symbols' })
+map('n',          '<leader>co', '<CMD>AerialToggle<CR>',                                          { desc = 'Outline toggle' })
+map('n',          '<leader>cn', function() require('aerial').next() end,                          { desc = 'Next symbol' })
+map('n',          '<leader>cp', function() require('aerial').prev() end,                          { desc = 'Prev symbol' })
 
 -- ── G = Git ──────────────────────────────────────────────────────────
 map('n', '<leader>Gg', function() require('snacks').lazygit() end,                                    { desc = 'Lazygit' })
@@ -200,7 +203,9 @@ map('n', '<leader>3', function() require('harpoon'):list():select(3) end, { desc
 map('n', '<leader>4', function() require('harpoon'):list():select(4) end, { desc = 'Harpoon file 4' })
 
 -- ── o = Overseer (Task Runner) ───────────────────────────────────────
-map('n', '<leader>or', '<CMD>OverseerRun<CR>',         { desc = 'Run task' })
-map('n', '<leader>ot', '<CMD>OverseerToggle<CR>',      { desc = 'Toggle output' })
-map('n', '<leader>ol', '<CMD>OverseerRestartLast<CR>', { desc = 'Restart last task' })
-map('n', '<leader>os', '<CMD>OverseerSaveBundle<CR>',  { desc = 'Save task bundle' })
+map('n', '<leader>or', '<CMD>OverseerRun<CR>',    { desc = 'Run task' })
+map('n', '<leader>ot', '<CMD>OverseerToggle<CR>', { desc = 'Toggle output' })
+map('n', '<leader>oo', '<CMD>OverseerOpen<CR>',   { desc = 'Open panel' })
+map('n', '<leader>ox', '<CMD>OverseerClose<CR>',  { desc = 'Close panel' })
+map('n', '<leader>os', '<CMD>OverseerShell<CR>',  { desc = 'Shell task' })
+map('n', '<leader>oa', '<CMD>OverseerTaskAction<CR>', { desc = 'Task action' })

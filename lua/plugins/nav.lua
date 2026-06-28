@@ -1,4 +1,14 @@
 return {
+  -- Aerial: LSP/treesitter symbol outline
+  {
+    'stevearc/aerial.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      backends = { 'lsp', 'treesitter' },
+      layout = { max_width = 30, min_width = 20 },
+      attach_mode = 'global',
+    },
+  },
   -- Smart-splits: window navigation & resize (keys in maps.lua)
   { 'mrjones2014/smart-splits.nvim' },
 
@@ -46,11 +56,11 @@ return {
       end
       return {
         highlights = {
-          OilGitAdded     = { fg = get_hl('DiagnosticOk',   'fg') or '#a9b665' },
-          OilGitModified  = { fg = get_hl('DiagnosticWarn', 'fg') or '#d8a657' },
-          OilGitRenamed   = { fg = get_hl('Keyword',        'fg') or '#d3869b' },
-          OilGitUntracked = { fg = get_hl('Function',       'fg') or '#7daea3' },
-          OilGitIgnored   = { fg = get_hl('Comment',        'fg') or '#928374' },
+          OilGitAdded = { fg = get_hl('DiagnosticOk', 'fg') or '#a9b665' },
+          OilGitModified = { fg = get_hl('DiagnosticWarn', 'fg') or '#d8a657' },
+          OilGitRenamed = { fg = get_hl('Keyword', 'fg') or '#d3869b' },
+          OilGitUntracked = { fg = get_hl('Function', 'fg') or '#7daea3' },
+          OilGitIgnored = { fg = get_hl('Comment', 'fg') or '#928374' },
         },
       }
     end,
