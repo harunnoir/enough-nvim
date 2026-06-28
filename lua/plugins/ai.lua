@@ -2,6 +2,7 @@ return {
   -- 99: AI chat in Neovim (keys in maps.lua under <leader>9)
   {
     'ThePrimeagen/99',
+    lazy = true,
     config = function()
       local _99    = require('99')
       local cwd    = vim.uv.cwd()
