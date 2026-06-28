@@ -198,3 +198,9 @@ map('n', '<leader>1', function() require('harpoon'):list():select(1) end, { desc
 map('n', '<leader>2', function() require('harpoon'):list():select(2) end, { desc = 'Harpoon file 2' })
 map('n', '<leader>3', function() require('harpoon'):list():select(3) end, { desc = 'Harpoon file 3' })
 map('n', '<leader>4', function() require('harpoon'):list():select(4) end, { desc = 'Harpoon file 4' })
+
+-- ── o = Overseer (Task Runner) ───────────────────────────────────────
+map('n', '<leader>or', '<CMD>OverseerRun<CR>',         { desc = 'Run task' })
+map('n', '<leader>ot', '<CMD>OverseerToggle<CR>',      { desc = 'Toggle output' })
+map('n', '<leader>ol', '<CMD>OverseerRestartLast<CR>', { desc = 'Restart last task' })
+map('n', '<leader>os', '<CMD>OverseerSaveBundle<CR>',  { desc = 'Save task bundle' })

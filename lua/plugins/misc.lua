@@ -1,4 +1,11 @@
 return {
+  -- Task runner inside Neovim. Run make/scripts, see output in splits.
+  {
+    'stevearc/overseer.nvim',
+    ---@module 'overseer'
+    ---@type overseer.SetupOpts
+    opts = {},
+  },
   -- Mini.clue: which-key replacement (shows leader tree)
   {
     'nvim-mini/mini.nvim',
@@ -25,18 +32,18 @@ return {
   {
     'TheNoeTrevino/haunt.nvim',
     opts = {
-      sign                = '󱙝',
-      sign_hl             = 'HauntAnnotation',
-      virt_text_hl        = 'HauntAnnotation',
-      annotation_prefix   = ' 󰆉 ',
-      annotation_suffix   = '',
-      line_hl             = nil,
-      virt_text_pos       = 'eol',
-      data_dir            = nil,
+      sign = '󱙝',
+      sign_hl = 'HauntAnnotation',
+      virt_text_hl = 'HauntAnnotation',
+      annotation_prefix = ' 󰆉 ',
+      annotation_suffix = '',
+      line_hl = nil,
+      virt_text_pos = 'eol',
+      data_dir = nil,
       per_branch_bookmarks = true,
-      picker              = 'auto',
+      picker = 'auto',
       picker_keys = {
-        delete          = { key = 'd', mode = { 'n' } },
+        delete = { key = 'd', mode = { 'n' } },
         edit_annotation = { key = 'a', mode = { 'n' } },
       },
     },
@@ -67,7 +74,7 @@ return {
   -- Calcium: in-buffer calculator
   {
     'necrom4/calcium.nvim',
-    cmd  = { 'Calcium' },
+    cmd = { 'Calcium' },
     opts = {},
   },
 
@@ -75,11 +82,11 @@ return {
   {
     '2kabhishek/nerdy.nvim',
     dependencies = { 'folke/snacks.nvim' },
-    cmd  = 'Nerdy',
+    cmd = 'Nerdy',
     opts = {
-      max_recents      = 30,
+      max_recents = 30,
       copy_to_clipboard = false,
-      copy_register    = '+',
+      copy_register = '+',
     },
   },
 
@@ -94,7 +101,7 @@ return {
     'nvzone/typr',
     dependencies = 'nvzone/volt',
     opts = {},
-    cmd  = { 'Typr', 'TyprStats' },
+    cmd = { 'Typr', 'TyprStats' },
   },
 
   -- Undotree: visual undo tree (key in maps.lua)
@@ -106,7 +113,7 @@ return {
   -- Leetcode: practice in Neovim
   {
     'kawre/leetcode.nvim',
-    cmd   = 'Leet',
+    cmd = 'Leet',
     build = ':TSUpdate html',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -119,13 +126,13 @@ return {
   {
     'folke/persistence.nvim',
     event = 'VeryLazy',
-    opts  = {},
+    opts = {},
   },
 
   -- Presenting: presentation mode
   {
     'harunnoir/presenting.nvim',
     opts = {},
-    cmd  = { 'Presenting' },
+    cmd = { 'Presenting' },
   },
 }

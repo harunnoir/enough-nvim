@@ -2,6 +2,7 @@ return {
   -- DAP: debug adapter protocol (all keys in maps.lua)
   {
     'mfussenegger/nvim-dap',
+    lazy = true,
     dependencies = {
       'rcarriga/nvim-dap-ui',
       'nvim-neotest/nvim-nio',

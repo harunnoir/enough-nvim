@@ -8,10 +8,46 @@ local servers = {
   'lua_ls', -- Lua
   'ts_ls', -- TypeScript/JavaScript
   'beancount', -- Plain text accounting
+  'rust_analyzer', -- Rust
+  'gopls', -- Go
 }
 for _, server in ipairs(servers) do
   vim.lsp.enable(server)
 end
+
+-- TypeScript/JavaScript
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_markers = { 'package.json', 'tsconfig.json', '.git' },
+})
+
+-- Go
+vim.lsp.config('gopls', {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+  root_markers = { 'go.mod', 'go.work', '.git' },
+  settings = {
+    gopls = {
+      analyses = { unusedparams = true },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})
+
+-- Rust
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_markers = { 'Cargo.toml', 'Cargo.lock', '.git' },
+  settings = {
+    ['rust-analyzer'] = {
+      checkOnSave = { command = 'clippy' },
+      inlayHints = { enable = true },
+    },
+  },
+})
 
 -- Python
 -- vim.lsp.config('basedpyright', {
