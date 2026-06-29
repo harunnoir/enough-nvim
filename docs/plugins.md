@@ -80,17 +80,13 @@ Every plugin answers "yes" to at least two of:
 
 | Plugin | Why |
 |--------|-----|
-| `smart-splits.nvim` | `C-h/j/k/l` window navigation — works across tmux+Neovim |
 | `gruvbox-material` | Colorscheme — soft dark, easy on the eyes |
 | `slimline.nvim` | Statusline — minimal, theme-aware, no dependencies |
-| `snacks.nvim` | Statuscolumn, picker, dashboard, terminal, indent guides, animations |
+| `snacks.nvim` | Statuscolumn, picker, dashboard, indent guides, animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
 | `yanky.nvim` | Yank history ring |
 | `toggleterm.nvim` | Terminal — vertical/horizontal/float, persistent |
 | `virt-column.nvim` | Soft colorcolumn at `NonText` highlight |
-| `quicker.nvim` | Better quickfix window UX |
-| `todo-comments.nvim` | Highlight `TODO`, `FIXME`, etc. |
-| `csvview.nvim` | CSV viewer with column alignment and navigation |
 
 ### misc.lua
 

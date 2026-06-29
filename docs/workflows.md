@@ -39,19 +39,17 @@
 
 ## Git Workflow
 
-1. `<leader>F` — fugit2 (lazygit-like interface)
-   - Stage/unstage files
-   - Commit with message
-   - Push/pull
-2. `<leader>gl` — git graph (visual log)
+1. `<leader>Gg` — lazygit
+2. `<leader>Gl` — git graph (visual log)
 3. Gitsigns gutter shows changed lines at a glance
+4. `<leader>Gb` — blame, `<leader>Gs` — stage hunk
 
 ## Debugging
 
 1. Set breakpoint: `<leader>db`
-2. Start debugger: `<F5>`
-3. Step through: `<F1>` (into), `<F2>` (over), `<F3>` (out)
-4. Inspect state: `<F6>` toggles DAP UI
+2. Start debugger: `<leader>dc`
+3. Step: `<leader>di` (into), `<leader>do` (over), `<leader>dO` (out)
+4. Toggle UI: `<leader>du`
 
 ## Adding Tools (Mason)
 
