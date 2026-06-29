@@ -1,6 +1,6 @@
 <pre align="center">
 <a href="#">
-  <img src="https://github.com/user-attachments/assets/850fced3-7841-482b-8381-ca9097781b60" width="88%" />
+  <img width="1322" height="720" alt="output" src="https://github.com/user-attachments/assets/a1cb5b4b-8b43-4412-baee-02e09ba500b3" />
 </a>
 </pre>
 
