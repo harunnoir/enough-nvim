@@ -4,12 +4,13 @@ return {
     opts = {
       style = 'fg',
       components = {
-        left = { 'mode', 'path', function() return vim.t.maximized and ' 󰊓 ' or '' end, 'git' },
+        left = { 'mode', 'path', 'git' },
         center = {
           function()
             local rec = vim.fn.reg_recording()
             return rec ~= '' and 'recording @' .. rec or ''
           end,
+          function() return vim.t.maximized and ' 󰊓 ' or '' end,
         },
         right = {
           'diagnostics',
