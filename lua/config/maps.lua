@@ -83,7 +83,7 @@ map('n', '<C-h>', function() require('smart-splits').move_cursor_left() end,  { 
 map('n', '<C-j>', function() require('smart-splits').move_cursor_down() end,  { desc = 'Move to lower split' })
 map('n', '<C-k>', function() require('smart-splits').move_cursor_up() end,    { desc = 'Move to upper split' })
 map('n', '<C-l>', function() require('smart-splits').move_cursor_right() end, { desc = 'Move to right split' })
-map('n', '<leader>m', '<cmd>MaximizerToggle<CR>',                             { desc = 'Maximize window' })
+map('n', '<leader>z', '<cmd>Maximize<CR>',                                    { desc = 'Maximize window' })
 
 -- ── <A-*> = Resize + yank cycle ──────────────────────────────────────
 map('n', '<A-h>', function() require('smart-splits').resize_left() end,  { desc = 'Resize left' })
@@ -116,9 +116,6 @@ map('n',          '<leader>cr', '<CMD>Lspsaga rename<CR>',                      
 map({ 'n', 'v' }, '<leader>cf', function() require('conform').format({ async = true }) end,      { desc = 'Format' })
 map('n',          '<leader>cs', function() require('snacks').picker.lsp_symbols() end,           { desc = 'Symbols' })
 map('n',          '<leader>cS', function() require('snacks').picker.lsp_workspace_symbols() end, { desc = 'Workspace symbols' })
-map('n',          '<leader>co', '<CMD>AerialToggle<CR>',                                          { desc = 'Outline toggle' })
-map('n',          '<leader>cn', function() require('aerial').next() end,                          { desc = 'Next symbol' })
-map('n',          '<leader>cp', function() require('aerial').prev() end,                          { desc = 'Prev symbol' })
 
 -- ── G = Git ──────────────────────────────────────────────────────────
 map('n', '<leader>Gg', function() require('snacks').lazygit() end,                                    { desc = 'Lazygit' })

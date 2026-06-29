@@ -1,14 +1,4 @@
 return {
-  -- Aerial: LSP/treesitter symbol outline
-  {
-    'stevearc/aerial.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    opts = {
-      backends = { 'lsp', 'treesitter' },
-      layout = { max_width = 30, min_width = 20 },
-      attach_mode = 'global',
-    },
-  },
   -- Smart-splits: window navigation & resize (keys in maps.lua)
   { 'mrjones2014/smart-splits.nvim' },
 
@@ -16,7 +6,7 @@ return {
   { 'chrisgrieser/nvim-spider', lazy = true },
 
   -- Maximizer: toggle window fullscreen (keys in maps.lua)
-  { 'amwadud/nvim-maximizer', lazy = true },
+  { 'declancm/maximize.nvim', config = true },
 
   -- Flash: jump anywhere visible (keys in maps.lua)
   {

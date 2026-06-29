@@ -4,9 +4,25 @@ return {
     opts = {
       style = 'fg',
       components = {
-        left = { 'mode', 'path', 'git' },
-        center = {},
-        right = { 'diagnostics', 'filetype_lsp' },
+        left = { 'mode', 'path', function() return vim.t.maximized and ' 󰊓 ' or '' end, 'git' },
+        center = {
+          function()
+            local rec = vim.fn.reg_recording()
+            return rec ~= '' and 'recording @' .. rec or ''
+          end,
+        },
+        right = {
+          'diagnostics',
+          function()
+            local buf = vim.api.nvim_get_current_buf()
+            local formatters = require('conform').list_formatters(buf)
+            if #formatters == 0 then
+              return ''
+            end
+            return ' ' .. formatters[1].name
+          end,
+          'filetype_lsp',
+        },
       },
       hl = {
         base = 'StatusLine',
