@@ -10,16 +10,16 @@ return {
       'leoluz/nvim-dap-go',
     },
     config = function()
-      local dap    = require('dap')
-      local dapui  = require('dapui')
+      local dap = require('dap')
+      local dapui = require('dapui')
 
       dapui.setup({
         layouts = {
           {
             elements = {
-              { id = 'scopes',      size = 0.33 },
-              { id = 'watches',     size = 0.17 },
-              { id = 'stacks',      size = 0.17 },
+              { id = 'scopes', size = 0.33 },
+              { id = 'watches', size = 0.17 },
+              { id = 'stacks', size = 0.17 },
               { id = 'breakpoints', size = 0.33 },
             },
             size = 0.33,
@@ -27,7 +27,7 @@ return {
           },
           {
             elements = {
-              { id = 'repl',    size = 0.45 },
+              { id = 'repl', size = 0.45 },
               { id = 'console', size = 0.55 },
             },
             size = 0.25,
@@ -36,19 +36,19 @@ return {
         },
         floating = {
           max_height = 0.9,
-          max_width  = 0.5,
-          border     = 'rounded',
+          max_width = 0.5,
+          border = 'rounded',
         },
       })
 
-      dap.listeners.after.event_initialized['dapui_config']  = dapui.open
-      dap.listeners.before.event_terminated['dapui_config']  = dapui.close
-      dap.listeners.before.event_exited['dapui_config']      = dapui.close
+      dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+      dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+      dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
-      vim.fn.sign_define('DapBreakpoint',          { text = '',  texthl = 'DiagnosticSignError' })
-      vim.fn.sign_define('DapBreakpointCondition', { text = '',  texthl = 'DiagnosticSignInfo' })
-      vim.fn.sign_define('DapLogPoint',            { text = '',  texthl = 'DiagnosticSignInfo' })
-      vim.fn.sign_define('DapStopped',             { text = '',  texthl = 'DiagnosticSignWarn' })
+      vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticSignError' })
+      vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DiagnosticSignInfo' })
+      vim.fn.sign_define('DapLogPoint', { text = '✎', texthl = 'DiagnosticSignInfo' })
+      vim.fn.sign_define('DapStopped', { text = '▶', texthl = 'DiagnosticSignWarn' })
     end,
   },
 

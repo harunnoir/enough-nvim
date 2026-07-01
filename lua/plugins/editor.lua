@@ -1,14 +1,4 @@
 return {
-  -- Mini.align: align text (tables, assignments)
-  {
-    'echasnovski/mini.align',
-    version = false,
-    keys = {
-      { 'ga', mode = { 'n', 'x' } },
-      { 'gA', mode = { 'n', 'x' } },
-    },
-    config = function() require('mini.align').setup() end,
-  },
   -- Blink.cmp: completion engine (LSP, snippets, buffer, dictionary)
   {
     'saghen/blink.cmp',
@@ -70,6 +60,16 @@ return {
         },
       },
     },
+  },
+  -- Mini.align: align text (tables, assignments)
+  {
+    'echasnovski/mini.align',
+    version = false,
+    keys = {
+      { 'ga', mode = { 'n', 'x' } },
+      { 'gA', mode = { 'n', 'x' } },
+    },
+    config = function() require('mini.align').setup() end,
   },
   -- Conform: format on demand
   {

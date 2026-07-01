@@ -3,7 +3,8 @@ vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
 
 -- LSP servers to enable (configs defined below via vim.lsp.config)
 local servers = {
-  'pyright', -- Python
+  -- 'pyright', -- Python
+  'basedpyright', -- Python
   'clangd', -- C/C++
   'lua_ls', -- Lua
   'ts_ls', -- TypeScript/JavaScript
@@ -50,22 +51,23 @@ vim.lsp.config('rust_analyzer', {
 })
 
 -- Python
--- vim.lsp.config('basedpyright', {
---     cmd = { 'basedpyright-langserver', '--stdio' },
---     filetypes = { 'python' },
---     root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
---     settings = {
---         basedpyright = {
---             analysis = {
---                 autoSearchPaths = true,
---                 useLibraryCodeForTypes = true,
---                 typeCheckingMode = 'basic',
---                 diagnosticMode = 'openFilesOnly',
---             },
---         },
---     },
--- })
-vim.lsp.config('pyright', {
+vim.lsp.config('basedpyright', {
+    cmd = { 'basedpyright-langserver', '--stdio' },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+    settings = {
+        basedpyright = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = 'all', -- off=none basic=common standard=unknown strict=full all=pedantic
+                diagnosticMode = 'openFilesOnly',
+            },
+        },
+    },
+})
+
+--[[ vim.lsp.config('pyright', {
     cmd = { 'pyright-langserver', '--stdio' },
     filetypes = { 'python' },
     root_markers = {
@@ -75,7 +77,7 @@ vim.lsp.config('pyright', {
         'requirements.txt',
         '.git',
     },
-})
+}) ]]
 
 -- C/C++
 vim.lsp.config('clangd', {

@@ -7,8 +7,8 @@ vim.o.laststatus = 3
 vim.o.ttimeoutlen = 50
 
 -- UI
-vim.opt.scrolloff = 5
-vim.opt.sidescrolloff = 8
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 3
 vim.opt.shortmess:append('c')
 vim.opt.list = true
 vim.opt.listchars = {
@@ -55,22 +55,6 @@ vim.o.hidden = true
 vim.o.undofile = true
 vim.o.swapfile = false
 vim.o.backup = false
-
--- Clipboard & Spell
--- FIXME: Clipboard may not work if $WAYLAND_DISPLAY is undefined
---
--- vim.g.clipboard = {
---   name = 'wl-clipboard',
---   copy = {
---     ['+'] = 'wl-copy',
---     ['*'] = 'wl-copy',
---   },
---   paste = {
---     ['+'] = 'wl-paste --no-newline',
---     ['*'] = 'wl-paste --no-newline',
---   },
---   cache_enabled = true,
--- }
 
 vim.o.clipboard = 'unnamedplus'
 vim.o.spell = false

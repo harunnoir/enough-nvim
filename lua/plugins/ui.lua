@@ -54,6 +54,46 @@ return {
       vim.cmd.colorscheme('gruvbox-material')
     end,
   },
+  --[[ {
+    'luukvbaal/statuscol.nvim',
+    event = 'BufReadPre',
+    config = function()
+      local builtin = require('statuscol.builtin')
+
+      require('statuscol').setup({
+        relculright = true,
+        segments = {
+          -- Fold column (thin chars via fillchars)
+          {
+            text = { builtin.foldfunc, ' ' },
+            click = 'v:lua.ScFa',
+            hl = 'FoldColumn',
+          },
+          -- Git signs
+          {
+            sign = { namespace = { 'gitsigns' }, maxwidth = 1, colwidth = 1, auto = false },
+            click = 'v:lua.ScSa',
+          },
+          -- Diagnostics
+          {
+            sign = { namespace = { 'diagnostic/signs' }, maxwidth = 1, colwidth = 1, auto = false },
+            click = 'v:lua.ScSa',
+          },
+          -- Todo-comments + DAP + everything else
+          {
+            sign = { name = { '.*' }, maxwidth = 1, colwidth = 1, auto = true, wrap = true },
+            click = 'v:lua.ScSa',
+          },
+          -- Line number
+          {
+            text = { builtin.lnumfunc, ' ' },
+            condition = { true, builtin.not_empty },
+            click = 'v:lua.ScLa',
+          },
+        },
+      })
+    end,
+  }, ]]
   {
     'folke/snacks.nvim',
     priority = 1000,
