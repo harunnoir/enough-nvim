@@ -44,6 +44,10 @@ return {
       disabled_filetypes = { 'snacks_dashboard', 'oil', 'toggleterm' },
     },
   },
+  -- Some nice colroschemes
+  {
+    'nendix/zen.nvim',
+  },
   {
     'sainnhe/gruvbox-material',
     lazy = false,
