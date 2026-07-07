@@ -47,6 +47,7 @@ return {
   -- Some nice colroschemes
   {
     'nendix/zen.nvim',
+    'vague-theme/vague.nvim'
   },
   {
     'sainnhe/gruvbox-material',
