@@ -1,4 +1,10 @@
 return {
+  -- Smart indent
+  {
+    'nemanjamalesija/smart-paste.nvim',
+    event = 'VeryLazy',
+    config = true,
+  },
   -- Blink.cmp: completion engine (LSP, snippets, buffer, dictionary)
   {
     'saghen/blink.cmp',
