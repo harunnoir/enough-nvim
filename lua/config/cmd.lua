@@ -123,19 +123,6 @@ api.nvim_create_autocmd('FileType', {
 })
 
 -------------------------------------------------------
--- Scratch file helper
--------------------------------------------------------
-vim.keymap.set('n', '<leader>st', function()
-  vim.ui.input({ prompt = 'scratch ext: .' }, function(ext)
-    if not ext or ext == '' then
-      return
-    end
-    local tmpfile = vim.fn.tempname() .. '.' .. ext
-    vim.cmd('edit ' .. vim.fn.fnameescape(tmpfile))
-  end)
-end, { desc = 'Scratch file' })
-
--------------------------------------------------------
 -- CSV view auto enable
 -------------------------------------------------------
 local csv_group = api.nvim_create_augroup('CsvViewAutoEnable', { clear = true })
