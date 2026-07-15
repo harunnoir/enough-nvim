@@ -8,5 +8,6 @@ return {
   { import = 'plugins.ui' },
   { import = 'plugins.misc' },
   { import = 'plugins.ai' },
+  { import = 'plugins.test' },
   { import = 'plugins.lang' },
 }

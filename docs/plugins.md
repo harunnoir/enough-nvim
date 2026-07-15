@@ -80,8 +80,7 @@ Every plugin answers "yes" to at least two of:
 
 | Plugin | Why |
 |--------|-----|
-| `gruvbox-material` | Colorscheme — soft dark, easy on the eyes |
-| `slimline.nvim` | Statusline — minimal, theme-aware, no dependencies |
+| `gruvbox-material` / `zen` / `vague` | Colorschemes — switch via `theme` variable in `ui.lua` |
 | `snacks.nvim` | Statuscolumn, picker, dashboard, indent guides, animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
 | `yanky.nvim` | Yank history ring |
@@ -100,9 +99,8 @@ Every plugin answers "yes" to at least two of:
 | `nerdy.nvim` | Nerd Font icon browser (`<leader>in`) |
 | `undotree.nvim` | Visual undo tree (`<leader>u`) |
 | `persistence.nvim` | Auto-save/restore sessions |
-| `calcium.nvim` | In-buffer calculator |
 | `leetcode.nvim` | LeetCode in Neovim |
-| `presenting.nvim` | Presentation mode |
+| `mini.starter` | Lightweight startup screen (recent files + actions) |
 
 ## What Was Removed / Rejected
 
@@ -111,7 +109,7 @@ Every plugin answers "yes" to at least two of:
 | `nvim-lspconfig` | Neovim 0.11 has `vim.lsp.enable()` built-in |
 | `goto-preview` | Replaced by glance.nvim (cleaner UX) |
 | `vim-tmux-navigator` | Replaced by smart-splits.nvim (works without tmux) |
-| `alpha-nvim` | Replaced by dashboard-nvim (lighter) |
+| `alpha-nvim` | Replaced by snacks dashboard (lighter) |
 | `leap.nvim` | Replaced by flash.nvim (more features, same speed) |
 | `colorizer.nvim` | Replaced by mini.hipatterns (lighter) |
 | `obsidian.nvim`, `neorg` | Not in active use — removed |
@@ -120,3 +118,8 @@ Every plugin answers "yes" to at least two of:
 | `dictionary.nvim` | Redundant — `blink-cmp-words` handles thesaurus/dictionary |
 | `atone.nvim` | Redundant — `<leader>st` scratch helper covers the use case |
 | `telescope.nvim` | Replaced by snacks.picker (built-in, one less plugin) |
+| `presenting.nvim` | Presentation mode — niche, removed to trim |
+| `calcium.nvim` | In-buffer calculator — redundant with built-in `=` |
+| `typr.nvim` | Typing tutor — fun but unused |
+| `mini.clue` | Removed — adds 300ms delay on `<leader>`, unnecessary |
+| `slimline.nvim` | Removed — statusline unnecessary, prefer minimal UI |

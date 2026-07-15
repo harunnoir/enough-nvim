@@ -1,4 +1,12 @@
 return {
+  -- undo tree visualization
+  {
+    "XXiaoA/atone.nvim",
+    cmd = "Atone",
+    ---@module "atone"
+    ---@type AtoneConfig
+    opts = {},
+  },
   -- Smart indent
   {
     'nemanjamalesija/smart-paste.nvim',
@@ -142,6 +150,13 @@ return {
   },
   -- Vim-repeat: make . repeat plugin actions
   { 'tpope/vim-repeat', event = 'VeryLazy' },
+  -- Treesj: split/join blocks (function args, if/else, tables)
+  {
+    'Wansmer/treesj',
+    keys = { '<leader>sj' },
+    cmd = { 'TSJToggle', 'TSJSplit', 'TSJJoin' },
+    opts = { use_default_keymaps = false },
+  },
   -- Dial: increment / decrement numbers, dates, hex colors
   {
     'monaqa/dial.nvim',

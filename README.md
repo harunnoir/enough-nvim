@@ -46,7 +46,7 @@ For a full automated setup:
 │       ├── git.lua           gitsigns, gitgraph, fugit2
 │       ├── dap.lua           nvim-dap, dap-ui, python/go debugger
 │       ├── ai.lua            99 AI chat
-│       ├── ui.lua            slimline, gruvbox-material, snacks, toggleterm, noice
+│       ├── ui.lua            zen/vague/gruvbox-material, snacks, toggleterm, noice
 │       ├── misc.lua          haunt, undotree, nerdy, render-markdown
 │       └── lang.lua          language-specific extras
 ```
@@ -64,7 +64,7 @@ For a full automated setup:
 | `<A-h/j/k/l>` | n | Resize split |
 | `<leader><leader>h/j/k/l>` | n | Swap buffer with split |
 | `<leader>sv/sh/sx/se` | n | Split vertical/horizontal/close/equalize |
-| `<C-m>` | n | Toggle maximize |
+| `<leader>z` | n | Toggle maximize |
 | `<BS>` | n | Alternate buffer |
 
 ### Search & Navigate
@@ -106,8 +106,12 @@ For a full automated setup:
 
 | Key | Action |
 |-----|--------|
-| `<leader>gl` | Git graph |
-| `<leader>F` | Fugit2 (lazygit-like) |
+| `<leader>Gg` | Lazygit |
+| `<leader>Gb` | Blame line |
+| `<leader>Gs` | Stage hunk |
+| `<leader>Gu` | Unstage hunk |
+| `<leader>Gl` | Git graph |
+| `<leader>GB` | Git browse |
 
 ### Editing
 
@@ -138,7 +142,7 @@ For a full automated setup:
 
 ## Colorscheme
 
-[gruvbox-material](https://github.com/sainnhe/gruvbox-material) — soft background, dark mode.
+[zen.nvim](https://github.com/nendix/zen.nvim) — dark, clean. Switch via `theme` variable in `ui.lua`.
 
 ## Docs
 

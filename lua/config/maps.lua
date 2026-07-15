@@ -105,6 +105,7 @@ map('n', '<leader>f.', function() require('snacks').picker.resume() end,        
 map('n', '<leader>fh', function() require('snacks').picker.help() end,                           { desc = 'Help tags' })
 map('n', '<leader>fk', function() require('snacks').picker.keymaps() end,                        { desc = 'Keymaps' })
 map('n', '<leader>fl', function() require('snacks').picker.lines() end,                          { desc = 'Buffer lines' })
+map('n', '<leader>fp', function() require('snacks').picker.projects() end,                       { desc = 'Projects' })
 
 -- ── b = Buffers ───────────────────────────────────────────────────────
 map('n', '<leader>bb', function() require('snacks').picker.buffers() end, { desc = 'List buffers' })
@@ -126,11 +127,12 @@ map('n', '<leader>Gu', function() require('gitsigns').undo_stage_hunk() end,    
 map('n', '<leader>Gl', function() require('gitgraph').draw({}, { all = true, max_count = 5000 }) end, { desc = 'Git graph' })
 map('n', '<leader>GB', function() require('snacks').gitbrowse() end,                                  { desc = 'Git browse' })
 
--- ── s = Splits ───────────────────────────────────────────────────────
+-- ── s = Splits / Split-Join ───────────────────────────────────────────
 map('n', '<leader>sv', '<C-w>v',  { desc = 'Split vertical' })
 map('n', '<leader>sh', '<C-w>s',  { desc = 'Split horizontal' })
 map('n', '<leader>sx', '<C-w>c',  { desc = 'Close split' })
 map('n', '<leader>se', '<C-w>=',  { desc = 'Equalize splits' })
+map('n', '<leader>sj', function() require('treesj').toggle() end, { desc = 'Toggle split/join' })
 
 -- Smart splits: swap buffers across splits
 map('n', '<leader><leader>h', function() require('smart-splits').swap_buf_left() end,  { desc = 'Swap buf left' })
@@ -206,3 +208,7 @@ map('n', '<leader>oo', '<CMD>OverseerOpen<CR>',   { desc = 'Open panel' })
 map('n', '<leader>ox', '<CMD>OverseerClose<CR>',  { desc = 'Close panel' })
 map('n', '<leader>os', '<CMD>OverseerShell<CR>',  { desc = 'Shell task' })
 map('n', '<leader>oa', '<CMD>OverseerTaskAction<CR>', { desc = 'Task action' })
+
+map('n', '<leader>ca', '<CMD>Atone<CR>', { desc = 'Redo/Undo tree' })
+
+

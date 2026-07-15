@@ -1,211 +1,126 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ──────────────────────────────────────────────────
-# install.sh — user-level bootstrap for this config
-# Installs Mason packages (LSPs, formatters, linters)
-# and runs language-specific setup scripts.
-#
-# Pre-requisites (expected on system):
-#   neovim, git, gcc, ripgrep, fd
-#
-# No sudo needed (except for prereqs above).
-#
-# Usage:
-#   bash install.sh           — full install
-#   bash install.sh --minimal — just plugins, skip extras
-#   bash install.sh --lang python  — run lang script
-# ──────────────────────────────────────────────────
-
-RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
-NC='\033[0m'
+# ── Colors ──────────────────────────────────────────
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
 log()  { printf "${GREEN}==>${NC} %s\n" "$*"; }
 warn() { printf "${YELLOW}==>${NC} %s\n" "$*"; }
 err()  { printf "${RED}==>${NC} %s\n" "$*" >&2; }
 
 has_cmd() { command -v "$1" &>/dev/null; }
 
-# ── Distro detection (for help messages) ──────────
-
-detect_distro() {
-    if has_cmd pacman; then echo 'arch'
-    elif has_cmd apt; then echo 'debian'
-    elif has_cmd dnf; then echo 'fedora'
-    elif has_cmd xbps-install; then echo 'void'
-    elif has_cmd brew; then echo 'macos'
-    else echo 'unknown'
-    fi
-}
-
 # ── Prerequisite check ────────────────────────────
 
-PREREQS=(nvim git gcc rg fd)
+PREREQS=(nvim git gcc rg fd unzip)
 
 check_prereqs() {
-    local missing=()
-    for cmd in "${PREREQS[@]}"; do
-        if ! has_cmd "$cmd"; then
-            missing+=("$cmd")
-        fi
-    done
+  local missing=()
+  for cmd in "${PREREQS[@]}"; do
+    has_cmd "$cmd" || missing+=("$cmd")
+  done
 
-    if ((${#missing[@]} > 0)); then
-        err 'missing core tools needed for this config:'
-        for cmd in "${missing[@]}"; do
-            printf "  ${RED}✗${NC} %s\n" "$cmd"
-        done
-        echo ''
-        err 'install them with:'
-        case "$(detect_distro)" in
-            arch)   err "  sudo pacman -S --needed ${missing[*]}" ;;
-            debian) err "  sudo apt install ${missing[*]}" ;;
-            fedora) err "  sudo dnf install ${missing[*]}" ;;
-            void)   err "  sudo xbps-install ${missing[*]}" ;;
-            macos)  err "  brew install ${missing[*]}" ;;
-            *)
-                for cmd in "${missing[@]}"; do
-                    case "$cmd" in
-                        nvim) err '  https://github.com/neovim/neovim/wiki/Installing-Neovim' ;;
-                        git)  err '  https://git-scm.com/downloads' ;;
-                        gcc)  err '  https://gcc.gnu.org/install/' ;;
-                        rg)   err '  https://github.com/BurntSushi/ripgrep#installation' ;;
-                        fd)   err '  https://github.com/sharkdp/fd#installation' ;;
-                    esac
-                done ;;
-        esac
-        exit 1
+  if ((${#missing[@]} > 0)); then
+    err "missing core tools: ${missing[*]}"
+    if has_cmd apt; then        err "  sudo apt install ${missing[*]}"
+    elif has_cmd pacman; then   err "  sudo pacman -S --needed ${missing[*]}"
+    elif has_cmd dnf; then      err "  sudo dnf install ${missing[*]}"
+    elif has_cmd xbps-install; then err "  sudo xbps-install ${missing[*]}"
+    elif has_cmd brew; then     err "  brew install ${missing[*]}"
     fi
+    exit 1
+  fi
 }
 
-# ── User-level setup ──────────────────────────────
-
-setup_path() {
-    mkdir -p "$HOME/.local/bin" "$HOME/.npm-global/bin"
-    if has_cmd npm && [ "$(npm config get prefix)" != "$HOME/.npm-global" ]; then
-        npm config set prefix "$HOME/.npm-global"
-    fi
-    export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH"
-}
-
-# ── Mason: install LSPs, formatters, linters ──────
+# ── Mason: LSPs, formatters, linters ──────────────
 
 MASON_PACKAGES=(
-    # LSP servers
-    pyright
-    clangd
-    lua-language-server
-    typescript-language-server
-    beancount-language-server
-    # Formatters
-    stylua
-    ruff
-    shfmt
-    prettier
-    # Linters
-    flake8
-    markdownlint
-    shellcheck
-    # DAP
-    debugpy
+  basedpyright clangd lua-language-server typescript-language-server beancount-language-server
+  stylua ruff shfmt prettier
+  flake8 markdownlint shellcheck
+  debugpy
 )
 
-install_mason_packages() {
-    log 'installing plugins (lazy.nvim)…'
-    nvim --headless '+Lazy! sync' +qa 2>/dev/null || true
+install_mason() {
+  log 'installing plugins (lazy.nvim)…'
+  nvim --headless '+Lazy! sync' +qa 2>/dev/null || true
 
-    log 'installing Mason packages…'
-    nvim --headless "+MasonInstall ${MASON_PACKAGES[*]}" +qa 2>/dev/null || true
+  log 'installing Mason packages…'
+  nvim --headless "+MasonInstall ${MASON_PACKAGES[*]}" +qa 2>/dev/null || true
 }
 
-verify_core() {
-    log 'verifying core installations…'
-    local missing=()
-
-    # System-level tools
-    for cmd in nvim git gcc unzip rg fd; do
-        if has_cmd "$cmd"; then
-            printf "  ${GREEN}✓${NC} %s\n" "$cmd"
-        else
-            printf "  ${RED}✗${NC} %s\n" "$cmd"
-            missing+=("system:${cmd}")
-        fi
-    done
-
-    # Mason-installed tools
-    local mason_bin="$HOME/.local/share/nvim/mason/bin"
-    for cmd in clangd lua-language-server pyright typescript-language-server stylua shfmt ruff flake8 markdownlint shellcheck debugpy prettier; do
-        if [ -x "$mason_bin/$cmd" ]; then
-            printf "  ${GREEN}✓${NC} %s\n" "$cmd"
-        else
-            printf "  ${RED}✗${NC} %s\n" "$cmd"
-            missing+=("${cmd}")
-        fi
-    done
-
-    if ((${#missing[@]} > 0)); then
-        warn "some tools missing: ${missing[*]}"
+verify_mason() {
+  local mason_bin="$HOME/.local/share/nvim/mason/bin"
+  local missing=()
+  for cmd in clangd lua-language-server basedpyright typescript-language-server stylua shfmt ruff flake8 markdownlint shellcheck debugpy prettier; do
+    if [ -x "$mason_bin/$cmd" ]; then
+      printf "  ${GREEN}✓${NC} %s\n" "$cmd"
     else
-        log 'all tools present!'
+      printf "  ${RED}✗${NC} %s\n" "$cmd"
+      missing+=("$cmd")
     fi
+  done
+  ((${#missing[@]} > 0)) && warn "missing: ${missing[*]}" || log 'all Mason tools present!'
 }
 
-run_lang_script() {
-    local lang="$1"
-    local script
-    script="$(cd "$(dirname "$0")" && pwd)/lang/${lang}.sh"
-    [ -f "$script" ] && bash "$script"
+# ── Lang scripts ──────────────────────────────────
+
+run_lang() {
+  local lang="$1"
+  local script
+  script="$(cd "$(dirname "$0")" && pwd)/lang/${lang}.sh"
+  [ -f "$script" ] && bash "$script" || warn "no script for: $lang"
+}
+
+# ── User paths (for pipx, cargo, etc.) ───────────
+
+setup_path() {
+  mkdir -p "$HOME/.local/bin"
+  export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 }
 
 # ── Main ──────────────────────────────────────────
 
 usage() {
-    cat <<EOF
+  cat <<EOF
 Usage: bash install.sh [OPTION]
 
 Options:
-  --minimal       just install plugins, skip Mason + lang scripts
-  --lang <name>   run a specific language setup script and exit
+  --minimal       plugins only, skip Mason + lang scripts
+  --lang <name>   run a language setup script (python, node)
   --help          show this help
-
-Without options, installs plugins + Mason packages + Python/Node tools.
 EOF
 }
 
 main() {
-    local minimal_mode=false
-    local lang_only=''
+  local minimal=false lang_only=''
 
-    while (($# > 0)); do
-        case "$1" in
-            --minimal) minimal_mode=true; shift ;;
-            --lang) lang_only="$2"; shift 2 ;;
-            --help) usage; exit 0 ;;
-            *) err "unknown option: $1"; usage; exit 1 ;;
-        esac
-    done
+  while (($# > 0)); do
+    case "$1" in
+      --minimal) minimal=true; shift ;;
+      --lang)    lang_only="$2"; shift 2 ;;
+      --help)    usage; exit 0 ;;
+      *)         err "unknown: $1"; usage; exit 1 ;;
+    esac
+  done
 
-    check_prereqs
+  check_prereqs
+
+  if [ -n "$lang_only" ]; then
+    run_lang "$lang_only"; exit $?
+  fi
+
+  if $minimal; then
+    log 'minimal — plugins only…'
+    nvim --headless '+Lazy! sync' +qa 2>/dev/null || true
+  else
+    install_mason
     setup_path
+    run_lang python 2>/dev/null || true
+    run_lang node   2>/dev/null || true
+    verify_mason
+  fi
 
-    if [ -n "$lang_only" ]; then
-        run_lang_script "$lang_only"
-        exit $?
-    fi
-
-    if ! $minimal_mode; then
-        install_mason_packages
-        setup_path
-        for lang in python node; do
-            run_lang_script "$lang" 2>/dev/null || true
-        done
-        verify_core
-    else
-        log 'minimal — installing plugins only…'
-        nvim --headless '+Lazy! sync' +qa 2>/dev/null || true
-    fi
-
-    log ''
-    log 'done!'
+  log 'done!'
 }
 
 main "$@"

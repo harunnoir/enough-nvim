@@ -1,4 +1,45 @@
+local theme = 'zen' -- 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague'
+
 return {
+  {
+    'sainnhe/gruvbox-material',
+    lazy = (theme ~= 'gruvbox-material'),
+    priority = 1000,
+    config = function()
+      vim.o.background = 'dark'
+      vim.g.gruvbox_material_background = 'soft'
+      vim.cmd.colorscheme('gruvbox-material')
+    end,
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+    lazy = (theme ~= 'gruvbox'),
+    priority = 1000,
+    opts = {},
+    config = function(_, opts)
+      require('gruvbox').setup(opts)
+      vim.cmd.colorscheme('gruvbox')
+    end,
+  },
+  {
+    'https://gitlab.com/motaz-shokry/gruvbox.nvim',
+    name = 'gruvbox',
+    lazy = (theme ~= 'gruvbox-new'),
+    priority = 1000,
+    config = function() vim.cmd.colorscheme('gruvbox') end,
+  },
+  {
+    'nendix/zen.nvim',
+    lazy = (theme ~= 'zen'),
+    priority = 1000,
+    config = function() vim.cmd.colorscheme('zen') end,
+  },
+  {
+    'vague-theme/vague.nvim',
+    lazy = (theme ~= 'vague'),
+    priority = 1000,
+    config = function() vim.cmd.colorscheme('vague') end,
+  },
   {
     'sschleemilch/slimline.nvim',
     opts = {
@@ -41,76 +82,21 @@ return {
         left = '',
         right = '',
       },
-      disabled_filetypes = { 'snacks_dashboard', 'oil', 'toggleterm' },
+      disabled_filetypes = { 'snacks_dashboard', 'oil', 'toggleterm', 'ministarter', '' },
     },
   },
-  -- Some nice colroschemes
-  {
-    'nendix/zen.nvim',
-    'vague-theme/vague.nvim'
-  },
-  {
-    'sainnhe/gruvbox-material',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.o.background = 'dark'
-      vim.g.gruvbox_material_background = 'soft'
-      vim.cmd.colorscheme('gruvbox-material')
-    end,
-  },
-  --[[ {
-    'luukvbaal/statuscol.nvim',
-    event = 'BufReadPre',
-    config = function()
-      local builtin = require('statuscol.builtin')
-
-      require('statuscol').setup({
-        relculright = true,
-        segments = {
-          -- Fold column (thin chars via fillchars)
-          {
-            text = { builtin.foldfunc, ' ' },
-            click = 'v:lua.ScFa',
-            hl = 'FoldColumn',
-          },
-          -- Git signs
-          {
-            sign = { namespace = { 'gitsigns' }, maxwidth = 1, colwidth = 1, auto = false },
-            click = 'v:lua.ScSa',
-          },
-          -- Diagnostics
-          {
-            sign = { namespace = { 'diagnostic/signs' }, maxwidth = 1, colwidth = 1, auto = false },
-            click = 'v:lua.ScSa',
-          },
-          -- Todo-comments + DAP + everything else
-          {
-            sign = { name = { '.*' }, maxwidth = 1, colwidth = 1, auto = true, wrap = true },
-            click = 'v:lua.ScSa',
-          },
-          -- Line number
-          {
-            text = { builtin.lnumfunc, ' ' },
-            condition = { true, builtin.not_empty },
-            click = 'v:lua.ScLa',
-          },
-        },
-      })
-    end,
-  }, ]]
   {
     'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
-    dependencies = { 'amansingh-afk/milli.nvim' },
+    -- dependencies = { 'amansingh-afk/milli.nvim' },
     opts = function()
-      local splash = require('milli').load({ splash = 'batmancatman' })
+      -- local splash = require('milli').load({ splash = 'batmancatman' })
       return {
-        dashboard = {
+        --[[ dashboard = {
           enabled = true,
           preset = {
-            header = table.concat(splash.frames[1], '\n'),
+            header = 'TODO: set your header', -- table.concat(splash.frames[1], '\n'),
             keys = {
               { icon = '󰈞 ', desc = 'Find File', key = 'f', action = ':lua Snacks.picker.files()' },
               { icon = '󰍉 ', desc = 'Grep', key = 'g', action = ':lua Snacks.picker.grep()' },
@@ -129,7 +115,7 @@ return {
             { section = 'keys', gap = 1, padding = 1 },
             { section = 'startup' },
           },
-        },
+        }, ]]
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
         git = { enabled = true },
@@ -175,7 +161,7 @@ return {
     end,
     config = function(_, opts)
       require('snacks').setup(opts)
-      require('milli').snacks({ splash = 'batmancatman', loop = true })
+      -- require('milli').snacks({ splash = 'batmancatman', loop = true })
     end,
   },
   {
@@ -278,18 +264,6 @@ return {
     },
     cmd = { 'CsvViewEnable', 'CsvViewDisable', 'CsvViewToggle' },
   },
-  --[[ {
-    'folke/which-key.nvim',
-    event = 'VeryLazy',
-    opts = {},
-    keys = {
-      {
-        '<leader>?',
-        function() require('which-key').show({ global = false }) end,
-        desc = 'Buffer Local Keymaps (which-key)',
-      },
-    },
-  }, ]]
   -- smart-splits keys registered in maps.lua
   {
     'akinsho/toggleterm.nvim',

@@ -71,13 +71,6 @@ return {
     end,
   },
 
-  -- Calcium: in-buffer calculator
-  {
-    'necrom4/calcium.nvim',
-    cmd = { 'Calcium' },
-    opts = {},
-  },
-
   -- Nerdy: Nerd Font icon browser (keys in maps.lua)
   {
     '2kabhishek/nerdy.nvim',
@@ -88,20 +81,6 @@ return {
       copy_to_clipboard = false,
       copy_register = '+',
     },
-  },
-
-  -- StartupTime: debug startup performance
-  {
-    'dstein64/vim-startuptime',
-    cmd = 'StartupTime',
-  },
-
-  -- Typr: typing tutor
-  {
-    'nvzone/typr',
-    dependencies = 'nvzone/volt',
-    opts = {},
-    cmd = { 'Typr', 'TyprStats' },
   },
 
   -- Undotree: visual undo tree (key in maps.lua)
@@ -122,17 +101,29 @@ return {
     opts = {},
   },
 
+  -- Mini.starter: lightweight startup screen
+  {
+    'nvim-mini/mini.starter',
+    priority = 1000,
+    lazy = false,
+    config = function()
+      local starter = require('mini.starter')
+      starter.setup({
+        header = ' nvim ',
+        items = {
+          starter.sections.recent_files(10, false),
+          starter.sections.recent_files(10, true),
+          starter.sections.builtin_actions(),
+        },
+        footer = '',
+      })
+    end,
+  },
+
   -- Persistence: auto-save / restore sessions
   {
     'folke/persistence.nvim',
     event = 'VeryLazy',
     opts = {},
-  },
-
-  -- Presenting: presentation mode
-  {
-    'harunnoir/presenting.nvim',
-    opts = {},
-    cmd = { 'Presenting' },
   },
 }
