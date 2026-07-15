@@ -16,10 +16,24 @@ return {
       'archie-judd/blink-cmp-words',
     },
     opts = {
-      keymap = { preset = 'default' },
+      keymap = {
+        preset = 'default',
+        ['<C-space>'] = {
+          function(cmp)
+            if cmp.is_menu_visible() then
+              cmp.hide()
+            else
+              cmp.show()
+            end
+          end,
+          'show_documentation',
+          'hide_documentation',
+        },
+      },
       completion = {
-        ghost_text = { enabled = true },
+        ghost_text = { enabled = false },
         menu = {
+          auto_show = false,
           border = 'rounded',
           draw = {
             columns = {
