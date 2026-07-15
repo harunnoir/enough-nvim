@@ -40,13 +40,22 @@ local function fix_gruvbox_functions()
   hl('OilDir', { fg = c.fg, bold = true })
 end
 
+local function fix_statusline()
+  local hl = function(name, opts) vim.api.nvim_set_hl(0, name, opts) end
+  local bg = vim.api.nvim_get_hl(0, { name = 'Normal' }).bg or '#121212'
+  hl('StatusLine', { fg = '#d4d4d4', bg = bg })
+  hl('StatusLineNC', { fg = '#666666', bg = bg })
+end
+
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
     if vim.g.colors_name == 'gruvbox-material' then
       fix_gruvbox_functions()
     end
+    fix_statusline()
   end,
 })
 if vim.g.colors_name == 'gruvbox-material' then
   fix_gruvbox_functions()
 end
+fix_statusline()
