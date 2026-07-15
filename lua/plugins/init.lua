@@ -10,4 +10,5 @@ return {
   { import = 'plugins.ai' },
   { import = 'plugins.test' },
   { import = 'plugins.lang' },
+  { import = 'plugins.42' },
 }

@@ -26,6 +26,7 @@
 - `misc.lua`: overseer, mini.clue, haunt, hardtime, mini.hipatterns, undotree, nerdy, mini.starter, persistence
 - `ai.lua`: 99 AI chat
 - `lang.lua`: render-markdown, uv.nvim
+- `42.lua`: c_formatter_42 (conform), 42-header.nvim
 - `test.lua`: local plugin dev (quoteboard.nvim)
 
 ## Testing / Validation
