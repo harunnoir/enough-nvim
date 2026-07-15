@@ -209,6 +209,4 @@ map('n', '<leader>ox', '<CMD>OverseerClose<CR>',  { desc = 'Close panel' })
 map('n', '<leader>os', '<CMD>OverseerShell<CR>',  { desc = 'Shell task' })
 map('n', '<leader>oa', '<CMD>OverseerTaskAction<CR>', { desc = 'Task action' })
 
-map('n', '<leader>ca', '<CMD>Atone<CR>', { desc = 'Redo/Undo tree' })
-
 

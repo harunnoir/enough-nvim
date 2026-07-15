@@ -82,40 +82,15 @@ return {
         left = '',
         right = '',
       },
-      disabled_filetypes = { 'snacks_dashboard', 'oil', 'toggleterm', 'ministarter', '' },
+      disabled_filetypes = { 'snacks_dashboard', 'oil', 'toggleterm', 'ministarter' },
     },
   },
   {
     'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
-    -- dependencies = { 'amansingh-afk/milli.nvim' },
     opts = function()
-      -- local splash = require('milli').load({ splash = 'batmancatman' })
       return {
-        --[[ dashboard = {
-          enabled = true,
-          preset = {
-            header = 'TODO: set your header', -- table.concat(splash.frames[1], '\n'),
-            keys = {
-              { icon = '󰈞 ', desc = 'Find File', key = 'f', action = ':lua Snacks.picker.files()' },
-              { icon = '󰍉 ', desc = 'Grep', key = 'g', action = ':lua Snacks.picker.grep()' },
-              {
-                icon = ' ',
-                desc = 'Config',
-                key = 'c',
-                action = ':lua Snacks.picker.files({cwd = vim.fn.stdpath("config")})',
-              },
-              { icon = '󰑖 ', desc = 'Recent', key = 'r', action = ':lua Snacks.picker.recent()' },
-              { icon = '󰩈 ', desc = 'Quit', key = 'q', action = ':qa' },
-            },
-          },
-          sections = {
-            { section = 'header', padding = 1 },
-            { section = 'keys', gap = 1, padding = 1 },
-            { section = 'startup' },
-          },
-        }, ]]
         bigfile = { enabled = true },
         bufdelete = { enabled = true },
         git = { enabled = true },
@@ -161,7 +136,6 @@ return {
     end,
     config = function(_, opts)
       require('snacks').setup(opts)
-      -- require('milli').snacks({ splash = 'batmancatman', loop = true })
     end,
   },
   {

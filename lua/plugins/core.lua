@@ -7,7 +7,9 @@ return {
     config = function()
       local patterns = {
         'bash',
+        'c',
         'comment',
+        'cpp',
         'css',
         'diff',
         'dockerfile',

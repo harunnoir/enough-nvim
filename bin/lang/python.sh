@@ -5,7 +5,7 @@ set -euo pipefail
 # lang/python.sh — Python extras Mason can't handle
 #
 # Python tools are installed via Mason by install.sh:
-#   pyright, ruff, flake8, debugpy
+#   basedpyright, ruff, flake8, debugpy
 #
 # This script covers what Mason can't:
 #   pynvim   — needs pip install --user (importable)

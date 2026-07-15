@@ -39,15 +39,15 @@ For a full automated setup:
 │   │   ├── cmd.lua           autocommands / filetype settings
 │   │   └── neovide.lua       Neovide GUI config
 │   └── plugins/              one file per concern
-│       ├── core.lua          lazy.nvim, treesitter, ufo
-│       ├── lsp.lua           mason, lspsaga, nvim-lint, fidget
-│       ├── editor.lua        blink.cmp, conform, mini.*, trouble
-│       ├── nav.lua           flash, harpoon, oil, glance
-│       ├── git.lua           gitsigns, gitgraph, fugit2
+│       ├── core.lua          treesitter, ufo
+│       ├── lsp.lua           mason, lspsaga, nvim-lint, fidget, symbol-usage
+│       ├── editor.lua        blink.cmp, conform, mini.*, treesj, trouble, dial
+│       ├── nav.lua           flash, harpoon, oil, glance, smart-splits, marks
+│       ├── git.lua           gitsigns, gitgraph
 │       ├── dap.lua           nvim-dap, dap-ui, python/go debugger
 │       ├── ai.lua            99 AI chat
-│       ├── ui.lua            zen/vague/gruvbox-material, snacks, toggleterm, noice
-│       ├── misc.lua          haunt, undotree, nerdy, render-markdown
+│       ├── ui.lua            zen/vague/gruvbox-material, snacks, noice, slimline
+│       ├── misc.lua          haunt, undotree, nerdy, mini.starter, overseer
 │       └── lang.lua          language-specific extras
 ```
 
@@ -74,9 +74,9 @@ For a full automated setup:
 | `gs` / `gS` | n,x,o | Flash jump / Flash treesitter |
 | `w`/`e`/`b`/`ge` | n,o,x | Spider word motions |
 | `<leader>ff` / `fg` / `fw` | n | Files / Grep / Grep word |
-| `<leader>fb` / `f.` / `fh` | n | Buffers / Recent / Help |
-| `<leader>fk` / `fl` | n | Keymaps / Buffer lines |
-| `<leader>fs` / `fS` / `fr` | n | Symbols / Workspace symbols / Resume |
+| `<leader>fr` / `f.` / `fh` | n | Recent / Resume / Help |
+| `<leader>fk` / `fl` / `fp` | n | Keymaps / Buffer lines / Projects |
+| `<leader>bb` / `bd` | n | List buffers / Delete buffer |
 | `<leader>a` / `<leader>e` | n | Harpoon add / menu |
 | `<leader>1-4` | n | Harpoon jump 1–4 |
 | `-` | n | Oil file explorer |
@@ -87,7 +87,9 @@ For a full automated setup:
 |-----|------|--------|
 | `K` | n | Hover documentation |
 | `gD`/`gR`/`gY`/`gM` | n | Glance defs/refs/type/impl |
-| `<leader>ca` / `<leader>cr` | n,v | Code actions / Rename |
+| `<leader>ca` | n,v | Code actions |
+| `<leader>cr` | n | Rename symbol |
+| `<leader>cs` / `cS` | n | Symbols / Workspace symbols |
 | `[d` / `]d` | n | Prev / next diagnostic |
 | `<leader>xx` / `<leader>xX` | n | Trouble diagnostics (all / buffer) |
 | `<leader>xs` / `<leader>xl` | n | Trouble symbols / LSP refs |
@@ -96,11 +98,11 @@ For a full automated setup:
 
 | Key | Action |
 |-----|--------|
-| `<F5>` / `<F1>` / `<F2>` / `<F3>` | Continue / Into / Over / Out |
-| `<F6>` | Toggle DAP UI |
-| `<leader>db` / `<leader>dB` | Toggle / conditional breakpoint |
-| `<leader>dpr` | Run to cursor |
-| `<leader>dti` / `<leader>dtc` | DAP test method / class (Python) |
+| `<leader>dc` / `di` / `do` / `dO` | Continue / Into / Over / Out |
+| `<leader>dr` | Run to cursor |
+| `<leader>db` / `dB` | Toggle / conditional breakpoint |
+| `<leader>du` | Toggle DAP UI |
+| `<leader>dti` / `dtc` | Test method / class (Python) |
 
 ### Git
 
@@ -108,6 +110,7 @@ For a full automated setup:
 |-----|--------|
 | `<leader>Gg` | Lazygit |
 | `<leader>Gb` | Blame line |
+| `<leader>Gh` | Preview hunk |
 | `<leader>Gs` | Stage hunk |
 | `<leader>Gu` | Unstage hunk |
 | `<leader>Gl` | Git graph |
@@ -123,8 +126,9 @@ For a full automated setup:
 | `ga` / `gA` | n,x | Align / align preview |
 | `<C-a>` / `<C-x>` | n | Increment / decrement |
 | `gc` | n,v | Toggle comment |
-| `<A-j/k>` | n,v | Move line down/up |
+| `<A-S-j/k>` | n,v | Move line down/up |
 | `<Tab>` / `<S-Tab>` | v | Indent / outdent |
+| `<leader>sj` | n | Toggle split/join (treesj) |
 
 ### Misc
 
@@ -137,12 +141,14 @@ For a full automated setup:
 | `<leader>in` | Browse nerd icons |
 | `<leader>ha` | Annotate (haunt) |
 | `<leader>9v` / `<leader>9s` | AI visual / search prompt |
-| `<leader>st` | Scratch file |
+| `<leader>or/t/oo/ox/os/oa` | Overseer task runner |
 | `zR` / `zM` | Open / close all folds |
 
 ## Colorscheme
 
-[zen.nvim](https://github.com/nendix/zen.nvim) — dark, clean. Switch via `theme` variable in `ui.lua`.
+Switch via the `theme` variable at the top of `lua/plugins/ui.lua`.
+
+Available: `zen` (default), `gruvbox-material`, `gruvbox`, `vague`.
 
 ## Docs
 

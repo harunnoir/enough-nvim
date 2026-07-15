@@ -8,7 +8,7 @@
 
 ## Key Conventions
 - `lua/config/maps.lua`: all core keymaps using `vim.keymap.set` aliased as `map`
-- Picker (snacks.picker): 11 bindings (`ff`, `fg`, `fb`, `fh`, `f.`, `fl`, `fs`, `fS`, `fw`, `fk`, `fr`)
+- Picker (snacks.picker): 9 bindings (`ff`, `fg`, `fw`, `fr`, `f.`, `fh`, `fk`, `fl`, `fp`)
 - Flash: `gs`/`gS` not `f`/`s` (avoids conflict with built-in `f` and mini.surround `s`)
 - Smart-splits for `<C-h/j/k/l>` window nav (not tmux-navigator)
 - mini.surround uses default `s` prefix (`sa`, `sd`, `sr`)
@@ -16,15 +16,17 @@
 - Highlight tweaks centralized in `lua/config/hl.lua` for easy bulk disable
 
 ## Plugin Categories
-- `core.lua`: lazy.nvim, ufo
-- `lsp.lua`: mason, lspsaga, tiny-inline-diagnostic, nvim-lint, fidget
-- `editor.lua`: blink.cmp, conform, mini.align/surround/ai, autopairs, grug-far, trouble, dial
-- `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, satellite
-- `git.lua`: gitsigns, gitgraph, fugit2
+- `core.lua`: treesitter, ufo
+- `lsp.lua`: mason, lspsaga, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
+- `editor.lua`: blink.cmp, conform, mini.align/surround/ai, autopairs, grug-far, trouble, treesj, dial
+- `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, satellite, smart-splits
+- `git.lua`: gitsigns, gitgraph
 - `dap.lua`: nvim-dap, dap-ui, dap-python, dap-go
-- `ui.lua`: gruvbox-material, slimline.nvim, snacks, noice, dashboard, toggleterm, yanky
-- `misc.lua`: 99, haunt, hardtime, mini.hipatterns, render-markdown, undotree, persistence, nerdy
-- `lang.lua`: language-specific plugins
+- `ui.lua`: gruvbox-material/zen/vague, slimline, snacks, noice, toggleterm, yanky, virt-column
+- `misc.lua`: overseer, mini.clue, haunt, hardtime, mini.hipatterns, undotree, nerdy, mini.starter, persistence
+- `ai.lua`: 99 AI chat
+- `lang.lua`: render-markdown, uv.nvim
+- `test.lua`: local plugin dev (quoteboard.nvim)
 
 ## Testing / Validation
 ```bash

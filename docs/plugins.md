@@ -32,25 +32,27 @@ Every plugin answers "yes" to at least two of:
 | Plugin | Why |
 |--------|-----|
 | `blink.cmp` | Completion — fast, native-feeling, Neovim 0.11 compatible |
-| `conform.nvim` | Format on demand (`<leader>f`) — per-filetype config |
+| `conform.nvim` | Format on demand (`<leader>cf`) — per-filetype config |
 | `nvim-autopairs` | Auto-close brackets |
 | `mini.align` | Align assignments/tables (`ga`/`gA`) |
 | `mini.ai` | Better text objects (`ia`, `aa`, `il`, `al`, etc.) |
-| `mini.surround` | Add/delete/replace surrounds (`sa`, `sd`, `sr`) — default `s` prefix |
+| `mini.surround` | Add/delete/replace surrounds (`sa`, `sd`, `sr`) |
 | `grug-far.nvim` | Search & replace across files (`:GrugFar`) |
 | `trouble.nvim` | Diagnostic/symbol/reference list in a quickfix-like window |
 | `Comment.nvim` | Toggle comments (`gc`) |
 | `vim-repeat` | Make `.` repeat plugin actions (surround, etc.) |
+| `treesj` | Split/join blocks — function args, if/else, tables (`<leader>sj`) |
 | `dial.nvim` | Increment/decrement numbers, dates, hex colors (`<C-a>`/`<C-x>`) |
+| `smart-paste.nvim` | Smart indent-aware pasting |
 
 ### nav.lua
 
 | Plugin | Why |
 |--------|-----|
 | `nvim-spider` | Smarter `w`/`e`/`b` — respects camelCase and snake_case |
-| `nvim-maximizer` | Toggle current window to full screen (`<C-m>`) |
+| `nvim-maximizer` | Toggle current window to full screen (`<leader>z`) |
 | `flash.nvim` | Jump anywhere visible (`gs`/`gS`) — replaces leap |
-| `snacks.picker` | Fuzzy finder (`ff`, `fg`, `fb`, `fh`, `fr`) — replaces Telescope |
+| `snacks.picker` | Fuzzy finder (`<leader>ff`, `fg`, `fw`, etc.) — replaces Telescope |
 | `glance.nvim` | LSP references/definitions in a peek window (`gD`, `gR`, etc.) |
 | `oil.nvim` | File explorer as a buffer (`-`) — edit paths directly |
 | `oil-lsp-diagnostics` | Show diags in Oil |
@@ -58,14 +60,14 @@ Every plugin answers "yes" to at least two of:
 | `harpoon` | Quick file marks (`<leader>a`, `<leader>1-4`) |
 | `marks.nvim` | Visual indicators for `'a-'z` marks |
 | `satellite.nvim` | Scrollbar with diagnostics, marks, search highlights |
+| `smart-splits.nvim` | Window navigation (`<C-h/j/k/l>`) and resize (`<A-h/j/k/l>`) |
 
 ### git.lua
 
 | Plugin | Why |
 |--------|-----|
 | `gitsigns.nvim` | Git signs in signcolumn, hunk staging, blame |
-| `gitgraph.nvim` | Git log as an interactive graph (`<leader>gl`) |
-| `fugit2.nvim` | Lazygit-like TUI inside Neovim (`<leader>F`) |
+| `gitgraph.nvim` | Git log as an interactive graph (`<leader>Gl`) |
 
 ### dap.lua
 
@@ -81,26 +83,44 @@ Every plugin answers "yes" to at least two of:
 | Plugin | Why |
 |--------|-----|
 | `gruvbox-material` / `zen` / `vague` | Colorschemes — switch via `theme` variable in `ui.lua` |
-| `snacks.nvim` | Statuscolumn, picker, dashboard, indent guides, animations |
+| `slimline.nvim` | Statusline — minimal, theme-aware, no dependencies |
+| `snacks.nvim` | Statuscolumn, picker, indent guides, animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
 | `yanky.nvim` | Yank history ring |
 | `toggleterm.nvim` | Terminal — vertical/horizontal/float, persistent |
 | `virt-column.nvim` | Soft colorcolumn at `NonText` highlight |
+| `quicker.nvim` | Quickfix window improvements |
+| `todo-comments.nvim` | Highlight and search TODO/FIXME/HACK comments |
+| `nvim-web-devicons` | File type icons |
+| `csvview.nvim` | CSV viewer with field navigation |
 
 ### misc.lua
 
 | Plugin | Why |
 |--------|-----|
-| `99` | AI chat in Neovim (`<leader>9v`/`9s`) |
+| `overseer.nvim` | Task runner — make, scripts, build tasks |
+| `mini.clue` | Which-key replacement — shows `<leader>` key tree |
 | `haunt.nvim` | Bookmark/annotate lines (`<leader>ha` etc.) |
 | `hardtime.nvim` | Discourage bad movement habits (hjkl overuse) |
 | `mini.hipatterns` | Highlight hex colors in code |
-| `render-markdown.nvim` | WYSIWYG markdown preview |
 | `nerdy.nvim` | Nerd Font icon browser (`<leader>in`) |
 | `undotree.nvim` | Visual undo tree (`<leader>u`) |
-| `persistence.nvim` | Auto-save/restore sessions |
 | `leetcode.nvim` | LeetCode in Neovim |
 | `mini.starter` | Lightweight startup screen (recent files + actions) |
+| `persistence.nvim` | Auto-save/restore sessions |
+
+### ai.lua
+
+| Plugin | Why |
+|--------|-----|
+| `99` | AI chat in Neovim (`<leader>9v`/`9s`) |
+
+### lang.lua
+
+| Plugin | Why |
+|--------|-----|
+| `render-markdown.nvim` | WYSIWYG markdown preview |
+| `uv.nvim` | Python uv integration |
 
 ## What Was Removed / Rejected
 
@@ -109,17 +129,15 @@ Every plugin answers "yes" to at least two of:
 | `nvim-lspconfig` | Neovim 0.11 has `vim.lsp.enable()` built-in |
 | `goto-preview` | Replaced by glance.nvim (cleaner UX) |
 | `vim-tmux-navigator` | Replaced by smart-splits.nvim (works without tmux) |
-| `alpha-nvim` | Replaced by snacks dashboard (lighter) |
+| `alpha-nvim` | Replaced by mini.starter (lighter) |
 | `leap.nvim` | Replaced by flash.nvim (more features, same speed) |
 | `colorizer.nvim` | Replaced by mini.hipatterns (lighter) |
 | `obsidian.nvim`, `neorg` | Not in active use — removed |
 | `tabby.nvim` | Not needed — statusline is enough |
 | `vim-startuptime` | Debug-only, removed from active config |
 | `dictionary.nvim` | Redundant — `blink-cmp-words` handles thesaurus/dictionary |
-| `atone.nvim` | Redundant — `<leader>st` scratch helper covers the use case |
+| `atone.nvim` | Redundant — undotree covers undo visualization |
 | `telescope.nvim` | Replaced by snacks.picker (built-in, one less plugin) |
 | `presenting.nvim` | Presentation mode — niche, removed to trim |
 | `calcium.nvim` | In-buffer calculator — redundant with built-in `=` |
 | `typr.nvim` | Typing tutor — fun but unused |
-| `mini.clue` | Removed — adds 300ms delay on `<leader>`, unnecessary |
-| `slimline.nvim` | Removed — statusline unnecessary, prefer minimal UI |

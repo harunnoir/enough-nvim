@@ -1,12 +1,4 @@
 return {
-  -- undo tree visualization
-  {
-    "XXiaoA/atone.nvim",
-    cmd = "Atone",
-    ---@module "atone"
-    ---@type AtoneConfig
-    opts = {},
-  },
   -- Smart indent
   {
     'nemanjamalesija/smart-paste.nvim',
