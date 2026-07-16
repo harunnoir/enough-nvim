@@ -17,4 +17,15 @@ return {
       vim.keymap.set('n', '<leader>42', '<cmd>Stdheader<cr>', { desc = '42 header' })
     end,
   },
+  {
+    'hardyrafael17/norminette42.nvim',
+    config = function()
+      local norminette = require('norminette')
+      norminette.setup({
+        runOnSave = true,
+        maxErrorsToShow = 5,
+        active = true,
+      })
+    end,
+  },
 }
