@@ -3,8 +3,8 @@ vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
 
 -- LSP servers to enable (configs defined below via vim.lsp.config)
 local servers = {
-  -- 'pyright', -- Python
-  'basedpyright', -- Python
+  'pyright', -- Python
+  -- 'basedpyright', -- Python
   'clangd', -- C/C++
   'lua_ls', -- Lua
   'ts_ls', -- TypeScript/JavaScript
@@ -62,6 +62,21 @@ vim.lsp.config('basedpyright', {
                 useLibraryCodeForTypes = true,
                 typeCheckingMode = 'all', -- off=none basic=common standard=unknown strict=full all=pedantic
                 diagnosticMode = 'openFilesOnly',
+            },
+        },
+    },
+})
+
+vim.lsp.config('pyright', {
+    cmd = { 'pyright-langserver', '--stdio' },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git' },
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                typeCheckingMode = 'standard', -- off|basic|standard|strict
             },
         },
     },

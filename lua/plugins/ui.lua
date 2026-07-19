@@ -1,4 +1,4 @@
-local theme = 'zen' -- 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague'
+local theme = 'zen' -- 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague' | 'miasma'
 
 return {
   {
@@ -39,6 +39,24 @@ return {
     lazy = (theme ~= 'vague'),
     priority = 1000,
     config = function() vim.cmd.colorscheme('vague') end,
+  },
+  {
+    'xero/miasma.nvim',
+    lazy = (theme ~= 'miasma'),
+    priority = 1000,
+    config = function() vim.cmd('colorscheme miasma') end,
+  },
+  {
+    'rebelot/kanagawa.nvim',
+    lazy = (theme ~= 'kanagawa'),
+    priority = 1000,
+    config = function() vim.cmd.colorscheme('kanagawa-dragon') end,
+  },
+  {
+    'thallada/farout.nvim',
+    lazy = (theme ~= 'farout'),
+    priority = 1000,
+    config = function() vim.cmd.colorscheme('farout') end,
   },
   {
     'sschleemilch/slimline.nvim',
@@ -134,9 +152,7 @@ return {
         },
       }
     end,
-    config = function(_, opts)
-      require('snacks').setup(opts)
-    end,
+    config = function(_, opts) require('snacks').setup(opts) end,
   },
   {
     'folke/noice.nvim',
