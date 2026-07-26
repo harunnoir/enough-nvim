@@ -11,7 +11,7 @@ has_cmd() { command -v "$1" &>/dev/null; }
 
 # ── Prerequisite check ────────────────────────────
 
-PREREQS=(nvim git gcc rg fd unzip)
+PREREQS=(nvim git gcc rg fd unzip python3 node)
 
 check_prereqs() {
   local missing=()
@@ -28,6 +28,16 @@ check_prereqs() {
     elif has_cmd brew; then     err "  brew install ${missing[*]}"
     fi
     exit 1
+  fi
+
+  # gdb is needed for dap debugging but can't be installed without sudo
+  if ! has_cmd gdb; then
+    warn "gdb not found — needed for debugging (dap). Install with:"
+    if has_cmd pacman; then   warn "  sudo pacman -S gdb"
+    elif has_cmd apt; then    warn "  sudo apt install gdb"
+    elif has_cmd dnf; then    warn "  sudo dnf install gdb"
+    elif has_cmd brew; then   warn "  brew install gdb"
+    fi
   fi
 }
 
@@ -51,7 +61,8 @@ install_mason() {
 verify_mason() {
   local mason_bin="$HOME/.local/share/nvim/mason/bin"
   local missing=()
-  for cmd in clangd lua-language-server basedpyright typescript-language-server stylua shfmt ruff flake8 markdownlint shellcheck debugpy prettier; do
+  for cmd in basedpyright clangd lua-language-server typescript-language-server beancount-language-server \
+             stylua ruff shfmt prettier flake8 markdownlint shellcheck debugpy; do
     if [ -x "$mason_bin/$cmd" ]; then
       printf "  ${GREEN}✓${NC} %s\n" "$cmd"
     else
@@ -86,7 +97,7 @@ Usage: bash install.sh [OPTION]
 
 Options:
   --minimal       plugins only, skip Mason + lang scripts
-  --lang <name>   run a language setup script (python, node)
+  --lang <name>   run a language setup script (python, c, node)
   --help          show this help
 EOF
 }
@@ -116,6 +127,7 @@ main() {
     install_mason
     setup_path
     run_lang python 2>/dev/null || true
+    run_lang c      2>/dev/null || true
     run_lang node   2>/dev/null || true
     verify_mason
   fi

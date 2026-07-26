@@ -67,14 +67,15 @@ install_tools() {
     fi
 
     if has_cmd pipx; then
-        has_cmd pytest || { log 'installing pytest…'; pipx install pytest; }
-        has_cmd uv     || { log 'installing uv…';     pipx install uv; }
+        has_cmd pytest  || { log 'installing pytest…';  pipx install pytest; }
+        has_cmd uv      || { log 'installing uv…';      pipx install uv; }
+        has_cmd ipython || { log 'installing ipython…'; pipx install ipython; }
     fi
 }
 
 verify() {
     log 'verifying Python extras…'
-    local tools=(pytest uv)
+    local tools=(pytest uv ipython)
     local missing=()
     for cmd in "${tools[@]}"; do
         if has_cmd "$cmd"; then

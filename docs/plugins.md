@@ -22,7 +22,6 @@ Every plugin answers "yes" to at least two of:
 |--------|-----|
 | `mason.nvim` | LSP/formatter installer UI — `:Mason` |
 | `tiny-inline-diagnostic` | Inline diagnostics at end of line (replaces virtual_text) |
-| `lspsaga.nvim` | Hover doc (`K`), code action UI — clean and fast |
 | `nvim-lint` | Async linter via `:lua require('lint').try_lint()` |
 | `fidget.nvim` | LSP progress spinner in statusline |
 | `symbol-usage.nvim` | Shows reference/definition counts inline |

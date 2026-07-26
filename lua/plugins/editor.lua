@@ -31,9 +31,9 @@ return {
         },
       },
       completion = {
-        ghost_text = { enabled = false },
+        ghost_text = { enabled = true },
         menu = {
-          auto_show = false,
+          auto_show = true,
           border = 'rounded',
           draw = {
             columns = {

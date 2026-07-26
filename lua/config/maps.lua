@@ -57,7 +57,7 @@ map('n', '[h', function() require('gitsigns').prev_hunk() end, { desc = 'Prev hu
 map('n', ']h', function() require('gitsigns').next_hunk() end, { desc = 'Next hunk' })
 
 -- ── g = Go-to / LSP navigation ───────────────────────────────────────
-map('n', 'K',  '<CMD>Lspsaga hover_doc<CR>',      { desc = 'Hover doc' })
+map('n', 'K',  vim.lsp.buf.hover,                  { desc = 'Hover doc' })
 map('n', 'gD', '<CMD>Glance definitions<CR>',      { desc = 'Definitions' })
 map('n', 'gR', '<CMD>Glance references<CR>',       { desc = 'References' })
 map('n', 'gY', '<CMD>Glance type definitions<CR>', { desc = 'Type definitions' })
@@ -113,7 +113,7 @@ map('n', '<leader>bd', function() require('snacks').bufdelete() end,      { desc
 
 -- ── c = Code / LSP ───────────────────────────────────────────────────
 map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action,                                         { desc = 'Code actions' })
-map('n',          '<leader>cr', '<CMD>Lspsaga rename<CR>',                                        { desc = 'Rename symbol' })
+map('n',          '<leader>cr', vim.lsp.buf.rename,                                                { desc = 'Rename symbol' })
 map({ 'n', 'v' }, '<leader>cf', function() require('conform').format({ async = true }) end,      { desc = 'Format' })
 map('n',          '<leader>cs', function() require('snacks').picker.lsp_symbols() end,           { desc = 'Symbols' })
 map('n',          '<leader>cS', function() require('snacks').picker.lsp_workspace_symbols() end, { desc = 'Workspace symbols' })
@@ -209,4 +209,9 @@ map('n', '<leader>ox', '<CMD>OverseerClose<CR>',  { desc = 'Close panel' })
 map('n', '<leader>os', '<CMD>OverseerShell<CR>',  { desc = 'Shell task' })
 map('n', '<leader>oa', '<CMD>OverseerTaskAction<CR>', { desc = 'Task action' })
 
-
+-- ── dd = Diagnostics (Tiny diagnostics) ───────────────────────────────────────
+vim.keymap.set("n", "<leader>dde", "<cmd>TinyInlineDiag enable<cr>", { desc = "Enable diagnostics" })
+vim.keymap.set("n", "<leader>ddd", "<cmd>TinyInlineDiag disable<cr>", { desc = "Disable diagnostics" })
+vim.keymap.set("n", "<leader>ddt", "<cmd>TinyInlineDiag toggle<cr>", { desc = "Toggle diagnostics" })
+vim.keymap.set("n", "<leader>ddc", "<cmd>TinyInlineDiag toggle_cursor_only<cr>", { desc = "Toggle cursor-only diagnostics" })
+vim.keymap.set("n", "<leader>ddr", "<cmd>TinyInlineDiag reset<cr>", { desc = "Reset diagnostic options" })

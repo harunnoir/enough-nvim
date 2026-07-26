@@ -17,7 +17,7 @@
 
 ## Plugin Categories
 - `core.lua`: treesitter, ufo
-- `lsp.lua`: mason, lspsaga, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
+- `lsp.lua`: mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
 - `editor.lua`: blink.cmp, conform, mini.align/surround/ai, autopairs, grug-far, trouble, treesj, dial
 - `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, satellite, smart-splits
 - `git.lua`: gitsigns, gitgraph

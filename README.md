@@ -40,7 +40,7 @@ For a full automated setup:
 │   │   └── neovide.lua       Neovide GUI config
 │   └── plugins/              one file per concern
 │       ├── core.lua          treesitter, ufo
-│       ├── lsp.lua           mason, lspsaga, nvim-lint, fidget, symbol-usage
+│       ├── lsp.lua           mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
 │       ├── editor.lua        blink.cmp, conform, mini.*, treesj, trouble, dial
 │       ├── nav.lua           flash, harpoon, oil, glance, smart-splits, marks
 │       ├── git.lua           gitsigns, gitgraph
@@ -148,7 +148,7 @@ For a full automated setup:
 
 Switch via the `theme` variable at the top of `lua/plugins/ui.lua`.
 
-Available: `zen` (default), `gruvbox-material`, `gruvbox`, `vague`.
+Available: `zen` (default), `gruvbox-material`, `gruvbox`, `gruvbox-new`, `vague`, `miasma`.
 
 ## Docs
 

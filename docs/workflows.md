@@ -28,13 +28,13 @@
 
 ### Between files
 - `<leader>ff` — find files by name
-- `<leader>fb` — switch buffers
+- `<leader>bb` — switch buffers
 - `<leader>1-4` — harpoon quick jumps
 - `-` — Oil file explorer
 
 ### Between windows
 - `<C-h/j/k/l>` — move cursor between splits
-- `<C-m>` — maximize current window
+- `<leader>z` — maximize current window
 - `<A-h/j/k/l>` — resize splits
 
 ## Git Workflow

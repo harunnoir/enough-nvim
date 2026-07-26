@@ -31,21 +31,6 @@ return {
       vim.diagnostic.config({ virtual_text = false })
     end,
   },
-  -- Lspsaga: hover doc, code action UI
-  {
-    'nvimdev/lspsaga.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('lspsaga').setup({
-        symbol_in_winbar = { enable = false },
-        ui = { code_action = '' },
-      })
-    end,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
   -- Nvim-lint: async linting on save
   {
     'mfussenegger/nvim-lint',
