@@ -1,13 +1,22 @@
-local theme = 'zen' -- 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague' | 'miasma'
+local theme = 'limei' -- 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague' | 'miasma'
 
 return {
+  {
+    'harunnoir/limei.nvim',
+    lazy = (theme ~= 'limei'),
+    priority = 1000,
+    config = function()
+      require('limei').setup()
+      vim.cmd.colorscheme('limei')
+    end,
+  },
   {
     'sainnhe/gruvbox-material',
     lazy = (theme ~= 'gruvbox-material'),
     priority = 1000,
     config = function()
       vim.o.background = 'dark'
-      vim.g.gruvbox_material_background = 'soft'
+      vim.g.gruvbox_material_background = 'medium'
       vim.cmd.colorscheme('gruvbox-material')
     end,
   },

@@ -39,18 +39,44 @@ return {
   {
     'benomahony/oil-git.nvim',
     dependencies = { 'stevearc/oil.nvim' },
+
     opts = function()
       local function get_hl(group, attr)
-        local ok, val = pcall(vim.api.nvim_get_hl, 0, { name = group })
-        return ok and val and string.format('#%06x', val[attr])
+        local ok, hl = pcall(vim.api.nvim_get_hl, 0, {
+          name = group,
+          link = false,
+        })
+
+        if not ok or type(hl) ~= 'table' then
+          return nil
+        end
+
+        local value = hl[attr]
+
+        if type(value) ~= 'number' then
+          return nil
+        end
+
+        return string.format('#%06x', value)
       end
+
       return {
         highlights = {
-          OilGitAdded = { fg = get_hl('DiagnosticOk', 'fg') or '#a9b665' },
-          OilGitModified = { fg = get_hl('DiagnosticWarn', 'fg') or '#d8a657' },
-          OilGitRenamed = { fg = get_hl('Keyword', 'fg') or '#d3869b' },
-          OilGitUntracked = { fg = get_hl('Function', 'fg') or '#7daea3' },
-          OilGitIgnored = { fg = get_hl('Comment', 'fg') or '#928374' },
+          OilGitAdded = {
+            fg = get_hl('DiagnosticOk', 'fg') or '#a9b665',
+          },
+          OilGitModified = {
+            fg = get_hl('DiagnosticWarn', 'fg') or '#d8a657',
+          },
+          OilGitRenamed = {
+            fg = get_hl('Keyword', 'fg') or '#d3869b',
+          },
+          OilGitUntracked = {
+            fg = get_hl('Function', 'fg') or '#7daea3',
+          },
+          OilGitIgnored = {
+            fg = get_hl('Comment', 'fg') or '#928374',
+          },
         },
       }
     end,
