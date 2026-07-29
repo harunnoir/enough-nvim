@@ -1,30 +1,30 @@
 local theme = 'limei' -- 'solarized' | 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague' | 'miasma' | 'kanagawa' | 'farout'
 
 return {
-    {
-        'harunnoir/limei.nvim',
-        branch = 'experiment/color-usage-balance',
-        lazy = (theme ~= 'limei'),
-        priority = 1000,
-        config = function()
-            require('limei').setup()
-            vim.cmd.colorscheme('limei')
-        end,
-    },
     -- {
     --     'harunnoir/limei.nvim',
+    --     branch = 'experiment/color-usage-balance',
     --     lazy = (theme ~= 'limei'),
     --     priority = 1000,
     --     config = function()
-    --         require('limei').setup({
-    --             matching = {
-    --                 brackets = true,
-    --                 quotes = true,
-    --             },
-    --         })
+    --         require('limei').setup()
     --         vim.cmd.colorscheme('limei')
     --     end,
     -- },
+    {
+        'harunnoir/limei.nvim',
+        lazy = (theme ~= 'limei'),
+        priority = 1000,
+        config = function()
+            require('limei').setup({
+                matching = {
+                    brackets = true,
+                    quotes = true,
+                },
+            })
+            vim.cmd.colorscheme('limei')
+        end,
+    },
     {
         'maxmx03/solarized.nvim',
         lazy = (theme ~= 'solarized'),
