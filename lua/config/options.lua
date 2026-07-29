@@ -1,4 +1,4 @@
--- Neovim Options
+-- Editor options.
 
 -- General
 vim.o.termguicolors = true

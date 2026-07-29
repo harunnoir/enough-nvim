@@ -1,0 +1,7 @@
+require('config.options')
+require('config.lazy')
+require('config.keymaps')
+require('lsp')
+require('config.diagnostics')
+require('config.autocmds')
+require('config.neovide')

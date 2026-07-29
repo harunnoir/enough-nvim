@@ -15,7 +15,7 @@ local patterns = {
 
 ## 2. LSP Server
 
-In `lua/config/lsp.lua`:
+In `lua/lsp/servers.lua`:
 
 ```lua
 vim.lsp.config('my_server', {
@@ -64,7 +64,7 @@ lint.linters_by_ft = {
 
 ## 5. Filetype Settings (optional)
 
-In `lua/config/cmd.lua`, add filetype-specific options:
+In `lua/config/autocmds.lua`, add filetype-specific options:
 
 ```lua
 local filetype_settings = {
@@ -82,8 +82,8 @@ local filetype_settings = {
 | Step | File | What to add |
 |------|------|-------------|
 | Treesitter | `lua/plugins/core.lua` | Name in `patterns` list |
-| LSP | `lua/config/lsp.lua` | `vim.lsp.config()` + `vim.lsp.enable()` |
+| LSP | `lua/lsp/servers.lua` | `vim.lsp.config()` definition |
 | LSP install | `:Mason` | Install binary |
 | Formatter | `lua/plugins/editor.lua` | Entry in `formatters_by_ft` |
 | Linter | `lua/plugins/lsp.lua` | Entry in `lint.linters_by_ft` |
-| Options | `lua/config/cmd.lua` | Entry in `filetype_settings` |
+| Options | `lua/config/autocmds.lua` | Entry in `filetype_settings` |

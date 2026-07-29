@@ -1,5 +1,5 @@
 return {
-    -- DAP: debug adapter protocol (all keys in maps.lua)
+    -- DAP: debug adapter protocol (all keys in keymaps.lua)
     {
         'mfussenegger/nvim-dap',
         lazy = true,
@@ -52,7 +52,7 @@ return {
         end,
     },
 
-    -- DAP Python: Python debugger via debugpy (keys in maps.lua)
+    -- DAP Python: Python debugger via debugpy (keys in keymaps.lua)
     {
         'mfussenegger/nvim-dap-python',
         ft = 'python',

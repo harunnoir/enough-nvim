@@ -1,9 +1,7 @@
 local api = vim.api
 local cmd = vim.cmd
 
--------------------------------------------------------
--- Save/restore view (cursor, folds, etc.)
--------------------------------------------------------
+-- Restore cursor and fold views.
 local view_group = api.nvim_create_augroup('AutoViewRestore', { clear = true })
 
 api.nvim_create_autocmd({ 'BufWinLeave' }, {
@@ -18,9 +16,7 @@ api.nvim_create_autocmd({ 'BufWinEnter' }, {
     callback = function() cmd('silent! loadview') end,
 })
 
--------------------------------------------------------
--- Filetype settings (centralized + scalable)
--------------------------------------------------------
+-- Buffer-local filetype settings.
 local filetype_settings = {
     python = function()
         vim.opt_local.colorcolumn = '88'
@@ -122,9 +118,7 @@ api.nvim_create_autocmd('FileType', {
     end,
 })
 
--------------------------------------------------------
--- CSV view auto enable
--------------------------------------------------------
+-- Enable the CSV table view automatically.
 local csv_group = api.nvim_create_augroup('CsvViewAutoEnable', { clear = true })
 
 api.nvim_create_autocmd('BufReadPost', {

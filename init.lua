@@ -1,6 +1,1 @@
-require('config.opts')
-require('config.lazy')
-require('config.maps')
-require('config.lsp')
-require('config.cmd')
-require('config.neovide')
+require('config')

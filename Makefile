@@ -12,5 +12,9 @@ check:
 	find lua -name '*.lua' -print0 | xargs -0 luac -p
 
 test:
-	NVIM_LOG_FILE=/tmp/enough-nvim-test.log $(NVIM) --headless \
-		-c 'lua print("OK")' -c 'qa!'
+	XDG_CACHE_HOME=/tmp/enough-nvim-cache XDG_STATE_HOME=/tmp/enough-nvim-state \
+		$(NVIM) --headless -c 'lua print("OK")' -c 'qa!'
+	XDG_CACHE_HOME=/tmp/enough-nvim-cache XDG_STATE_HOME=/tmp/enough-nvim-state \
+		$(NVIM) --headless . \
+		-c "lua assert(vim.bo.filetype == 'oil', 'nvim . did not open Oil')" \
+		-c 'qa!'

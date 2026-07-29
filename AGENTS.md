@@ -7,7 +7,8 @@
 - Native LSP config, no `nvim-lspconfig` — uses `vim.lsp.enable()` (Neovim 0.11+)
 
 ## Key Conventions
-- `lua/config/maps.lua`: all core keymaps using `vim.keymap.set` aliased as `map`
+- `lua/config/keymaps.lua`: global keymaps using `vim.keymap.set` aliased as `map`
+- Plugin-owned mappings belong in their plugin specs when practical
 - Picker (snacks.picker): 9 bindings (`ff`, `fg`, `fw`, `fr`, `f.`, `fh`, `fk`, `fl`, `fp`)
 - Flash: `gs`/`gS` not `f`/`s` (avoids conflict with built-in `f` and mini.surround `s`)
 - Smart-splits for `<C-h/j/k/l>` window nav (not tmux-navigator)
@@ -20,11 +21,14 @@
 - `ts.lua`: treesitter textobjects
 - `mini.lua`: mini.ai, align, surround, clue, hipatterns, starter
 - `lsp.lua`: mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
-- `editor.lua`: blink.cmp, conform, autopairs, grug-far, trouble, treesj, dial
+- `completion.lua`: blink.cmp and completion sources
+- `editor.lua`: conform, autopairs, grug-far, trouble, treesj, dial
 - `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, smart-splits
 - `git.lua`: gitsigns, gitgraph
 - `dap.lua`: nvim-dap, dap-ui, dap-python, dap-go
-- `ui.lua`: colorschemes, slimline, snacks, noice, yanky, virt-column
+- `themes.lua`: colorscheme selection and setup
+- `ui.lua`: slimline, snacks, noice, yanky, virt-column
+- `terminal.lua`: Snacks terminal behavior and mappings
 - `misc.lua`: overseer, haunt, hardtime, undotree, nerdy, persistence
 - `ai.lua`: 99 AI chat
 - `lang.lua`: render-markdown, uv.nvim

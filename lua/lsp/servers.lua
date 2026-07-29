@@ -1,21 +1,3 @@
--- Allow vim.lsp.enable() to find Mason-installed servers
-vim.env.PATH = vim.fn.stdpath('data') .. '/mason/bin:' .. vim.env.PATH
-
--- LSP servers to enable (configs defined below via vim.lsp.config)
-local servers = {
-    'pyright', -- Python
-    -- 'basedpyright', -- Python
-    'clangd', -- C/C++
-    'lua_ls', -- Lua
-    'ts_ls', -- TypeScript/JavaScript
-    'beancount', -- Plain text accounting
-    'rust_analyzer', -- Rust
-    'gopls', -- Go
-}
-for _, server in ipairs(servers) do
-    vim.lsp.enable(server)
-end
-
 -- TypeScript/JavaScript
 vim.lsp.config('ts_ls', {
     cmd = { 'typescript-language-server', '--stdio' },
@@ -82,18 +64,6 @@ vim.lsp.config('pyright', {
     },
 })
 
---[[ vim.lsp.config('pyright', {
-    cmd = { 'pyright-langserver', '--stdio' },
-    filetypes = { 'python' },
-    root_markers = {
-        'pyproject.toml',
-        'setup.py',
-        'setup.cfg',
-        'requirements.txt',
-        '.git',
-    },
-}) ]]
-
 -- C/C++
 vim.lsp.config('clangd', {
     cmd = {
@@ -127,18 +97,3 @@ vim.lsp.config('beancount', {
     filetypes = { 'beancount' },
     root_markers = { '.git', '.beancount', 'main.bean', 'ledger.bean' },
 })
-
--- Diagnostics
-vim.diagnostic.config({
-    signs = {
-        text = {
-            ERROR = '',
-            WARN = '',
-            HINT = '',
-            INFO = '',
-        },
-    },
-})
-
--- Inlay hints
-vim.lsp.inlay_hint.enable(true)

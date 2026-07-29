@@ -1,14 +1,14 @@
 return {
-    -- Smart-splits: window navigation & resize (keys in maps.lua)
+    -- Smart-splits: window navigation & resize (keys in keymaps.lua)
     { 'mrjones2014/smart-splits.nvim', lazy = true },
 
-    -- Spider: smarter w/e/b motions (keys in maps.lua)
+    -- Spider: smarter w/e/b motions (keys in keymaps.lua)
     { 'chrisgrieser/nvim-spider', lazy = true },
 
-    -- Maximizer: toggle window fullscreen (keys in maps.lua)
+    -- Maximizer: toggle window fullscreen (keys in keymaps.lua)
     { 'declancm/maximize.nvim', cmd = 'Maximize', config = true },
 
-    -- Flash: jump anywhere visible (keys in maps.lua)
+    -- Flash: jump anywhere visible (keys in keymaps.lua)
     {
         'folke/flash.nvim',
         event = 'VeryLazy',
@@ -21,7 +21,7 @@ return {
         cmd = 'Glance',
     },
 
-    -- Oil: file explorer as a buffer (key in maps.lua)
+    -- Oil: file explorer as a buffer (key in keymaps.lua)
     {
         'stevearc/oil.nvim',
         lazy = false,
@@ -84,7 +84,7 @@ return {
         end,
     },
 
-    -- Harpoon: quick file marks (keys in maps.lua)
+    -- Harpoon: quick file marks (keys in keymaps.lua)
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',

@@ -14,7 +14,7 @@ return {
         ---@type overseer.SetupOpts
         opts = {},
     },
-    -- Haunt: bookmark / annotate lines (keys in maps.lua)
+    -- Haunt: bookmark / annotate lines (keys in keymaps.lua)
     {
         'TheNoeTrevino/haunt.nvim',
         lazy = true,
@@ -45,7 +45,7 @@ return {
         opts = {},
     },
 
-    -- Nerdy: Nerd Font icon browser (keys in maps.lua)
+    -- Nerdy: Nerd Font icon browser (keys in keymaps.lua)
     {
         '2kabhishek/nerdy.nvim',
         dependencies = { 'folke/snacks.nvim' },
@@ -57,7 +57,7 @@ return {
         },
     },
 
-    -- Undotree: visual undo tree (key in maps.lua)
+    -- Undotree: visual undo tree (key in keymaps.lua)
     {
         'jiaoshijie/undotree',
         lazy = true,

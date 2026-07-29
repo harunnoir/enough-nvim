@@ -1,5 +1,5 @@
 return {
-    -- Gitsigns: hunks, blame, stage (keys in maps.lua under <leader>G)
+    -- Gitsigns: hunks, blame, stage (keys in keymaps.lua under <leader>G)
     {
         'lewis6991/gitsigns.nvim',
         event = 'VeryLazy',
@@ -23,7 +23,7 @@ return {
         },
     },
 
-    -- Gitgraph: interactive git log (key in maps.lua under <leader>Gl)
+    -- Gitgraph: interactive git log (key in keymaps.lua under <leader>Gl)
     {
         'isakbm/gitgraph.nvim',
         lazy = true,

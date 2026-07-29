@@ -58,7 +58,7 @@ return {
         end,
     },
 
-    -- Ufo: better folds (treesitter + indent), keys in maps.lua (zR / zM)
+    -- Ufo: better folds (treesitter + indent), keys in keymaps.lua (zR / zM)
     {
         'kevinhwang91/nvim-ufo',
         event = 'VeryLazy',

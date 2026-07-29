@@ -6,7 +6,7 @@ This config uses **Neovim 0.11's built-in LSP client** directly — no `nvim-lsp
 
 - `vim.lsp.enable('server_name')` — registers an LSP server
 - `vim.lsp.config('server_name', { ... })` — configures its command, filetypes, settings
-- All of this lives in `lua/config/lsp.lua`
+- Server definitions live in `lua/lsp/servers.lua`; activation lives in `lua/lsp/init.lua`
 
 ## Active Servers
 
@@ -37,7 +37,7 @@ vim.lsp.enable('pyright')
 ## Adding a New LSP Server
 
 1. Install via Mason: `:Mason` → search → `I`
-2. Add to `lua/config/lsp.lua`:
+2. Add its definition to `lua/lsp/servers.lua` and its name to `lua/lsp/init.lua`:
 
 ```lua
 vim.lsp.config('my_server', {

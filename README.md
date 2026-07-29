@@ -32,23 +32,30 @@ For a full automated setup:
 ├── bin/install.sh            bootstrap installer
 ├── lua/
 │   ├── config/
+│   │   ├── init.lua          config startup order
 │   │   ├── lazy.lua          lazy.nvim bootstrap
-│   │   ├── opts.lua          editor options
-│   │   ├── maps.lua          core keymaps
-│   │   ├── lsp.lua           LSP server config (vim.lsp.enable)
-│   │   ├── cmd.lua           autocommands / filetype settings
+│   │   ├── options.lua       editor options
+│   │   ├── keymaps.lua       global keymaps
+│   │   ├── diagnostics.lua   diagnostic display policy
+│   │   ├── autocmds.lua      autocommands / filetype settings
 │   │   └── neovide.lua       Neovide GUI config
+│   ├── lsp/
+│   │   ├── init.lua          server list and activation
+│   │   └── servers.lua       native vim.lsp.config definitions
 │   └── plugins/              one file per concern
 │       ├── core.lua          treesitter, ufo
 │       ├── ts.lua            treesitter text objects
 │       ├── mini.lua          mini.nvim modules
 │       ├── lsp.lua           mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
-│       ├── editor.lua        blink.cmp, conform, treesj, trouble, dial
+│       ├── completion.lua    blink.cmp and completion sources
+│       ├── editor.lua        conform, treesj, trouble, dial
 │       ├── nav.lua           flash, harpoon, oil, glance, smart-splits, marks
 │       ├── git.lua           gitsigns, gitgraph
 │       ├── dap.lua           nvim-dap, dap-ui, python/go debugger
 │       ├── ai.lua            99 AI chat
-│       ├── ui.lua            colorschemes, snacks, noice, slimline
+│       ├── themes.lua        colorscheme selection and setup
+│       ├── ui.lua            snacks, noice, slimline
+│       ├── terminal.lua      Snacks terminal behavior and mappings
 │       ├── misc.lua          haunt, undotree, nerdy, overseer
 │       ├── lang.lua          language-specific extras
 │       └── 42.lua            42 School tooling
@@ -149,7 +156,7 @@ For a full automated setup:
 
 ## Colorscheme
 
-Switch via the `theme` variable at the top of `lua/plugins/ui.lua`.
+Switch via the `theme` variable at the top of `lua/plugins/themes.lua`.
 
 Available: `limei` (default), `solarized`, `gruvbox-material`, `gruvbox`,
 `gruvbox-new`, `zen`, `vague`, `miasma`, `kanagawa`, and `farout`.

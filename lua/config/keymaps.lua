@@ -1,30 +1,5 @@
 local map = vim.keymap.set
 
--- ╔══════════════════════════════════════════════════════════════════════╗
--- ║                        KEYMAP TREE                                   ║
--- ╠══════════════════════════════════════════════════════════════════════╣
--- ║  (no prefix)   → vim primitives (save, quit, fold, alternate buf)    ║
--- ║  g*            → go-to / lsp navigation (vim convention)             ║
--- ║  z*            → folds (ufo)                                         ║
--- ║  [/]           → prev/next (diagnostics, hunks)                      ║
--- ║  motion        → w/e/b (spider), gs/gS (flash)                       ║
--- ╠══════════════════════════════════════════════════════════════════════╣
--- ║  <leader>f     → FILES & SEARCH                                      ║
--- ║  <leader>b     → BUFFERS                                             ║
--- ║  <leader>c     → CODE / LSP actions                                  ║
--- ║  <leader>G     → GIT                                                 ║
--- ║  <leader>s     → SPLITS                                              ║
--- ║  <leader>d     → DEBUG (DAP)                                         ║
--- ║  <leader>x     → DIAGNOSTICS / TROUBLE                               ║
--- ║  <leader>h     → BOOKMARKS (haunt)                                   ║
--- ║  <leader>i     → INSERT / ICONS                                      ║
--- ║  <leader>p     → PASTE / YANK history                                ║
--- ║  <leader>u     → UNDO tree                                           ║
--- ║  <leader>9     → AI (99 plugin)                                      ║
--- ║  <leader>a/e   → HARPOON add / menu                                  ║
--- ║  <leader>1-4   → HARPOON jump                                        ║
--- ╚══════════════════════════════════════════════════════════════════════╝
-
 -- ── Primitives ────────────────────────────────────────────────────────
 map('n', '<leader>w', '<CMD>w<CR>', { desc = 'Save' })
 map('n', '<leader>q', '<CMD>q<CR>', { desc = 'Close window' })
@@ -41,10 +16,6 @@ map('v', '<A-S-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
 -- ── Visual indent ─────────────────────────────────────────────────────
 map('v', '<Tab>', '>gv', { desc = 'Indent' })
 map('v', '<S-Tab>', '<gv', { desc = 'Outdent' })
-
--- ── Terminal ──────────────────────────────────────────────────────────
-map('n', '<C-\\>', function() require('snacks').terminal() end, { desc = 'Toggle terminal' })
-map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- ── z = Folds (ufo) ──────────────────────────────────────────────────
 map('n', 'zR', function() require('ufo').openAllFolds() end, { desc = 'Open all folds' })
