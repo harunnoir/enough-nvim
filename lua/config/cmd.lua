@@ -7,119 +7,119 @@ local cmd = vim.cmd
 local view_group = api.nvim_create_augroup('AutoViewRestore', { clear = true })
 
 api.nvim_create_autocmd({ 'BufWinLeave' }, {
-  group = view_group,
-  pattern = '*',
-  callback = function() cmd('silent! mkview') end,
+    group = view_group,
+    pattern = '*',
+    callback = function() cmd('silent! mkview') end,
 })
 
 api.nvim_create_autocmd({ 'BufWinEnter' }, {
-  group = view_group,
-  pattern = '*',
-  callback = function() cmd('silent! loadview') end,
+    group = view_group,
+    pattern = '*',
+    callback = function() cmd('silent! loadview') end,
 })
 
 -------------------------------------------------------
 -- Filetype settings (centralized + scalable)
 -------------------------------------------------------
 local filetype_settings = {
-  python = function()
-    vim.opt_local.colorcolumn = '88'
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-    vim.opt_local.expandtab = true
-  end,
+    python = function()
+        vim.opt_local.colorcolumn = '88'
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.tabstop = 4
+        vim.opt_local.expandtab = true
+    end,
 
-  c = function()
-    vim.opt_local.colorcolumn = '80,120'
-    vim.opt_local.textwidth = 80
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-    vim.opt_local.expandtab = false
-  end,
+    c = function()
+        vim.opt_local.colorcolumn = '80,120'
+        vim.opt_local.textwidth = 80
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.tabstop = 4
+        vim.opt_local.expandtab = false
+    end,
 
-  cpp = function()
-    vim.opt_local.colorcolumn = '80,120'
-    vim.opt_local.textwidth = 80
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-    vim.opt_local.expandtab = false
-  end,
+    cpp = function()
+        vim.opt_local.colorcolumn = '80,120'
+        vim.opt_local.textwidth = 80
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.tabstop = 4
+        vim.opt_local.expandtab = false
+    end,
 
-  lua = function()
-    vim.opt_local.colorcolumn = '120'
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+    lua = function()
+        vim.opt_local.colorcolumn = '120'
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
 
-  markdown = function()
-    vim.opt_local.colorcolumn = '140'
-    vim.opt_local.textwidth = 140
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
+    markdown = function()
+        vim.opt_local.colorcolumn = '140'
+        vim.opt_local.textwidth = 140
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
 
-  text = function()
-    vim.opt_local.colorcolumn = '80'
-    vim.opt_local.textwidth = 80
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
+    text = function()
+        vim.opt_local.colorcolumn = '80'
+        vim.opt_local.textwidth = 80
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
 
-  rst = function()
-    vim.opt_local.colorcolumn = '80'
-    vim.opt_local.textwidth = 80
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
+    rst = function()
+        vim.opt_local.colorcolumn = '80'
+        vim.opt_local.textwidth = 80
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
 
-  javascript = function()
-    vim.opt_local.colorcolumn = '100'
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+    javascript = function()
+        vim.opt_local.colorcolumn = '100'
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
 
-  typescript = function()
-    vim.opt_local.colorcolumn = '100'
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+    typescript = function()
+        vim.opt_local.colorcolumn = '100'
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
 
-  json = function()
-    vim.opt_local.colorcolumn = '100'
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+    json = function()
+        vim.opt_local.colorcolumn = '100'
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
 
-  yaml = function()
-    vim.opt_local.colorcolumn = '80'
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+    yaml = function()
+        vim.opt_local.colorcolumn = '80'
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
 
-  toml = function()
-    vim.opt_local.colorcolumn = '80'
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-    vim.opt_local.expandtab = true
-  end,
+    toml = function()
+        vim.opt_local.colorcolumn = '80'
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        vim.opt_local.expandtab = true
+    end,
 }
 
 local ft_group = api.nvim_create_augroup('FileTypeSettings', { clear = true })
 
 api.nvim_create_autocmd('FileType', {
-  group = ft_group,
-  pattern = vim.tbl_keys(filetype_settings),
-  callback = function(args)
-    local fn = filetype_settings[args.match]
-    if fn then
-      fn()
-    end
-  end,
+    group = ft_group,
+    pattern = vim.tbl_keys(filetype_settings),
+    callback = function(args)
+        local fn = filetype_settings[args.match]
+        if fn then
+            fn()
+        end
+    end,
 })
 
 -------------------------------------------------------
@@ -128,7 +128,7 @@ api.nvim_create_autocmd('FileType', {
 local csv_group = api.nvim_create_augroup('CsvViewAutoEnable', { clear = true })
 
 api.nvim_create_autocmd('BufReadPost', {
-  group = csv_group,
-  pattern = '*.csv',
-  callback = function() cmd('CsvViewEnable delimiter=, display_mode=border header_lnum=1') end,
+    group = csv_group,
+    pattern = '*.csv',
+    callback = function() cmd('CsvViewEnable delimiter=, display_mode=border header_lnum=1') end,
 })

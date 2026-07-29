@@ -12,17 +12,17 @@ vim.opt.sidescrolloff = 3
 vim.opt.shortmess:append('c')
 vim.opt.list = true
 vim.opt.listchars = {
-  space = '·',
-  tab = '↦ ',
-  -- eol = '↲',
-  -- extends = '»',
-  -- precedes = '«',
-  nbsp = '␣',
-  trail = '›',
+    space = '·',
+    tab = '↦ ',
+    -- eol = '↲',
+    -- extends = '»',
+    -- precedes = '«',
+    nbsp = '␣',
+    trail = '›',
 }
 
 vim.opt.fillchars = {
-  eob = ' ',
+    eob = ' ',
 }
 vim.opt.cursorline = true
 

@@ -1,107 +1,107 @@
 return {
-  -- Smart-splits: window navigation & resize (keys in maps.lua)
-  { 'mrjones2014/smart-splits.nvim' },
+    -- Smart-splits: window navigation & resize (keys in maps.lua)
+    { 'mrjones2014/smart-splits.nvim' },
 
-  -- Spider: smarter w/e/b motions (keys in maps.lua)
-  { 'chrisgrieser/nvim-spider', lazy = true },
+    -- Spider: smarter w/e/b motions (keys in maps.lua)
+    { 'chrisgrieser/nvim-spider', lazy = true },
 
-  -- Maximizer: toggle window fullscreen (keys in maps.lua)
-  { 'declancm/maximize.nvim', config = true },
+    -- Maximizer: toggle window fullscreen (keys in maps.lua)
+    { 'declancm/maximize.nvim', config = true },
 
-  -- Flash: jump anywhere visible (keys in maps.lua)
-  {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
-
-  -- Glance: peek LSP definitions / references
-  {
-    'dnlhc/glance.nvim',
-    cmd = 'Glance',
-  },
-
-  -- Oil: file explorer as a buffer (key in maps.lua)
-  {
-    'stevearc/oil.nvim',
-    opts = {
-      columns = { 'icon', 'permissions', 'size', 'mtime' },
+    -- Flash: jump anywhere visible (keys in maps.lua)
+    {
+        'folke/flash.nvim',
+        event = 'VeryLazy',
+        opts = {},
     },
-  },
 
-  -- Oil plugins: diagnostics and git status in Oil
-  {
-    'JezerM/oil-lsp-diagnostics.nvim',
-    event = 'VeryLazy',
-    dependencies = { 'stevearc/oil.nvim' },
-    opts = {},
-  },
-  {
-    'benomahony/oil-git.nvim',
-    dependencies = { 'stevearc/oil.nvim' },
+    -- Glance: peek LSP definitions / references
+    {
+        'dnlhc/glance.nvim',
+        cmd = 'Glance',
+    },
 
-    opts = function()
-      local function get_hl(group, attr)
-        local ok, hl = pcall(vim.api.nvim_get_hl, 0, {
-          name = group,
-          link = false,
-        })
-
-        if not ok or type(hl) ~= 'table' then
-          return nil
-        end
-
-        local value = hl[attr]
-
-        if type(value) ~= 'number' then
-          return nil
-        end
-
-        return string.format('#%06x', value)
-      end
-
-      return {
-        highlights = {
-          OilGitAdded = {
-            fg = get_hl('DiagnosticOk', 'fg') or '#a9b665',
-          },
-          OilGitModified = {
-            fg = get_hl('DiagnosticWarn', 'fg') or '#d8a657',
-          },
-          OilGitRenamed = {
-            fg = get_hl('Keyword', 'fg') or '#d3869b',
-          },
-          OilGitUntracked = {
-            fg = get_hl('Function', 'fg') or '#7daea3',
-          },
-          OilGitIgnored = {
-            fg = get_hl('Comment', 'fg') or '#928374',
-          },
+    -- Oil: file explorer as a buffer (key in maps.lua)
+    {
+        'stevearc/oil.nvim',
+        opts = {
+            columns = { 'icon', 'permissions', 'size', 'mtime' },
         },
-      }
-    end,
-  },
+    },
 
-  -- Harpoon: quick file marks (keys in maps.lua)
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    lazy = true,
-    config = function() require('harpoon').setup() end,
-  },
+    -- Oil plugins: diagnostics and git status in Oil
+    {
+        'JezerM/oil-lsp-diagnostics.nvim',
+        event = 'VeryLazy',
+        dependencies = { 'stevearc/oil.nvim' },
+        opts = {},
+    },
+    {
+        'benomahony/oil-git.nvim',
+        dependencies = { 'stevearc/oil.nvim' },
 
-  -- Marks: visual indicators for marks a-z
-  {
-    'chentoast/marks.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
+        opts = function()
+            local function get_hl(group, attr)
+                local ok, hl = pcall(vim.api.nvim_get_hl, 0, {
+                    name = group,
+                    link = false,
+                })
 
-  -- Satellite: scrollbar with diagnostics, marks, search
-  {
-    'lewis6991/satellite.nvim',
-    event = 'VeryLazy',
-    config = true,
-  },
+                if not ok or type(hl) ~= 'table' then
+                    return nil
+                end
+
+                local value = hl[attr]
+
+                if type(value) ~= 'number' then
+                    return nil
+                end
+
+                return string.format('#%06x', value)
+            end
+
+            return {
+                highlights = {
+                    OilGitAdded = {
+                        fg = get_hl('DiagnosticOk', 'fg') or '#a9b665',
+                    },
+                    OilGitModified = {
+                        fg = get_hl('DiagnosticWarn', 'fg') or '#d8a657',
+                    },
+                    OilGitRenamed = {
+                        fg = get_hl('Keyword', 'fg') or '#d3869b',
+                    },
+                    OilGitUntracked = {
+                        fg = get_hl('Function', 'fg') or '#7daea3',
+                    },
+                    OilGitIgnored = {
+                        fg = get_hl('Comment', 'fg') or '#928374',
+                    },
+                },
+            }
+        end,
+    },
+
+    -- Harpoon: quick file marks (keys in maps.lua)
+    {
+        'ThePrimeagen/harpoon',
+        branch = 'harpoon2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        lazy = true,
+        config = function() require('harpoon').setup() end,
+    },
+
+    -- Marks: visual indicators for marks a-z
+    {
+        'chentoast/marks.nvim',
+        event = 'VeryLazy',
+        opts = {},
+    },
+
+    -- Satellite: scrollbar with diagnostics, marks, search — DISABLED
+    -- {
+    --   'lewis6991/satellite.nvim',
+    --   event = 'VeryLazy',
+    --   config = true,
+    -- },
 }
