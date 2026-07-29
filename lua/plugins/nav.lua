@@ -24,7 +24,7 @@ return {
     -- Oil: file explorer as a buffer (key in maps.lua)
     {
         'stevearc/oil.nvim',
-        cmd = 'Oil',
+        lazy = false,
         opts = {
             columns = { 'icon', 'permissions', 'size', 'mtime' },
         },
