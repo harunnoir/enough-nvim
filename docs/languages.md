@@ -30,7 +30,7 @@ Install via Mason if available: `:Mason`.
 
 ## 3. Formatter
 
-In `lua/plugins/editor.lua`, inside the `conform` config:
+In `lua/plugins/edit.lua`, inside the `conform` config:
 
 ```lua
 formatters_by_ft = {
@@ -84,6 +84,6 @@ local filetype_settings = {
 | Treesitter | `lua/plugins/core.lua` | Name in `patterns` list |
 | LSP | `lua/lsp/servers.lua` | `vim.lsp.config()` definition |
 | LSP install | `:Mason` | Install binary |
-| Formatter | `lua/plugins/editor.lua` | Entry in `formatters_by_ft` |
+| Formatter | `lua/plugins/edit.lua` | Entry in `formatters_by_ft` |
 | Linter | `lua/plugins/lsp.lua` | Entry in `lint.linters_by_ft` |
 | Options | `lua/config/autocmds.lua` | Entry in `filetype_settings` |

@@ -16,7 +16,7 @@ Every plugin answers "yes" to at least two of:
 | `nvim-treesitter` | Syntax highlighting and parser-backed folds |
 | `nvim-ufo` | Better folds than built-in `foldmethod=expr` alone |
 
-### treesitter.lua
+### ts.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -43,13 +43,13 @@ Every plugin answers "yes" to at least two of:
 | `fidget.nvim` | LSP progress spinner in statusline |
 | `symbol-usage.nvim` | Shows reference/definition counts inline |
 
-### completion.lua
+### cmp.lua
 
 | Plugin | Why |
 |--------|-----|
 | `blink.cmp` | Completion — fast, native-feeling, Neovim 0.11 compatible |
 
-### editor.lua
+### edit.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -62,7 +62,7 @@ Every plugin answers "yes" to at least two of:
 | `dial.nvim` | Increment/decrement numbers, dates, hex colors (`<C-a>`/`<C-x>`) |
 | `smart-paste.nvim` | Smart indent-aware pasting |
 
-### navigation.lua
+### nav.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -118,7 +118,7 @@ Every plugin answers "yes" to at least two of:
 
 | Plugin | Why |
 |--------|-----|
-| `snacks.terminal` | One toggleable terminal with mappings beside its integration |
+| `snacks.terminal` | One toggleable terminal; bindings live in `maps/terminal.lua` |
 
 ### extras.lua
 
@@ -138,7 +138,7 @@ Every plugin answers "yes" to at least two of:
 |--------|-----|
 | `99` | AI chat in Neovim (`<leader>9v`/`9s`) |
 
-### languages.lua
+### lang.lua
 
 | Plugin | Why |
 |--------|-----|

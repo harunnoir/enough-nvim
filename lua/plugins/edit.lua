@@ -1,3 +1,5 @@
+local maps = require('maps.edit')
+
 return {
     -- Smart indent
     {
@@ -9,14 +11,7 @@ return {
     {
         'stevearc/conform.nvim',
         event = 'VeryLazy',
-        keys = {
-            {
-                '<leader>cf',
-                function() require('conform').format({ async = true }) end,
-                mode = { 'n', 'v' },
-                desc = 'Format',
-            },
-        },
+        keys = maps.format,
         config = function()
             require('conform').setup({
                 formatters = {
@@ -57,16 +52,7 @@ return {
     {
         'folke/trouble.nvim',
         cmd = 'Trouble',
-        keys = {
-            { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics' },
-            {
-                '<leader>xX',
-                '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-                desc = 'Buffer diagnostics',
-            },
-            { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols' },
-            { '<leader>xl', '<cmd>Trouble lsp toggle focus=false<cr>', desc = 'LSP references' },
-        },
+        keys = maps.trouble,
         opts = {},
     },
     -- Vim-repeat: make . repeat plugin actions
@@ -74,27 +60,14 @@ return {
     -- Treesj: split/join blocks (function args, if/else, tables)
     {
         'Wansmer/treesj',
-        keys = { { '<leader>sj', function() require('treesj').toggle() end, desc = 'Toggle split/join' } },
+        keys = maps.split_join,
         cmd = { 'TSJToggle', 'TSJSplit', 'TSJJoin' },
         opts = { use_default_keymaps = false },
     },
     -- Dial: increment / decrement numbers, dates, hex colors
     {
         'monaqa/dial.nvim',
-        keys = {
-            {
-                '<C-a>',
-                function() return require('dial.map').inc_normal() end,
-                expr = true,
-                desc = 'Increment',
-            },
-            {
-                '<C-x>',
-                function() return require('dial.map').dec_normal() end,
-                expr = true,
-                desc = 'Decrement',
-            },
-        },
+        keys = maps.dial,
         config = function()
             local augend = require('dial.augend')
             require('dial.config').augends:register_group({

@@ -53,20 +53,4 @@ local function zoom(direction)
     set_scale(direction > 0 and scale * scale_step or scale / scale_step)
 end
 
-local modes = { 'n', 'i', 'v', 't' }
-local map_opts = { silent = true }
-
-vim.keymap.set(modes, '<C-=>', function() zoom(1) end, vim.tbl_extend('force', map_opts, { desc = 'Neovide zoom in' }))
-vim.keymap.set(modes, '<C-+>', function() zoom(1) end, vim.tbl_extend('force', map_opts, { desc = 'Neovide zoom in' }))
-vim.keymap.set(
-    modes,
-    '<C-->',
-    function() zoom(-1) end,
-    vim.tbl_extend('force', map_opts, { desc = 'Neovide zoom out' })
-)
-vim.keymap.set(
-    modes,
-    '<C-0>',
-    function() set_scale(default_scale) end,
-    vim.tbl_extend('force', map_opts, { desc = 'Neovide reset zoom' })
-)
+require('maps.neovide').setup(function() zoom(1) end, function() zoom(-1) end, function() set_scale(default_scale) end)

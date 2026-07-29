@@ -7,20 +7,22 @@ obvious as the configuration grows.
 ## Boundaries
 
 - `init.lua` delegates startup to `lua/config/init.lua`.
-- `lua/config/` owns native editor policy: options, keymaps, diagnostics,
-  autocommands, plugin bootstrap, and GUI behavior.
+- `lua/config/` owns editor policy: options, diagnostics, autocommands, plugin
+  bootstrap, and GUI behavior.
+- `lua/maps/` is the single index of native and plugin keybindings.
 - `lua/lsp/` defines and enables native Neovim LSP servers.
 - `lua/plugins/` contains flat, concern-based Lazy specs.
 - `bin/` contains executable setup tasks.
 - `docs/` explains decisions and workflows.
 
-Plugin mappings belong in the corresponding plugin spec. `config/keymaps.lua`
-contains only native editor and LSP primitives. This keeps loading rules,
-commands, and ownership visible in one place.
+Native maps are installed by `maps/init.lua`. Plugin map modules return
+Lazy-compatible `keys` tables, which plugin specs consume. This keeps the whole
+keyboard design readable in one directory without sacrificing lazy loading.
 
 ## Naming
 
-- Prefer complete nouns: `navigation.lua`, not `nav.lua`.
+- Prefer short, established domain names such as `nav`, `cmp`, `lang`, and `ts`.
+- Spell out a name when its abbreviation would be ambiguous.
 - Name files by responsibility, not by the implementation used today.
 - Use `extras.lua` only for independent, optional tools.
 - Avoid nested plugin directories until a concern genuinely needs multiple

@@ -1,3 +1,5 @@
+local maps = require('maps.lsp')
+
 return {
     -- Mason: LSP / linter / formatter installer UI
     {
@@ -13,17 +15,7 @@ return {
         'rachartier/tiny-inline-diagnostic.nvim',
         event = 'VeryLazy',
         priority = 1000,
-        keys = {
-            { '<leader>dde', '<cmd>TinyInlineDiag enable<cr>', desc = 'Enable inline diagnostics' },
-            { '<leader>ddd', '<cmd>TinyInlineDiag disable<cr>', desc = 'Disable inline diagnostics' },
-            { '<leader>ddt', '<cmd>TinyInlineDiag toggle<cr>', desc = 'Toggle inline diagnostics' },
-            {
-                '<leader>ddc',
-                '<cmd>TinyInlineDiag toggle_cursor_only<cr>',
-                desc = 'Toggle cursor-only diagnostics',
-            },
-            { '<leader>ddr', '<cmd>TinyInlineDiag reset<cr>', desc = 'Reset inline diagnostics' },
-        },
+        keys = maps.diagnostics,
         config = function()
             require('tiny-inline-diagnostic').setup({
                 preset = 'classic',

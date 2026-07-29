@@ -7,8 +7,8 @@
 - Native LSP config, no `nvim-lspconfig` — uses `vim.lsp.enable()` (Neovim 0.11+)
 
 ## Key Conventions
-- `lua/config/keymaps.lua`: global keymaps using `vim.keymap.set` aliased as `map`
-- Plugin-owned mappings belong in their plugin specs when practical
+- `lua/maps/`: all keybindings grouped by workflow
+- Plugin specs consume Lazy-compatible `keys` tables from `lua/maps/`
 - Picker (snacks.picker): 9 bindings (`ff`, `fg`, `fw`, `fr`, `f.`, `fh`, `fk`, `fl`, `fp`)
 - Flash: `gs`/`gS` not `f`/`s` (avoids conflict with built-in `f` and mini.surround `s`)
 - Smart-splits for `<C-h/j/k/l>` window nav (not tmux-navigator)
@@ -18,20 +18,20 @@
 
 ## Plugin Categories
 - `core.lua`: treesitter, ufo
-- `treesitter.lua`: treesitter textobjects
+- `ts.lua`: treesitter textobjects
 - `mini.lua`: mini.ai, align, surround, clue, hipatterns, starter
 - `lsp.lua`: mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
-- `completion.lua`: blink.cmp and completion sources
-- `editor.lua`: conform, autopairs, grug-far, trouble, treesj, dial
-- `navigation.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, smart-splits
+- `cmp.lua`: blink.cmp and completion sources
+- `edit.lua`: conform, autopairs, grug-far, trouble, treesj, dial
+- `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, smart-splits
 - `git.lua`: gitsigns, gitgraph
 - `debug.lua`: nvim-dap, dap-ui, dap-python, dap-go
 - `themes.lua`: colorscheme selection and setup
 - `ui.lua`: slimline, snacks, noice, yanky, virt-column
-- `terminal.lua`: Snacks terminal behavior and mappings
+- `terminal.lua`: Snacks terminal integration
 - `extras.lua`: overseer, haunt, hardtime, undotree, nerdy, persistence
 - `ai.lua`: 99 AI chat
-- `languages.lua`: render-markdown, uv.nvim
+- `lang.lua`: render-markdown, uv.nvim
 - `42.lua`: c_formatter_42 (conform), 42-header.nvim
 
 ## Testing / Validation

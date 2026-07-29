@@ -35,29 +35,36 @@ For a full automated setup:
 │   │   ├── init.lua          config startup order
 │   │   ├── lazy.lua          lazy.nvim bootstrap
 │   │   ├── options.lua       editor options
-│   │   ├── keymaps.lua       global keymaps
 │   │   ├── diagnostics.lua   diagnostic display policy
 │   │   ├── autocmds.lua      autocommands / filetype settings
 │   │   └── neovide.lua       Neovide GUI config
+│   ├── maps/                 all keybindings by workflow
+│   │   ├── core.lua          native editor primitives
+│   │   ├── nav.lua           movement, files, and windows
+│   │   ├── edit.lua          formatting and editing tools
+│   │   ├── lsp.lua           LSP and diagnostic actions
+│   │   ├── git.lua           Git actions
+│   │   ├── debug.lua         debugger actions
+│   │   └── extras.lua        tasks, bookmarks, AI, and utilities
 │   ├── lsp/
 │   │   ├── init.lua          server list and activation
 │   │   └── servers.lua       native vim.lsp.config definitions
 │   └── plugins/              one file per concern
 │       ├── core.lua          treesitter, ufo
-│       ├── treesitter.lua    treesitter text objects
+│       ├── ts.lua            treesitter text objects
 │       ├── mini.lua          mini.nvim modules
 │       ├── lsp.lua           mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
-│       ├── completion.lua    blink.cmp and completion sources
-│       ├── editor.lua        conform, treesj, trouble, dial
-│       ├── navigation.lua    flash, harpoon, oil, glance, smart-splits, marks
+│       ├── cmp.lua           blink.cmp and completion sources
+│       ├── edit.lua          conform, treesj, trouble, dial
+│       ├── nav.lua           flash, harpoon, oil, glance, smart-splits, marks
 │       ├── git.lua           gitsigns, gitgraph
 │       ├── debug.lua         nvim-dap, dap-ui, python/go debugger
 │       ├── ai.lua            99 AI chat
 │       ├── themes.lua        colorscheme selection and setup
 │       ├── ui.lua            snacks, noice, slimline
-│       ├── terminal.lua      Snacks terminal behavior and mappings
+│       ├── terminal.lua      Snacks terminal integration
 │       ├── extras.lua        haunt, undotree, nerdy, overseer
-│       ├── languages.lua     language-specific extras
+│       ├── lang.lua          language-specific extras
 │       └── 42.lua            42 School tooling
 ```
 
