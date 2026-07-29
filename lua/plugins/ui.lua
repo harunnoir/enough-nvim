@@ -48,6 +48,23 @@ return {
         'folke/snacks.nvim',
         priority = 1000,
         lazy = false,
+        keys = {
+            { '<leader>ff', function() Snacks.picker.files() end, desc = 'Find files' },
+            { '<leader>fg', function() Snacks.picker.grep() end, desc = 'Live grep' },
+            { '<leader>fw', function() Snacks.picker.grep_word() end, desc = 'Grep word' },
+            { '<leader>fr', function() Snacks.picker.recent() end, desc = 'Recent files' },
+            { '<leader>f.', function() Snacks.picker.resume() end, desc = 'Resume picker' },
+            { '<leader>fh', function() Snacks.picker.help() end, desc = 'Help tags' },
+            { '<leader>fk', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
+            { '<leader>fl', function() Snacks.picker.lines() end, desc = 'Buffer lines' },
+            { '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
+            { '<leader>bb', function() Snacks.picker.buffers() end, desc = 'List buffers' },
+            { '<leader>bd', function() Snacks.bufdelete() end, desc = 'Delete buffer' },
+            { '<leader>cs', function() Snacks.picker.lsp_symbols() end, desc = 'Symbols' },
+            { '<leader>cS', function() Snacks.picker.lsp_workspace_symbols() end, desc = 'Workspace symbols' },
+            { '<leader>Gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
+            { '<leader>GB', function() Snacks.gitbrowse() end, desc = 'Git browse' },
+        },
         opts = function()
             return {
                 bigfile = { enabled = true },
@@ -164,6 +181,21 @@ return {
     {
         'gbprod/yanky.nvim',
         event = 'VeryLazy',
+        keys = {
+            { '<A-p>', '<Plug>(YankyPreviousEntry)', desc = 'Previous yank entry' },
+            { '<A-n>', '<Plug>(YankyNextEntry)', desc = 'Next yank entry' },
+            { 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yank' },
+            { 'p', '<Plug>(YankyPutAfter)', mode = { 'n', 'x' }, desc = 'Paste after' },
+            { 'P', '<Plug>(YankyPutBefore)', mode = { 'n', 'x' }, desc = 'Paste before' },
+            { 'gp', '<Plug>(YankyGPutAfter)', mode = { 'n', 'x' }, desc = 'Paste after and move' },
+            { 'gP', '<Plug>(YankyGPutBefore)', mode = { 'n', 'x' }, desc = 'Paste before and move' },
+            {
+                '<leader>p',
+                '<cmd>YankyRingHistory<cr>',
+                mode = { 'n', 'x' },
+                desc = 'Yank history',
+            },
+        },
         opts = {},
     },
     {

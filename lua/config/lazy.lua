@@ -14,6 +14,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    -- Tests use a temporary lockfile so validation never mutates the project.
+    lockfile = vim.env.NVIM_LAZY_LOCKFILE,
     spec = {
         { import = 'plugins' },
     },

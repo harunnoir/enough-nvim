@@ -1,8 +1,15 @@
 return {
-    -- Gitsigns: hunks, blame, stage (keys in keymaps.lua under <leader>G)
     {
         'lewis6991/gitsigns.nvim',
         event = 'VeryLazy',
+        keys = {
+            { '[h', function() require('gitsigns').prev_hunk() end, desc = 'Previous hunk' },
+            { ']h', function() require('gitsigns').next_hunk() end, desc = 'Next hunk' },
+            { '<leader>Gb', function() require('gitsigns').blame_line() end, desc = 'Blame line' },
+            { '<leader>Gh', function() require('gitsigns').preview_hunk() end, desc = 'Preview hunk' },
+            { '<leader>Gs', function() require('gitsigns').stage_hunk() end, desc = 'Stage hunk' },
+            { '<leader>Gu', function() require('gitsigns').undo_stage_hunk() end, desc = 'Unstage hunk' },
+        },
         opts = {
             signs = {
                 add = { text = '┃' },
@@ -23,10 +30,15 @@ return {
         },
     },
 
-    -- Gitgraph: interactive git log (key in keymaps.lua under <leader>Gl)
     {
         'isakbm/gitgraph.nvim',
-        lazy = true,
+        keys = {
+            {
+                '<leader>Gl',
+                function() require('gitgraph').draw({}, { all = true, max_count = 5000 }) end,
+                desc = 'Git graph',
+            },
+        },
         opts = {
             git_cmd = 'git',
             symbols = {

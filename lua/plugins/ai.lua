@@ -1,7 +1,27 @@
 return {
     {
         'ThePrimeagen/99',
-        lazy = true,
+        keys = {
+            {
+                '<leader>9v',
+                function()
+                    require('99').visual()
+                    vim.cmd.startinsert()
+                end,
+                mode = 'v',
+                desc = 'AI visual prompt',
+            },
+            {
+                '<leader>9s',
+                function()
+                    require('99').search()
+                    vim.cmd.startinsert()
+                end,
+                desc = 'AI search prompt',
+            },
+            { '<leader>9x', function() require('99').stop_all_requests() end, desc = 'AI cancel' },
+            { '<leader>9l', function() require('99').view_logs() end, desc = 'AI logs' },
+        },
         config = function()
             local _99 = require('99')
             local cwd = vim.uv.cwd()

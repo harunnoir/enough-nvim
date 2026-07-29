@@ -16,7 +16,7 @@ Every plugin answers "yes" to at least two of:
 | `nvim-treesitter` | Syntax highlighting and parser-backed folds |
 | `nvim-ufo` | Better folds than built-in `foldmethod=expr` alone |
 
-### ts.lua
+### treesitter.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -43,11 +43,16 @@ Every plugin answers "yes" to at least two of:
 | `fidget.nvim` | LSP progress spinner in statusline |
 | `symbol-usage.nvim` | Shows reference/definition counts inline |
 
-### editor.lua
+### completion.lua
 
 | Plugin | Why |
 |--------|-----|
 | `blink.cmp` | Completion — fast, native-feeling, Neovim 0.11 compatible |
+
+### editor.lua
+
+| Plugin | Why |
+|--------|-----|
 | `conform.nvim` | Format on demand (`<leader>cf`) — per-filetype config |
 | `nvim-autopairs` | Auto-close brackets |
 | `grug-far.nvim` | Search & replace across files (`:GrugFar`) |
@@ -57,7 +62,7 @@ Every plugin answers "yes" to at least two of:
 | `dial.nvim` | Increment/decrement numbers, dates, hex colors (`<C-a>`/`<C-x>`) |
 | `smart-paste.nvim` | Smart indent-aware pasting |
 
-### nav.lua
+### navigation.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -80,7 +85,7 @@ Every plugin answers "yes" to at least two of:
 | `gitsigns.nvim` | Git signs in signcolumn, hunk staging, blame |
 | `gitgraph.nvim` | Git log as an interactive graph (`<leader>Gl`) |
 
-### dap.lua
+### debug.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -89,11 +94,16 @@ Every plugin answers "yes" to at least two of:
 | `nvim-dap-python` | Python debugger (debugpy) — pytest integration |
 | `nvim-dap-go` | Go debugger (delve) |
 
+### themes.lua
+
+| Plugin | Why |
+|--------|-----|
+| `limei.nvim` and alternatives | Colorschemes selected by `theme` in `themes.lua` |
+
 ### ui.lua
 
 | Plugin | Why |
 |--------|-----|
-| `limei.nvim` and alternatives | Colorschemes selected by `theme` in `ui.lua` |
 | `slimline.nvim` | Statusline — minimal, theme-aware, no dependencies |
 | `snacks.nvim` | Picker, terminal, statuscolumn, indent guides, and animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
@@ -104,7 +114,13 @@ Every plugin answers "yes" to at least two of:
 | `nvim-web-devicons` | File type icons |
 | `csvview.nvim` | CSV viewer with field navigation |
 
-### misc.lua
+### terminal.lua
+
+| Plugin | Why |
+|--------|-----|
+| `snacks.terminal` | One toggleable terminal with mappings beside its integration |
+
+### extras.lua
 
 | Plugin | Why |
 |--------|-----|
@@ -122,7 +138,7 @@ Every plugin answers "yes" to at least two of:
 |--------|-----|
 | `99` | AI chat in Neovim (`<leader>9v`/`9s`) |
 
-### lang.lua
+### languages.lua
 
 | Plugin | Why |
 |--------|-----|

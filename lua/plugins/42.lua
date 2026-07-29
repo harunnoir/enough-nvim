@@ -4,6 +4,7 @@ return {
     {
         'Diogo-ss/42-header.nvim',
         cmd = { 'Stdheader' },
+        keys = { { '<leader>42', '<cmd>Stdheader<cr>', desc = '42 header' } },
         opts = {
             default_map = false,
             auto_update = true, -- Update header when saving.

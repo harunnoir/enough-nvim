@@ -8,8 +8,15 @@ return {
     -- Conform: format on demand
     {
         'stevearc/conform.nvim',
-        lazy = true,
         event = 'VeryLazy',
+        keys = {
+            {
+                '<leader>cf',
+                function() require('conform').format({ async = true }) end,
+                mode = { 'n', 'v' },
+                desc = 'Format',
+            },
+        },
         config = function()
             require('conform').setup({
                 formatters = {
@@ -50,6 +57,16 @@ return {
     {
         'folke/trouble.nvim',
         cmd = 'Trouble',
+        keys = {
+            { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics' },
+            {
+                '<leader>xX',
+                '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+                desc = 'Buffer diagnostics',
+            },
+            { '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Symbols' },
+            { '<leader>xl', '<cmd>Trouble lsp toggle focus=false<cr>', desc = 'LSP references' },
+        },
         opts = {},
     },
     -- Vim-repeat: make . repeat plugin actions
@@ -57,7 +74,7 @@ return {
     -- Treesj: split/join blocks (function args, if/else, tables)
     {
         'Wansmer/treesj',
-        keys = { '<leader>sj' },
+        keys = { { '<leader>sj', function() require('treesj').toggle() end, desc = 'Toggle split/join' } },
         cmd = { 'TSJToggle', 'TSJSplit', 'TSJJoin' },
         opts = { use_default_keymaps = false },
     },

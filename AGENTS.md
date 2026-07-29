@@ -18,20 +18,20 @@
 
 ## Plugin Categories
 - `core.lua`: treesitter, ufo
-- `ts.lua`: treesitter textobjects
+- `treesitter.lua`: treesitter textobjects
 - `mini.lua`: mini.ai, align, surround, clue, hipatterns, starter
 - `lsp.lua`: mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
 - `completion.lua`: blink.cmp and completion sources
 - `editor.lua`: conform, autopairs, grug-far, trouble, treesj, dial
-- `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, smart-splits
+- `navigation.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, smart-splits
 - `git.lua`: gitsigns, gitgraph
-- `dap.lua`: nvim-dap, dap-ui, dap-python, dap-go
+- `debug.lua`: nvim-dap, dap-ui, dap-python, dap-go
 - `themes.lua`: colorscheme selection and setup
 - `ui.lua`: slimline, snacks, noice, yanky, virt-column
 - `terminal.lua`: Snacks terminal behavior and mappings
-- `misc.lua`: overseer, haunt, hardtime, undotree, nerdy, persistence
+- `extras.lua`: overseer, haunt, hardtime, undotree, nerdy, persistence
 - `ai.lua`: 99 AI chat
-- `lang.lua`: render-markdown, uv.nvim
+- `languages.lua`: render-markdown, uv.nvim
 - `42.lua`: c_formatter_42 (conform), 42-header.nvim
 
 ## Testing / Validation

@@ -44,20 +44,20 @@ For a full automated setup:
 │   │   └── servers.lua       native vim.lsp.config definitions
 │   └── plugins/              one file per concern
 │       ├── core.lua          treesitter, ufo
-│       ├── ts.lua            treesitter text objects
+│       ├── treesitter.lua    treesitter text objects
 │       ├── mini.lua          mini.nvim modules
 │       ├── lsp.lua           mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
 │       ├── completion.lua    blink.cmp and completion sources
 │       ├── editor.lua        conform, treesj, trouble, dial
-│       ├── nav.lua           flash, harpoon, oil, glance, smart-splits, marks
+│       ├── navigation.lua    flash, harpoon, oil, glance, smart-splits, marks
 │       ├── git.lua           gitsigns, gitgraph
-│       ├── dap.lua           nvim-dap, dap-ui, python/go debugger
+│       ├── debug.lua         nvim-dap, dap-ui, python/go debugger
 │       ├── ai.lua            99 AI chat
 │       ├── themes.lua        colorscheme selection and setup
 │       ├── ui.lua            snacks, noice, slimline
 │       ├── terminal.lua      Snacks terminal behavior and mappings
-│       ├── misc.lua          haunt, undotree, nerdy, overseer
-│       ├── lang.lua          language-specific extras
+│       ├── extras.lua        haunt, undotree, nerdy, overseer
+│       ├── languages.lua     language-specific extras
 │       └── 42.lua            42 School tooling
 ```
 
@@ -163,6 +163,7 @@ Available: `limei` (default), `solarized`, `gruvbox-material`, `gruvbox`,
 
 ## Docs
 
+- [Architecture](docs/architecture.md) — Unix-style boundaries, naming, and change rules
 - [Plugin rationale](docs/plugins.md) — why each plugin is here and what was removed
 - [LSP setup](docs/lsp.md) — native `vim.lsp.enable()` without lspconfig
 - [Workflows](docs/workflows.md) — day-to-day editing, search, git, debug loops
