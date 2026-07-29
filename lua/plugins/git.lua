@@ -26,6 +26,7 @@ return {
     -- Gitgraph: interactive git log (key in maps.lua under <leader>Gl)
     {
         'isakbm/gitgraph.nvim',
+        lazy = true,
         opts = {
             git_cmd = 'git',
             symbols = {

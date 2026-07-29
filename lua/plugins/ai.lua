@@ -1,6 +1,7 @@
 return {
     {
         'ThePrimeagen/99',
+        lazy = true,
         config = function()
             local _99 = require('99')
             local cwd = vim.uv.cwd()

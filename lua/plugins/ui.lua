@@ -1,16 +1,6 @@
 local theme = 'limei' -- 'solarized' | 'gruvbox-material' | 'gruvbox' | 'gruvbox-new' | 'zen' | 'vague' | 'miasma' | 'kanagawa' | 'farout'
 
 return {
-    -- {
-    --     'harunnoir/limei.nvim',
-    --     branch = 'experiment/color-usage-balance',
-    --     lazy = (theme ~= 'limei'),
-    --     priority = 1000,
-    --     config = function()
-    --         require('limei').setup()
-    --         vim.cmd.colorscheme('limei')
-    --     end,
-    -- },
     {
         'harunnoir/limei.nvim',
         lazy = (theme ~= 'limei'),
@@ -137,7 +127,7 @@ return {
                 left = '',
                 right = '',
             },
-            disabled_filetypes = { 'snacks_dashboard', 'oil', 'toggleterm', 'ministarter' },
+            disabled_filetypes = { 'snacks_dashboard', 'snacks_terminal', 'oil', 'ministarter' },
         },
     },
     {

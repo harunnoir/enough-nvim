@@ -13,8 +13,25 @@ Every plugin answers "yes" to at least two of:
 
 | Plugin | Why |
 |--------|-----|
-| `nvim-treesitter` | Syntax highlighting, folds, text objects — the standard |
+| `nvim-treesitter` | Syntax highlighting and parser-backed folds |
 | `nvim-ufo` | Better folds than built-in `foldmethod=expr` alone |
+
+### ts.lua
+
+| Plugin | Why |
+|--------|-----|
+| `nvim-treesitter-textobjects` | Structural selections, movements, and argument swaps |
+
+### mini.lua
+
+| Module | Why |
+|--------|-----|
+| `mini.ai` | Better text objects (`ia`, `aa`, `il`, `al`, etc.) |
+| `mini.align` | Align assignments and tables (`ga`/`gA`) |
+| `mini.surround` | Add, delete, and replace surrounds (`sa`, `sd`, `sr`) |
+| `mini.clue` | Discoverable leader-key groups |
+| `mini.hipatterns` | Highlight hex colors in code |
+| `mini.starter` | Lightweight recent-file start screen |
 
 ### lsp.lua
 
@@ -33,12 +50,8 @@ Every plugin answers "yes" to at least two of:
 | `blink.cmp` | Completion — fast, native-feeling, Neovim 0.11 compatible |
 | `conform.nvim` | Format on demand (`<leader>cf`) — per-filetype config |
 | `nvim-autopairs` | Auto-close brackets |
-| `mini.align` | Align assignments/tables (`ga`/`gA`) |
-| `mini.ai` | Better text objects (`ia`, `aa`, `il`, `al`, etc.) |
-| `mini.surround` | Add/delete/replace surrounds (`sa`, `sd`, `sr`) |
 | `grug-far.nvim` | Search & replace across files (`:GrugFar`) |
 | `trouble.nvim` | Diagnostic/symbol/reference list in a quickfix-like window |
-| `Comment.nvim` | Toggle comments (`gc`) |
 | `vim-repeat` | Make `.` repeat plugin actions (surround, etc.) |
 | `treesj` | Split/join blocks — function args, if/else, tables (`<leader>sj`) |
 | `dial.nvim` | Increment/decrement numbers, dates, hex colors (`<C-a>`/`<C-x>`) |
@@ -49,7 +62,7 @@ Every plugin answers "yes" to at least two of:
 | Plugin | Why |
 |--------|-----|
 | `nvim-spider` | Smarter `w`/`e`/`b` — respects camelCase and snake_case |
-| `nvim-maximizer` | Toggle current window to full screen (`<leader>z`) |
+| `maximize.nvim` | Toggle current window to full screen (`<leader>z`) |
 | `flash.nvim` | Jump anywhere visible (`gs`/`gS`) — replaces leap |
 | `snacks.picker` | Fuzzy finder (`<leader>ff`, `fg`, `fw`, etc.) — replaces Telescope |
 | `glance.nvim` | LSP references/definitions in a peek window (`gD`, `gR`, etc.) |
@@ -58,7 +71,6 @@ Every plugin answers "yes" to at least two of:
 | `oil-git` | Show git status in Oil |
 | `harpoon` | Quick file marks (`<leader>a`, `<leader>1-4`) |
 | `marks.nvim` | Visual indicators for `'a-'z` marks |
-| `satellite.nvim` | Scrollbar with diagnostics, marks, search highlights |
 | `smart-splits.nvim` | Window navigation (`<C-h/j/k/l>`) and resize (`<A-h/j/k/l>`) |
 
 ### git.lua
@@ -81,13 +93,12 @@ Every plugin answers "yes" to at least two of:
 
 | Plugin | Why |
 |--------|-----|
-| `gruvbox-material` / `zen` / `vague` | Colorschemes — switch via `theme` variable in `ui.lua` |
+| `limei.nvim` and alternatives | Colorschemes selected by `theme` in `ui.lua` |
 | `slimline.nvim` | Statusline — minimal, theme-aware, no dependencies |
-| `snacks.nvim` | Statuscolumn, picker, indent guides, animations |
+| `snacks.nvim` | Picker, terminal, statuscolumn, indent guides, and animations |
 | `noice.nvim` | Cmdline UI — replaces the default cmdline with a popup |
 | `yanky.nvim` | Yank history ring |
-| `toggleterm.nvim` | Terminal — vertical/horizontal/float, persistent |
-| `virt-column.nvim` | Soft colorcolumn at `NonText` highlight |
+| `virt-column.nvim` | Soft structural column using the theme's `VirtColumn` highlight |
 | `quicker.nvim` | Quickfix window improvements |
 | `todo-comments.nvim` | Highlight and search TODO/FIXME/HACK comments |
 | `nvim-web-devicons` | File type icons |
@@ -98,14 +109,11 @@ Every plugin answers "yes" to at least two of:
 | Plugin | Why |
 |--------|-----|
 | `overseer.nvim` | Task runner — make, scripts, build tasks |
-| `mini.clue` | Which-key replacement — shows `<leader>` key tree |
 | `haunt.nvim` | Bookmark/annotate lines (`<leader>ha` etc.) |
 | `hardtime.nvim` | Discourage bad movement habits (hjkl overuse) |
-| `mini.hipatterns` | Highlight hex colors in code |
 | `nerdy.nvim` | Nerd Font icon browser (`<leader>in`) |
 | `undotree.nvim` | Visual undo tree (`<leader>u`) |
 | `leetcode.nvim` | LeetCode in Neovim |
-| `mini.starter` | Lightweight startup screen (recent files + actions) |
 | `persistence.nvim` | Auto-save/restore sessions |
 
 ### ai.lua
@@ -120,6 +128,13 @@ Every plugin answers "yes" to at least two of:
 |--------|-----|
 | `render-markdown.nvim` | WYSIWYG markdown preview |
 | `uv.nvim` | Python uv integration |
+
+### 42.lua
+
+| Plugin | Why |
+|--------|-----|
+| `42-header.nvim` | Insert and maintain 42 School headers |
+| `norminette42.nvim` | Run Norminette diagnostics for C/C++ |
 
 ## What Was Removed / Rejected
 

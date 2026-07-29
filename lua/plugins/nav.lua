@@ -1,12 +1,12 @@
 return {
     -- Smart-splits: window navigation & resize (keys in maps.lua)
-    { 'mrjones2014/smart-splits.nvim' },
+    { 'mrjones2014/smart-splits.nvim', lazy = true },
 
     -- Spider: smarter w/e/b motions (keys in maps.lua)
     { 'chrisgrieser/nvim-spider', lazy = true },
 
     -- Maximizer: toggle window fullscreen (keys in maps.lua)
-    { 'declancm/maximize.nvim', config = true },
+    { 'declancm/maximize.nvim', cmd = 'Maximize', config = true },
 
     -- Flash: jump anywhere visible (keys in maps.lua)
     {
@@ -24,6 +24,7 @@ return {
     -- Oil: file explorer as a buffer (key in maps.lua)
     {
         'stevearc/oil.nvim',
+        cmd = 'Oil',
         opts = {
             columns = { 'icon', 'permissions', 'size', 'mtime' },
         },
@@ -32,12 +33,13 @@ return {
     -- Oil plugins: diagnostics and git status in Oil
     {
         'JezerM/oil-lsp-diagnostics.nvim',
-        event = 'VeryLazy',
+        ft = 'oil',
         dependencies = { 'stevearc/oil.nvim' },
         opts = {},
     },
     {
         'benomahony/oil-git.nvim',
+        ft = 'oil',
         dependencies = { 'stevearc/oil.nvim' },
 
         opts = function()
@@ -97,11 +99,4 @@ return {
         event = 'VeryLazy',
         opts = {},
     },
-
-    -- Satellite: scrollbar with diagnostics, marks, search — DISABLED
-    -- {
-    --   'lewis6991/satellite.nvim',
-    --   event = 'VeryLazy',
-    --   config = true,
-    -- },
 }

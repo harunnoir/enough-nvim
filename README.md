@@ -32,23 +32,26 @@ For a full automated setup:
 ├── bin/install.sh            bootstrap installer
 ├── lua/
 │   ├── config/
+│   │   ├── lazy.lua          lazy.nvim bootstrap
 │   │   ├── opts.lua          editor options
 │   │   ├── maps.lua          core keymaps
 │   │   ├── lsp.lua           LSP server config (vim.lsp.enable)
-│   │   ├── hl.lua            highlight overrides
 │   │   ├── cmd.lua           autocommands / filetype settings
 │   │   └── neovide.lua       Neovide GUI config
 │   └── plugins/              one file per concern
 │       ├── core.lua          treesitter, ufo
+│       ├── ts.lua            treesitter text objects
+│       ├── mini.lua          mini.nvim modules
 │       ├── lsp.lua           mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
-│       ├── editor.lua        blink.cmp, conform, mini.*, treesj, trouble, dial
+│       ├── editor.lua        blink.cmp, conform, treesj, trouble, dial
 │       ├── nav.lua           flash, harpoon, oil, glance, smart-splits, marks
 │       ├── git.lua           gitsigns, gitgraph
 │       ├── dap.lua           nvim-dap, dap-ui, python/go debugger
 │       ├── ai.lua            99 AI chat
-│       ├── ui.lua            zen/vague/gruvbox-material, snacks, noice, slimline
-│       ├── misc.lua          haunt, undotree, nerdy, mini.starter, overseer
-│       └── lang.lua          language-specific extras
+│       ├── ui.lua            colorschemes, snacks, noice, slimline
+│       ├── misc.lua          haunt, undotree, nerdy, overseer
+│       ├── lang.lua          language-specific extras
+│       └── 42.lua            42 School tooling
 ```
 
 ## Keybindings
@@ -148,7 +151,8 @@ For a full automated setup:
 
 Switch via the `theme` variable at the top of `lua/plugins/ui.lua`.
 
-Available: `zen` (default), `gruvbox-material`, `gruvbox`, `gruvbox-new`, `vague`, `miasma`.
+Available: `limei` (default), `solarized`, `gruvbox-material`, `gruvbox`,
+`gruvbox-new`, `zen`, `vague`, `miasma`, `kanagawa`, and `farout`.
 
 ## Docs
 
@@ -156,6 +160,14 @@ Available: `zen` (default), `gruvbox-material`, `gruvbox`, `gruvbox-new`, `vague
 - [LSP setup](docs/lsp.md) — native `vim.lsp.enable()` without lspconfig
 - [Workflows](docs/workflows.md) — day-to-day editing, search, git, debug loops
 - [Adding a language](docs/languages.md) — step-by-step for LSP, formatter, linter, treesitter
+
+## Validation
+
+```bash
+make format   # format Lua
+make check    # verify formatting and Lua syntax
+make test     # load the complete config headlessly
+```
 
 ## Credits
 

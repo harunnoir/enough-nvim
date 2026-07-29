@@ -68,7 +68,7 @@
 
 ## Terminal
 
-- `<C-\>` — toggle vertical terminal (toggleterm)
+- `<C-\>` — toggle the right-side Snacks terminal
 - `<Esc><Esc>` — exit terminal mode to normal
 - Runs in the same cwd as Neovim
 

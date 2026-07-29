@@ -2,7 +2,7 @@
 
 ## Config Philosophy
 - Flat plugin files under `lua/plugins/` — no nested subdirectories
-- Each file covers one concern (editor, nav, lsp, git, ui, misc, lang)
+- Each file covers one concern
 - Minimal keybindings: deliberate, composable, no redundancy
 - Native LSP config, no `nvim-lspconfig` — uses `vim.lsp.enable()` (Neovim 0.11+)
 
@@ -13,25 +13,27 @@
 - Smart-splits for `<C-h/j/k/l>` window nav (not tmux-navigator)
 - mini.surround uses default `s` prefix (`sa`, `sd`, `sr`)
 - Formatting: `stylua` for Lua (4-space indent, single quotes)
-- Highlight tweaks centralized in `lua/config/hl.lua` for easy bulk disable
+- Colors and plugin highlights come from the active colorscheme
 
 ## Plugin Categories
 - `core.lua`: treesitter, ufo
+- `ts.lua`: treesitter textobjects
+- `mini.lua`: mini.ai, align, surround, clue, hipatterns, starter
 - `lsp.lua`: mason, tiny-inline-diagnostic, nvim-lint, fidget, symbol-usage
-- `editor.lua`: blink.cmp, conform, mini.align/surround/ai, autopairs, grug-far, trouble, treesj, dial
-- `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, satellite, smart-splits
+- `editor.lua`: blink.cmp, conform, autopairs, grug-far, trouble, treesj, dial
+- `nav.lua`: spider, maximizer, flash, glance, oil, harpoon, marks, smart-splits
 - `git.lua`: gitsigns, gitgraph
 - `dap.lua`: nvim-dap, dap-ui, dap-python, dap-go
-- `ui.lua`: gruvbox-material/zen/vague, slimline, snacks, noice, toggleterm, yanky, virt-column
-- `misc.lua`: overseer, mini.clue, haunt, hardtime, mini.hipatterns, undotree, nerdy, mini.starter, persistence
+- `ui.lua`: colorschemes, slimline, snacks, noice, yanky, virt-column
+- `misc.lua`: overseer, haunt, hardtime, undotree, nerdy, persistence
 - `ai.lua`: 99 AI chat
 - `lang.lua`: render-markdown, uv.nvim
 - `42.lua`: c_formatter_42 (conform), 42-header.nvim
-- `test.lua`: local plugin dev (quoteboard.nvim)
 
 ## Testing / Validation
 ```bash
-nvim --headless -c 'lua print("OK")' -c 'qa!'
+make check
+make test
 ```
 
 ## Bootstrap

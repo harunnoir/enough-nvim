@@ -9,7 +9,6 @@ return {
     { import = 'plugins.ui' },
     { import = 'plugins.misc' },
     { import = 'plugins.ai' },
-    { import = 'plugins.test' },
     { import = 'plugins.lang' },
     { import = 'plugins.42' },
     { import = 'plugins.ts' },

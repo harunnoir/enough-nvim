@@ -15,6 +15,7 @@ return {
     },
     {
         'hardyrafael17/norminette42.nvim',
+        ft = { 'c', 'cpp' },
         config = function()
             local norminette = require('norminette')
             norminette.setup({

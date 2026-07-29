@@ -2,6 +2,14 @@ return {
     -- Task runner inside Neovim. Run make/scripts, see output in splits.
     {
         'stevearc/overseer.nvim',
+        cmd = {
+            'OverseerRun',
+            'OverseerToggle',
+            'OverseerOpen',
+            'OverseerClose',
+            'OverseerShell',
+            'OverseerTaskAction',
+        },
         ---@module 'overseer'
         ---@type overseer.SetupOpts
         opts = {},
@@ -9,6 +17,7 @@ return {
     -- Haunt: bookmark / annotate lines (keys in maps.lua)
     {
         'TheNoeTrevino/haunt.nvim',
+        lazy = true,
         opts = {
             sign = '󱙝',
             sign_hl = 'HauntAnnotation',
@@ -51,6 +60,7 @@ return {
     -- Undotree: visual undo tree (key in maps.lua)
     {
         'jiaoshijie/undotree',
+        lazy = true,
         opts = {},
     },
 
