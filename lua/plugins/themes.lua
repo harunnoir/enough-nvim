@@ -1,6 +1,23 @@
-local theme = 'limei'
+local theme = 'cendre'
 
 return {
+    -- {
+    --     dir = '~/wrk/nvim/limei.nvim-1.3.0/',
+    --     name = 'limei.nvim',
+    --     lazy = false,
+    --     priority = 1000,
+
+    --     config = function() vim.cmd.colorscheme('limei') end,
+    -- },
+    {
+        'Aejkatappaja/cendre',
+        lazy = theme ~= 'cendre',
+        priority = 1000,
+        config = function()
+            require('cendre').setup({})
+            vim.cmd.colorscheme('cendre')
+        end,
+    },
     {
         'harunnoir/limei.nvim',
         lazy = theme ~= 'limei',

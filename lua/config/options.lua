@@ -2,9 +2,13 @@
 
 -- General
 vim.o.termguicolors = true
-vim.o.mouse = 'a'
 vim.o.laststatus = 3
 vim.o.ttimeoutlen = 50
+
+-- Mouse
+vim.o.mouse = 'a'
+vim.o.mousescroll = 'ver:3,hor:6'
+vim.o.mousemoveevent = false
 
 -- UI
 vim.opt.scrolloff = 3
@@ -24,14 +28,15 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
     eob = ' ',
 }
+
 vim.opt.cursorline = true
 
--- Editor Behavior
+-- Editor behavior
 vim.o.wrap = false
 vim.o.incsearch = true
 vim.o.hlsearch = false
 
--- Line Numbers
+-- Line numbers
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.nrformats = 'unsigned'
@@ -50,12 +55,13 @@ vim.o.tabstop = 4
 vim.o.splitright = true
 vim.o.splitbelow = true
 
--- Files & Buffers
+-- Files and buffers
 vim.o.hidden = true
 vim.o.undofile = true
 vim.o.swapfile = false
 vim.o.backup = false
 
+-- Clipboard and spelling
 vim.o.clipboard = 'unnamedplus'
 vim.o.spell = false
 
@@ -65,5 +71,5 @@ vim.opt.completeopt = 'menuone,noselect'
 -- Keybindings
 vim.g.mapleader = ' '
 
--- Font
-vim.o.guifont = 'VictorMono Nerd Font:h10'
+-- GUI font
+vim.o.guifont = 'IosevkaTerm Nerd Font:h14'
