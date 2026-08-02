@@ -1,4 +1,4 @@
-local theme = 'cendre'
+local theme = 'limei'
 
 return {
     -- {

@@ -6,6 +6,10 @@ map('n', '<leader>q', '<cmd>quit<cr>', { desc = 'Close window' })
 map('n', '<leader>Q', '<cmd>quitall<cr>', { desc = 'Quit all' })
 map('n', '<BS>', '<C-^>', { desc = 'Alternate buffer' })
 map('n', '<Tab>', 'za', { desc = 'Toggle fold' })
+map("n", "<leader>ya", ":%y+<CR>", {
+    desc = "Yank entire file to system clipboard",
+    silent = true,
+})
 
 map('n', '<A-S-j>', '<cmd>move .+1<cr>==', { desc = 'Move line down' })
 map('n', '<A-S-k>', '<cmd>move .-2<cr>==', { desc = 'Move line up' })
