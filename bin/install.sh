@@ -11,7 +11,7 @@ has_cmd() { command -v "$1" &>/dev/null; }
 
 # ── Prerequisite check ────────────────────────────
 
-PREREQS=(nvim git gcc rg fd unzip python3 node)
+PREREQS=(nvim git gcc unzip python3 node curl)
 
 check_prereqs() {
   local missing=()
@@ -89,6 +89,64 @@ setup_path() {
   export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 }
 
+install_core_tools() {
+  log "installing core tools (ripgrep, fd) without sudo..."
+
+  local bin_dir="$HOME/.local/bin"
+  mkdir -p "$bin_dir"
+
+  local arch
+  arch="$(uname -m)"
+
+  local rg_arch fd_arch
+  case "$arch" in
+    x86_64)  rg_arch="x86_64"; fd_arch="x86_64" ;;
+    aarch64|arm64) rg_arch="aarch64"; fd_arch="aarch64" ;;
+    armv7l)  rg_arch="armv7"; fd_arch="armv7" ;;
+    *)       err "unsupported architecture: $arch"; return 1 ;;
+  esac
+
+  local os
+  os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+  [[ "$os" == "linux" ]] || { err "unsupported OS: $os"; return 1; }
+
+  install_from_github() {
+    local repo="$1" version="$2" name="$3" arch="$4"
+    local url="https://github.com/${repo}/releases/download/${version}/${name}-${version}-${arch}-unknown-linux-musl.tar.gz"
+    local tmp
+    tmp="$(mktemp -d)"
+
+    if ! curl -fsSL "$url" -o "$tmp/pkg.tar.gz" 2>/dev/null; then
+      warn "failed to download $name from $url"
+      rm -rf "$tmp"
+      return 1
+    fi
+
+    tar -xzf "$tmp/pkg.tar.gz" -C "$tmp" 2>/dev/null || {
+      warn "failed to extract $name"
+      rm -rf "$tmp"
+      return 1
+    }
+
+    local binary
+    binary="$(find "$tmp" -type f -name "$name" ! -name "*.tar.gz" | head -n1)"
+    if [ -z "$binary" ]; then
+      warn "$name binary not found in archive"
+      rm -rf "$tmp"
+      return 1
+    fi
+
+    cp "$binary" "$bin_dir/$name"
+    chmod +x "$bin_dir/$name"
+    rm -rf "$tmp"
+  }
+
+  install_from_github "BurntSushi/ripgrep" "14.1.1" "rg" "$rg_arch" || true
+  install_from_github "sharkdp/fd" "10.2.0" "fd" "$fd_arch" || true
+
+  export PATH="$bin_dir:$PATH"
+}
+
 # ── Main ──────────────────────────────────────────
 
 usage() {
@@ -124,6 +182,7 @@ main() {
     log 'minimal — plugins only…'
     nvim --headless '+Lazy! sync' +qa 2>/dev/null || true
   else
+    install_core_tools
     install_mason
     setup_path
     run_lang python 2>/dev/null || true
